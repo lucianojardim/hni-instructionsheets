@@ -1,0 +1,7 @@
+<div>
+  <p class="list-group-item-heading">List of instruction sheets for the selected Series</p>
+  <ul class="list-group" *ngFor="let instructionSheet of instructionSheets">
+    <li class="list-group-item"><a href={{instructionSheet.url}}>{{instructionSheet.name}}</a></li>
+  </ul>
+</div>
+

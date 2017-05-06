@@ -3,16 +3,30 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import {AppRoutingModule} from './app-routing.module';
+
 import { AppComponent } from './app.component';
+import {HeaderComponent} from './header/header.component';
+import {BrandComponent} from './brand/brand.component';
+import {OptionsComponent} from './options/options.component';
+import {SeriesComponent} from './series/series.component';
+import {InstructionSheetComponent} from './instruction-sheet/instruction-sheet.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    BrandComponent,
+    OptionsComponent,
+    SeriesComponent,
+    InstructionSheetComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
