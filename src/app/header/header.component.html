@@ -1,6 +1,8 @@
 <div class="page-header" [ngSwitch]="selectedBrand.name.toLowerCase()">
-  <h2><a *ngSwitchCase="'hon'"><img src="/assets/hon/images/logo.svg" alt="HON Office Furniture"/></a>
+  <h2 (click)="onGoingHome()" routerLink="/home">
+    <a *ngSwitchCase="'hon'"><img src="/assets/hon/images/logo.svg" alt="HON Office Furniture"/></a>
     <a *ngSwitchCase="'allsteel'"><img src="/assets/allsteel/images/logo.png" alt="Allsteel"/></a>
-    <a *ngSwitchDefault><img src="/assets/hni/images/logo.svg" alt="HNI"/></a> Digital Install</h2>
+    <a *ngSwitchDefault><img src="/assets/hni/images/logo.svg" alt="HNI"/></a>
+    Digital Install</h2>
 </div>
 

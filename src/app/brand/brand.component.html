@@ -1,9 +1,12 @@
+<app-header></app-header>
 <div class="row">
   <div class="col-xs-9">
     <form class="form-group" #f="ngForm" novalidate>
       <label>Series</label>
-      <select class="selectpicker form-control" (change)="onSelectedSeries()" name="selectForSeries"
+      <select title="Select a series" class="selectpicker form-control" (change)="onSelectedSeries()"
+              name="selectForSeries"
               [(ngModel)]="selectedSeries">
+        <option>Select a series</option>
         <option *ngFor="let series of serieses" [ngValue]="series">{{series.name}}</option>
       </select>
     </form>

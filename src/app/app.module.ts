@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import {AppRoutingModule} from './app-routing.module';
 
+import {BrandService} from './brand/brand.service';
+import {SeriesService} from './series/series.service';
+
 import { AppComponent } from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {BrandComponent} from './brand/brand.component';
@@ -28,7 +31,7 @@ import {InstructionSheetComponent} from './instruction-sheet/instruction-sheet.c
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [BrandService, SeriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

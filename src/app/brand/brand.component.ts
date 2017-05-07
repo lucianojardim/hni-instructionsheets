@@ -1,73 +1,61 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
 
-// import { Brand } from './brand';
+import {BrandService} from './brand.service';
+import {Brand} from './brand';
 import {Series} from '../series/series';
+import {SeriesService} from '../series/series.service';
 
 @Component({
   selector: 'app-brand',
   templateUrl: './brand.component.html',
   styleUrls: ['./brand.component.css']
 })
-export class BrandComponent implements OnInit {
+export class BrandComponent implements OnInit, OnDestroy {
+  selectedBrand: Brand;
+  subscription: Subscription;
+  selectedSeries: Series;
+  serieses: Series[] = [];
 
-  // TODO: selectedBrand has to be shared and dynamic
-  // selectedBrand: Brand = {name: 'hon'};
-  // TODO: changes to a dynamic attribution instead of hardcoded
-  selectedSeries: Series = {name: '101 Series'};
-  // TODO: create SeriesService and convert this to a getSerieses
-  serieses: Series[] = [
-    {name: '101 Series'},
-    {name: '10500 Series'},
-    {name: '10700 Series'},
-    {name: '10700, 94000'},
-    {name: '34000 Series Steel Desking'},
-    {name: '38000 Series Stack On Units'},
-    {name: '38000 Series Steel Desking'},
-    {name: 'Abode'},
-    {name: 'Accessories - HON'},
-    {name: 'Announce'},
-    {name: 'Arrive'},
-    {name: 'Attune, 10700'},
-    {name: 'Brigade'},
-    {name: 'Brigade Bookcase'},
-    {name: 'Contain'},
-    {name: 'Flagship'},
-    {name: 'Flagship Bookcase'},
-    {name: 'Flagship Lateral'},
-    {name: 'Flagship Pedestal'},
-    {name: 'Flagship Storage Cabinet'},
-    {name: 'GuestStacker - 4030 Series'},
-    {name: 'Ignition Seating'},
-    {name: 'Mentor Series'},
-    {name: 'Metro Classic'},
-    {name: 'N/F'},
-    {name: 'Olson - 4040 Series'},
-    {name: 'Pagoda'},
-    {name: 'Park Avenue Collection'},
-    {name: 'Park Avenue Collection, Attune'},
-    {name: 'Park Avenue Collection, Attune, 10500'},
-    {name: 'Park Avenue Collection, Valido, 10500'},
-    {name: 'Pennsylvania Avenue, 10700, 94000'},
-    {name: 'Pennsylvania Avenue, Attune, 10700'},
-    {name: 'Perpetual'},
-    {name: 'Preside'},
-    {name: 'Riley Series'},
-    {name: 'StationMaster'},
-    {name: 'Systems Electrical'},
-    {name: 'Systems Worksurface'},
-    {name: 'Voi'},
-  ];
-
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router,
+              private _activatedRoute: ActivatedRoute,
+              private _brandService: BrandService,
+              private _seriesService: SeriesService) {
   }
 
   ngOnInit() {
+    this.getSelectedBrand();
+    this.getSerieses(this.selectedBrand);
   }
 
   onSelectedSeries(): void {
-    this.router.navigate([this.selectedSeries.name], {relativeTo: this.activatedRoute})
+    this._seriesService.setSelectedSeries(
+      this._seriesService.getSeriesByNameAndBrand(
+        this.selectedSeries.name,
+        this._brandService.getSelectedBrand()
+      )
+    );
+    this.router.navigate([this.selectedSeries.name], {relativeTo: this._activatedRoute})
       .then()
       .catch();
+  }
+
+  getSelectedBrand() {
+    this.selectedBrand = this._brandService.getSelectedBrand();
+    this.subscription = this._brandService.selectedBrandChanged
+      .subscribe(
+        (brand: Brand) => {
+          this.selectedBrand = brand;
+        }
+      );
+  }
+
+  getSerieses(selectedBrand: Brand) {
+    this.serieses = this._seriesService.getSerieses(selectedBrand);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

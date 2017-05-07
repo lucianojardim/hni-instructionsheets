@@ -1,3 +1,4 @@
+<app-header></app-header>
 <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-collapse"> <!-- removed collapse -->
@@ -9,12 +10,9 @@
         <li class="dropdown"> <!-- removed open -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
              aria-expanded="false">Brands <span class="caret"></span></a>
-          <ul class="dropdown-menu" routerLinkActive="active">
-            <li><a routerLink="/instructionsheets/allsteel">Allsteel</a></li>
-            <!--<li><a routerLink="/instructionsheets/gunlocke">Gunlocke</a></li>-->
-            <li><a routerLink="/instructionsheets/hon">HON</a></li>
-            <!--<li><a routerLink="/instructionsheets/maxon">Maxon</a></li>-->
-            <!--<li><a routerLink="/instructionsheets/paoli">Paoli</a></li>-->
+          <ul class="dropdown-menu" routerLinkActive="active" *ngFor="let brand of brands">
+            <li><a (click)="onSelectedBrand(brand.name)" routerLinkActive="active"
+                   [routerLink]="['/instructionsheets',brand.name]">{{brand.name}}</a></li>
           </ul>
         </li>
       </ul>
