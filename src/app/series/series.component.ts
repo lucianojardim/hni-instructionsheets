@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 
 import {Series} from './series';
@@ -21,10 +21,10 @@ export class SeriesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.getSelectedSeries();
+    this.getInstructionSheetsOfSelectedSeries();
   }
 
-  getSelectedSeries() {
+  getInstructionSheetsOfSelectedSeries() {
     this.selectedSeries = this._seriesService.getSelectedSeries();
     this.getInstructionSheets(this.selectedSeries);
 

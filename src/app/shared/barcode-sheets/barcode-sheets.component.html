@@ -1,0 +1,6 @@
+<div>
+  <p class="list-group-item-heading">Instruction sheets the selected barcode number:</p>
+  <ul class="list-group-item-heading" *ngFor="let instructionSheet of instructionSheets">
+    <li class="list-group-item"><a href={{instructionSheet.url}}>{{instructionSheet.name}}</a></li>
+  </ul>
+</div>

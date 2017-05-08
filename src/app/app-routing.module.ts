@@ -7,10 +7,23 @@ import {Routes, RouterModule} from '@angular/router';
 import {OptionsComponent} from './options/options.component';
 import {BrandComponent} from './brand/brand.component';
 import {SeriesComponent} from './series/series.component';
+import {BarcodeComponent} from './barcode/barcode.component';
+import {BarcodeReaderComponent} from './barcode-reader/barcode-reader.component';
+import {BarcodeSheetsComponent} from './shared/barcode-sheets/barcode-sheets.component';
 
 const appRoutes: Routes = [
   {
-    path: 'instructionsheets/:brandname', component: BrandComponent, children: [
+    path: 'barcode', component: BarcodeComponent, children: [
+    {path: ':barcodeNumber', component: BarcodeSheetsComponent},
+  ]
+  },
+  {
+    path: 'barcodereader', component: BarcodeReaderComponent, children: [
+    {path: ':barcodeNumber', component: BarcodeSheetsComponent},
+  ]
+  },
+  {
+    path: 'brand/:brandname', component: BrandComponent, children: [
     {path: ':seriesName', component: SeriesComponent},
   ]
   },

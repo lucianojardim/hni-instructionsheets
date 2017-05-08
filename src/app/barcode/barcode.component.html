@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="row">
+  <div class="col-xs-11">
+    <form class="form-group" #f="ngForm" novalidate>
+      <label>Barcode Numbers</label>
+      <select title="Select a barcode" class="selectpicker form-control" (change)="onSelectedBarcode()"
+              name="selectForBarcodes"
+              [(ngModel)]="selectedBarcode">
+        <option>Select a barcode number</option>
+        <option *ngFor="let barcode of barcodes" [ngValue]="barcode">{{barcode.barcodeNumber}}</option>
+      </select>
+    </form>
+    <hr>
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -8,12 +8,16 @@ import {AppRoutingModule} from './app-routing.module';
 import {BrandService} from './brand/brand.service';
 import {SeriesService} from './series/series.service';
 import {InstructionSheetService} from './instruction-sheet/instruction-sheet.service';
+import {BarcodeService} from './barcode/barcode.service';
 
 import { AppComponent } from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {BrandComponent} from './brand/brand.component';
 import {OptionsComponent} from './options/options.component';
 import {SeriesComponent} from './series/series.component';
+import {BarcodeComponent} from './barcode/barcode.component';
+import {BarcodeSheetsComponent} from './shared/barcode-sheets/barcode-sheets.component';
+import {BarcodeReaderComponent} from './barcode-reader/barcode-reader.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,10 @@ import {SeriesComponent} from './series/series.component';
     HeaderComponent,
     BrandComponent,
     OptionsComponent,
-    SeriesComponent
+    SeriesComponent,
+    BarcodeComponent,
+    BarcodeSheetsComponent,
+    BarcodeReaderComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +36,7 @@ import {SeriesComponent} from './series/series.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [BrandService, SeriesService, InstructionSheetService],
+  providers: [BrandService, SeriesService, InstructionSheetService, BarcodeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

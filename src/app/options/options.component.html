@@ -3,16 +3,16 @@
   <div class="container">
     <div class="navbar-collapse"> <!-- removed collapse -->
       <ul class="nav navbar-nav">
-        <li><a href="src/view/barcode/quaggajs.html">Enter Barcode manually</a></li>
-        <li><a href="src/view/barcode/quaggajs.html">Read Barcode using phone</a></li>
-        <li><a href="src/view/barcode/quaggajs.html">Most recent downloads</a></li>
-        <li><a href="src/view/barcode/quaggajs.html">Saved downloads</a></li>
-        <li class="dropdown"> <!-- removed open -->
+        <li><a routerLinkActive="active" [routerLink]="['/barcode']">Select barcode</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/barcodereader']">Read barcode with a phone</a></li>
+        <li><a href="#">Most recent downloads</a></li>
+        <li><a href="#">Saved downloads</a></li>
+        <li class="dropdown open"> <!-- removed open -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
              aria-expanded="false">Brands <span class="caret"></span></a>
           <ul class="dropdown-menu" routerLinkActive="active" *ngFor="let brand of brands">
             <li><a (click)="onSelectedBrand(brand.name)" routerLinkActive="active"
-                   [routerLink]="['/instructionsheets',brand.name]">{{brand.name}}</a></li>
+                   [routerLink]="['/brand',brand.name]">{{brand.name}}</a></li>
           </ul>
         </li>
       </ul>

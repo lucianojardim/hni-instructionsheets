@@ -18,7 +18,7 @@ export class BrandComponent implements OnInit, OnDestroy {
   selectedSeries: Series;
   serieses: Series[] = [];
 
-  constructor(private router: Router,
+  constructor(private _router: Router,
               private _activatedRoute: ActivatedRoute,
               private _brandService: BrandService,
               private _seriesService: SeriesService) {
@@ -36,7 +36,7 @@ export class BrandComponent implements OnInit, OnDestroy {
         this._brandService.getSelectedBrand()
       )
     );
-    this.router.navigate([this.selectedSeries.name], {relativeTo: this._activatedRoute})
+    this._router.navigate([this.selectedSeries.name], {relativeTo: this._activatedRoute})
       .then()
       .catch();
   }
