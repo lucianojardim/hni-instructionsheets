@@ -1,35 +1,48 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnDestroy, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
 
-// import { Brand } from '../brand/brand';
-// import { Series } from './series';
+import {Series} from './series';
+import {SeriesService} from './series.service';
 import {InstructionSheet} from '../instruction-sheet/instruction-sheet';
+import {InstructionSheetService} from '../instruction-sheet/instruction-sheet.service';
 
 @Component({
   selector: 'app-series',
   templateUrl: './series.component.html',
   styleUrls: ['./series.component.css']
 })
-export class SeriesComponent implements OnInit {
+export class SeriesComponent implements OnInit, OnDestroy {
+  subscription: Subscription;
+  selectedSeries: Series;
+  instructionSheets: InstructionSheet[] = [];
 
-  // TODO: selectedBrand has to be shared and dynamic
-  // selectedBrand: Brand = {name: 'hon'};
-  // TODO: changes to a dynamic attribution instead of hardcoded
-  // selectedSeries: Series = {name: '101 Series'};
-  // TODO: changes to a dynamic attribution instead of hardcoded
-  // selectedInstructionSheet: InstructionSheet = {barcode: '', url: ''};
-  // TODO: create InstructionSheetService and convert this to a getInstructionSheets
-  instructionSheets: InstructionSheet[] = [
-    {
-      name: 'Abound (French)',
-      barcode: '430061000',
-      url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=10456589f66424a909dc0fb303f039632&authkey=ARz_i_C1QstMy9fKVoca6rY'
-    }
-  ];
-  //
-  constructor() {
+  constructor(private _seriesService: SeriesService,
+              private _instructionSheetService: InstructionSheetService) {
   }
 
   ngOnInit() {
+    this.getSelectedSeries();
   }
 
+  getSelectedSeries() {
+    this.selectedSeries = this._seriesService.getSelectedSeries();
+    this.getInstructionSheets(this.selectedSeries);
+
+    this.subscription = this._seriesService.selectedSeriesChanged
+      .subscribe(
+        (series: Series) => {
+          this.selectedSeries = series;
+          this.getInstructionSheets(this.selectedSeries);
+        }
+      );
+
+  }
+
+  getInstructionSheets(selectedSeries: Series) {
+    this.instructionSheets = this._instructionSheetService.getInstructionSheetsBySeries(selectedSeries);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

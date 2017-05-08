@@ -1,11 +1,17 @@
 export class InstructionSheet {
+  id: number;
   name: string;
-  barcode: string;
+  fileName: string;
+  // barcode: string;
   url: string;
+  seriesIdArray: number[];
 
-  constructor(name: string, barcode: string, url: string) {
+  constructor(id: number, name: string, fileName: string, url: string, seriesIdArray: number[]) {
+    this.id = id;
     this.name = name;
-    this.barcode = barcode;
+    this.fileName = fileName;
+    // this.barcode = barcode;
     this.url = url;
+    this.seriesIdArray = seriesIdArray;
   }
 }

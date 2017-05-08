@@ -7,14 +7,13 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {BrandService} from './brand/brand.service';
 import {SeriesService} from './series/series.service';
+import {InstructionSheetService} from './instruction-sheet/instruction-sheet.service';
 
 import { AppComponent } from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {BrandComponent} from './brand/brand.component';
 import {OptionsComponent} from './options/options.component';
 import {SeriesComponent} from './series/series.component';
-import {InstructionSheetComponent} from './instruction-sheet/instruction-sheet.component';
-
 
 @NgModule({
   declarations: [
@@ -22,8 +21,7 @@ import {InstructionSheetComponent} from './instruction-sheet/instruction-sheet.c
     HeaderComponent,
     BrandComponent,
     OptionsComponent,
-    SeriesComponent,
-    InstructionSheetComponent
+    SeriesComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +29,7 @@ import {InstructionSheetComponent} from './instruction-sheet/instruction-sheet.c
     HttpModule,
     AppRoutingModule
   ],
-  providers: [BrandService, SeriesService],
+  providers: [BrandService, SeriesService, InstructionSheetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
