@@ -55,7 +55,7 @@ export class UserAttributesComponent implements OnInit, OnDestroy {
 
   deleteRecentlyDownloadedInstructionSheet(instructionSheet, i) {
     this.showRecentlyDownloadedInstructionSheets[i] = false;
-    this._userService.deleteSavedInstructionSheetsId(instructionSheet.id);
+    this._userService.deleteRecentlyDownloadedInstructionSheetId(instructionSheet.id);
   }
 
   ngOnDestroy() {

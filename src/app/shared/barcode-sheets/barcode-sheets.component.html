@@ -2,7 +2,8 @@
   <p class="list-group-item-heading">Instruction sheets for this barcode:</p>
   <!--TODO: Create component to display instruction sheets-->
   <ul class="list-group-item-heading" *ngFor="let instructionSheet of instructionSheets; let i = index">
-    <li class="list-group-item"><a href={{instructionSheet.url}}>{{instructionSheet.name}}</a>
+    <li class="list-group-item"><a (click)="addRecentlyDownloadedInstructionSheet(instructionSheet, i)"
+                                   href={{instructionSheet.url}} target="_blank">{{instructionSheet.name}}</a>
       <button class="btn btn-xs btn-info pull-right" (click)="addSavedInstructionSheet(instructionSheet, i)">Save
       </button>
     </li>

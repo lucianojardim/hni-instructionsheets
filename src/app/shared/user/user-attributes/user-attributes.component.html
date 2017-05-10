@@ -13,8 +13,7 @@
 </div>
 <hr>
 <div>
-  <p class="list-group-item-heading">Recently downloaded instructions sheets
-    ({{recentlyDownloadedInstructionSheets.length}} items):</p>
+  <p class="list-group-item-heading">Recently downloaded ({{recentlyDownloadedInstructionSheets.length}} items):</p>
   <ul class="list-group-item-heading"
       *ngFor="let recentlyDownloadedInstructionSheet of recentlyDownloadedInstructionSheets; let i = index">
     <li *ngIf="showRecentlyDownloadedInstructionSheets[i]" class="list-group-item"><a

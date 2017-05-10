@@ -52,6 +52,10 @@ export class BarcodeSheetsComponent implements OnInit, OnDestroy {
     this.showAddSavedInstructionSheetMsg[i] = true;
   }
 
+  addRecentlyDownloadedInstructionSheet(instructionSheet, i) {
+    this._userService.addRecentlyDownloadedInstructionSheetId(instructionSheet.id);
+  }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
