@@ -1,0 +1,8 @@
+<app-header></app-header>
+<p class="text-info">Enter your email address:</p>
+<input class="form-control" required type="email" name="userInput" pattern="[^ @]*@[^ @]*" ngModel
+       #userInput="ngModel"/>
+<div class="help-block" *ngIf="!userInput.valid && userInput.touched">Please enter a valid email address!</div>
+<button (click)="getInstructionSheetByEmail(userInput.value)" class="btn btn-default" [disabled]="!userInput.valid">
+  Login
+</button>

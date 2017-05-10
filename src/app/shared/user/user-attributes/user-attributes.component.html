@@ -1,0 +1,20 @@
+<app-header></app-header>
+<h3>User attributes</h3>
+<hr>
+<div>
+  <p class="list-group-item-heading">Saved instructions sheets ({{savedInstructionSheets.length}} items):</p>
+  <ul class="list-group-item-heading" *ngFor="let savedInstructionSheet of savedInstructionSheets; let i = index">
+    <li (click)="deleteSavedInstructionSheet(savedInstructionSheet)" class="list-group-item"><a
+        href={{savedInstructionSheet.url}}>{{savedInstructionSheet.name}}</a></li>
+  </ul>
+</div>
+<hr>
+<div>
+  <p class="list-group-item-heading">Recently downloaded instructions sheets
+    ({{recentlyDownloadedInstructionSheets.length}} items):</p>
+  <ul class="list-group-item-heading"
+      *ngFor="let recentlyDownloadedInstructionSheet of recentlyDownloadedInstructionSheets">
+    <li class="list-group-item"><a href={{recentlyDownloadedInstructionSheet.url}}>{{recentlyDownloadedInstructionSheet.name}}</a>
+    </li>
+  </ul>
+</div>

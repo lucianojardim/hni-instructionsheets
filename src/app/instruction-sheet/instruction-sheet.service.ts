@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {Series} from '../series/series';
 import {Barcode} from '../barcode/barcode';
 import {InstructionSheet} from './instruction-sheet';
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Injectable()
 export class InstructionSheetService {
@@ -261,6 +262,19 @@ export class InstructionSheetService {
   ];
 
   constructor() {
+  }
+
+  getInstructionSheetsByIds(instructionSheetIds: number[]): InstructionSheet[] {
+    const result: InstructionSheet[] = [];
+    const arrayLength: number = instructionSheetIds.length;
+    for (let i = 0; i < arrayLength; i++) {
+      result.push(this.getInstructionSheetsById(instructionSheetIds[i]));
+    }
+    return result;
+  }
+
+  getInstructionSheetsById(id: number): InstructionSheet {
+    return this._instructionSheets.find((instructionSheet: InstructionSheet) => instructionSheet.id === id);
   }
 
   getInstructionSheetsBySeries(series: Series): InstructionSheet[] {

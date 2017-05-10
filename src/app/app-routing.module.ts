@@ -10,26 +10,31 @@ import {SeriesComponent} from './series/series.component';
 import {BarcodeComponent} from './barcode/barcode.component';
 import {BarcodeReaderComponent} from './barcode-reader/barcode-reader.component';
 import {BarcodeSheetsComponent} from './shared/barcode-sheets/barcode-sheets.component';
+import {UserComponent} from './shared/user/user.component';
+import {UserAttributesComponent} from './shared/user/user-attributes/user-attributes.component';
 
 const appRoutes: Routes = [
+  {path: 'options', component: OptionsComponent},
   {
     path: 'barcode', component: BarcodeComponent, children: [
     {path: ':barcodeNumber', component: BarcodeSheetsComponent},
   ]
   },
   {
+    // TODO finish barcode reader
     path: 'barcodereader', component: BarcodeReaderComponent, children: [
     {path: ':barcodeNumber', component: BarcodeSheetsComponent},
   ]
   },
+  {path: 'attributes', component: UserAttributesComponent},
   {
     path: 'brand/:brandname', component: BrandComponent, children: [
     {path: ':seriesName', component: SeriesComponent},
   ]
   },
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'home', component: OptionsComponent},
-  {path: '**', component: OptionsComponent},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: 'login', component: UserComponent},
+  {path: '**', component: UserComponent},
 ];
 
 @NgModule({
