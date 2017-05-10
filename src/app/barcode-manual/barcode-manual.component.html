@@ -1,0 +1,9 @@
+<app-header></app-header>
+<p class="text-info">Enter a serial number:</p>
+<input class="form-control" required type="text" name="inputBarcode" pattern="^[0-9]+$" ngModel #inputBarcode="ngModel">
+<div class="help-block" *ngIf="!inputBarcode.valid && inputBarcode.touched">Please enter numbers only!</div>
+<button (click)="getBarcode(inputBarcode.value)" class="btn btn-default" [disabled]="!inputBarcode.valid">Get
+  instruction sheets
+</button>
+<hr>
+<router-outlet></router-outlet>

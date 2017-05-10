@@ -21,6 +21,7 @@ import {BarcodeSheetsComponent} from './shared/barcode-sheets/barcode-sheets.com
 import {BarcodeReaderComponent} from './barcode-reader/barcode-reader.component';
 import {UserComponent} from './shared/user/user.component';
 import {UserAttributesComponent} from './shared/user/user-attributes/user-attributes.component';
+import {BarcodeManualComponent} from './barcode-manual/barcode-manual.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {UserAttributesComponent} from './shared/user/user-attributes/user-attrib
     BarcodeSheetsComponent,
     BarcodeReaderComponent,
     UserComponent,
-    UserAttributesComponent
+    UserAttributesComponent,
+    BarcodeManualComponent
   ],
   imports: [
     BrowserModule,

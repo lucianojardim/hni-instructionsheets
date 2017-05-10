@@ -8,6 +8,7 @@ import {OptionsComponent} from './options/options.component';
 import {BrandComponent} from './brand/brand.component';
 import {SeriesComponent} from './series/series.component';
 import {BarcodeComponent} from './barcode/barcode.component';
+import {BarcodeManualComponent} from './barcode-manual/barcode-manual.component';
 import {BarcodeReaderComponent} from './barcode-reader/barcode-reader.component';
 import {BarcodeSheetsComponent} from './shared/barcode-sheets/barcode-sheets.component';
 import {UserComponent} from './shared/user/user.component';
@@ -16,7 +17,12 @@ import {UserAttributesComponent} from './shared/user/user-attributes/user-attrib
 const appRoutes: Routes = [
   {path: 'options', component: OptionsComponent},
   {
-    path: 'barcode', component: BarcodeComponent, children: [
+    path: 'barcodetext', component: BarcodeManualComponent, children: [
+    {path: ':barcodeNumber', component: BarcodeSheetsComponent},
+  ]
+  },
+  {
+    path: 'barcodelist', component: BarcodeComponent, children: [
     {path: ':barcodeNumber', component: BarcodeSheetsComponent},
   ]
   },
