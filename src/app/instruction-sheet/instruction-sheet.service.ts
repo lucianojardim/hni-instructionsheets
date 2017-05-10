@@ -7,10 +7,11 @@ import {forEach} from "@angular/router/src/utils/collection";
 
 @Injectable()
 export class InstructionSheetService {
+  // TODO Review the links between instruction sheets and series and barcode -- I believe some are not correct
   private _instructionSheets: InstructionSheet[] = [
     {
       id: 1,
-      name: 'Abound (French)',
+      name: '143-0118.pdf',
       fileName: '143-0118.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=10456589f66424a909dc0fb303f039632&authkey=ARz_i_C1QstMy9fKVoca6rY',
       seriesIdArray: [30,
