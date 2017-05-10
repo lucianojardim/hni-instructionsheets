@@ -4,8 +4,11 @@
 <div>
   <p class="list-group-item-heading">Saved instructions sheets ({{savedInstructionSheets.length}} items):</p>
   <ul class="list-group-item-heading" *ngFor="let savedInstructionSheet of savedInstructionSheets; let i = index">
-    <li (click)="deleteSavedInstructionSheet(savedInstructionSheet)" class="list-group-item"><a
-        href={{savedInstructionSheet.url}}>{{savedInstructionSheet.name}}</a></li>
+    <li *ngIf="showSavedInstructionSheets[i]" class="list-group-item"><a href={{savedInstructionSheet.url}}>{{savedInstructionSheet.name}}</a>
+      <button class="btn btn-xs btn-danger pull-right" (click)="deleteSavedInstructionSheet(savedInstructionSheet, i)">
+        Delete
+      </button>
+    </li>
   </ul>
 </div>
 <hr>
@@ -13,8 +16,12 @@
   <p class="list-group-item-heading">Recently downloaded instructions sheets
     ({{recentlyDownloadedInstructionSheets.length}} items):</p>
   <ul class="list-group-item-heading"
-      *ngFor="let recentlyDownloadedInstructionSheet of recentlyDownloadedInstructionSheets">
-    <li class="list-group-item"><a href={{recentlyDownloadedInstructionSheet.url}}>{{recentlyDownloadedInstructionSheet.name}}</a>
+      *ngFor="let recentlyDownloadedInstructionSheet of recentlyDownloadedInstructionSheets; let i = index">
+    <li *ngIf="showRecentlyDownloadedInstructionSheets[i]" class="list-group-item"><a
+        href={{recentlyDownloadedInstructionSheet.url}}>{{recentlyDownloadedInstructionSheet.name}}</a>
+      <button class="btn btn-xs btn-danger pull-right"
+              (click)="deleteRecentlyDownloadedInstructionSheet(recentlyDownloadedInstructionSheet, i)">Delete
+      </button>
     </li>
   </ul>
 </div>

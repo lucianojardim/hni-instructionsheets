@@ -1,7 +1,12 @@
 <div>
   <p class="list-group-item-heading">Instruction sheets the selected series:</p>
-  <ul class="list-group-item-heading" *ngFor="let instructionSheet of instructionSheets">
-    <li class="list-group-item"><a href={{instructionSheet.url}}>{{instructionSheet.name}}</a></li>
+  <!--TODO: Create component to display instruction sheets-->
+  <ul class="list-group-item-heading" *ngFor="let instructionSheet of instructionSheets; let i = index">
+    <li class="list-group-item"><a href={{instructionSheet.url}}>{{instructionSheet.name}}</a>
+      <button class="btn btn-xs btn-info pull-right" (click)="addSavedInstructionSheet(instructionSheet, i)">Save
+      </button>
+    </li>
+    <li *ngIf="showAddSavedInstructionSheetMsg[i]" class="list-group-item alert-info"><p>Saved successfully.</p></li>
   </ul>
 </div>
 

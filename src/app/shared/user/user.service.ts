@@ -66,6 +66,14 @@ export class UserService {
     this.currentUserWasModified.next(this._currentUser);
   }
 
+  deleteSavedInstructionSheetsId(InstructionSheetsId: number) {
+    const index = this._currentUser.savedInstructionSheetsIds.indexOf(InstructionSheetsId);
+    if (index > -1) {
+      this._currentUser.savedInstructionSheetsIds.splice(index, 1);
+    }
+    this.currentUserWasModified.next(this._currentUser);
+  }
+
   addRecentlyDownloadedInstructionSheetId(InstructionSheetsId: number) {
     this._currentUser.recentlyDownloadedInstructionSheetIds = this._addToFixLengthArray(
       this._currentUser.recentlyDownloadedInstructionSheetIds,
@@ -75,12 +83,22 @@ export class UserService {
     this.currentUserWasModified.next(this._currentUser);
   }
 
+  deleteRecentlyDownloadedInstructionSheetId(InstructionSheetsId: number) {
+    const index = this._currentUser.recentlyDownloadedInstructionSheetIds.indexOf(InstructionSheetsId);
+    if (index > -1) {
+      this._currentUser.recentlyDownloadedInstructionSheetIds.splice(index, 1);
+    }
+    this.currentUserWasModified.next(this._currentUser);
+  }
+
   private _addToFixLengthArray(fixedLengthArray: number[], maxLegth: number, element: number): number[] {
-    if (fixedLengthArray.length < maxLegth) {
-      fixedLengthArray.push(element);
-    } else {
-      fixedLengthArray.pop();
-      fixedLengthArray.push(element);
+    if (fixedLengthArray.indexOf(element) < 0) { // not existing element -> proceed with insert
+      if (fixedLengthArray.length < maxLegth) {
+        fixedLengthArray.push(element);
+      } else {
+        fixedLengthArray.pop();
+        fixedLengthArray.push(element);
+      }
     }
     return fixedLengthArray;
   }
