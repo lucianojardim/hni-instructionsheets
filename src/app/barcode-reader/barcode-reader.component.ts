@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Quagga} from 'quagga';
+import {Component, ViewChild, OnInit, ElementRef} from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
+
+declare var Quagga: any;
 
 @Component({
   selector: 'app-barcode-reader',
@@ -7,76 +9,99 @@ import {Quagga} from 'quagga';
   styleUrls: ['./barcode-reader.component.css']
 })
 export class BarcodeReaderComponent implements OnInit {
-  private state = {
-    inputStream: {
-      size: 640,
-      singleChannel: false
-    },
-    locator: {
-      patchSize: 'large',
-      halfSample: false
-    },
-    decoder: {
-      readers: [
-        'upc_reader',
-        'code_128_reader',
-        'code_39_reader',
-        'code_39_vin_reader',
-        'ean_8_reader',
-        'ean_reader',
-        'upc_e_reader',
-        'codabar_reader'
-      ]
-    },
-    locate: true,
-    // src: src
-  };
 
-  constructor() {
+  @ViewChild('barcodeFileInput') barcodeFileInput;
+  codeResult: string;
+  srcURL: string;
+
+  constructor(private _elementRef: ElementRef, private _domSanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
-    Quagga.init(this.state, (err) => {
-      if (err) {
-        return console.log(err);
-      }
-      Quagga.start();
-    });
-
-    Quagga.onProcessed((result) => this.onProcessed(result));
+    console.log(this);
   }
 
-  onStartDecode(barcodeFileInput: HTMLInputElement) {
-    if (barcodeFileInput[0].files && barcodeFileInput[0].files.length) {
-      const tmpImgURL = URL.createObjectURL(barcodeFileInput[0].files[0]);
-      this.DecodeImage(tmpImgURL);
+  startDecode(event) {
+    const input = this._elementRef.nativeElement.querySelector('#barcodeFileInput');
+    if (input[0].files && input[0].files.length) {
+      const tmpImgURL = URL.createObjectURL(input[0].files[0]);
+      this.Decode(tmpImgURL);
     }
   }
 
-  DecodeImage(src: any) {
+  Decode(src: string) {
+    console.log(src);
+    console.log(Quagga);
+    Quagga.decodeSingle(
+      {
+        inputStream: {
+          size: 640,
+          singleChannel: false
+        },
+        locator: {
+          patchSize: 'large',
+          halfSample: false
+        },
+        decoder: {
+          readers: [
+            'upc_reader',
+            'code_128_reader',
+            'code_39_reader',
+            'code_39_vin_reader',
+            'ean_8_reader',
+            'ean_reader',
+            'upc_e_reader',
+            'codabar_reader'
+          ]
+        },
+        locate: true,
+        src: src
+      },
+      function (result) {
+        console.log(result);
+        if (result && result.codeResult && result.codeResult.code) {
+          console.log(result.codeResult.code);
+        } else {
+          this.codeResult = 'Unable to read barcode!';
+        }
+      }
+    );
   }
 
-  onProcessed(result: any) {
-    const drawingCtx = Quagga.canvas.ctx.overlay,
-      drawingCanvas = Quagga.canvas.dom.overlay;
+  OnChange(event): void {
+    this.codeResult = ' ';
+    const reader = new FileReader();
+    const image = this._elementRef.nativeElement.querySelector('#picturePreview');
+    reader.onload = (e) => {
+      // console.log(reader.result);
+      const src = reader.result;
+      image.src = src;
+    };
+    // console.log(reader.result);
+    reader.readAsDataURL(event.target.files[0]);
+    const file = URL.createObjectURL(event.target.files[0]);
+    const fileURL = this._domSanitizer.bypassSecurityTrustUrl(file);
 
-    if (result) {
-      if (result.boxes) {
-        drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute('width'), 10), parseInt(drawingCanvas.getAttribute('height'), 10));
-        result.boxes.filter(function (box) {
-          return box !== result.box;
-        }).forEach(function (box) {
-          Quagga.ImageDebug.drawPath(box, {x: 0, y: 1}, drawingCtx, {color: 'green', lineWidth: 2});
-        });
-      }
+    // console.log(event.target.files[0]);
+    // this.Decode(image.src);
+    this.Decode(file);
 
-      if (result.box) {
-        Quagga.ImageDebug.drawPath(result.box, {x: 0, y: 1}, drawingCtx, {color: '#00F', lineWidth: 2});
-      }
-
-      if (result.codeResult && result.codeResult.code) {
-        Quagga.ImageDebug.drawPath(result.line, {x: 'x', y: 'y'}, drawingCtx, {color: 'red', lineWidth: 3});
-      }
-    }
+    // const file: File = inputValue.files[0];
+    // try {
+    //   const URL = window.URL;
+    //   this.srcURL = URL.createObjectURL(file);
+    // } catch (e) {
+    //   try {
+    //     const myReader: FileReader = new FileReader();
+    //     myReader.onload = function(e){
+    //       console.log(e);
+    //       // you can perform an action with readed data here
+    //       console.log(myReader.result);
+    //     };
+    //     myReader.readAsDataURL(file);
+    //   } catch (e) {
+    //       this.codeResult = 'Failure! createObjectURL and FileReader are not supported in this browser.';
+    //   }
+    // }
   }
 }
