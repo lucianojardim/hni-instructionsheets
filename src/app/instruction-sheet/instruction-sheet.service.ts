@@ -258,7 +258,7 @@ export class InstructionSheetService {
       fileName: '56-0415.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=192f125bf12d04f6a9636b57a5b1fcd50&authkey=Ab9QFPOgQNJ4dgnttSQBoXE',
       seriesIdArray: [45],
-      barcodeIdArray: [7]
+      barcodeIdArray: [7, 71] // Added 71 to support tests with barcode reader
     }
   ];
 

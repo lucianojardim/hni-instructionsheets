@@ -1,7 +1,9 @@
-import {Component, ViewChild, OnInit, ElementRef} from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
-
+import {Component, ViewChild, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 declare var Quagga: any;
+
+import {Barcode} from '../barcode/barcode';
+import {BarcodeService} from '../barcode/barcode.service';
 
 @Component({
   selector: 'app-barcode-reader',
@@ -9,99 +11,84 @@ declare var Quagga: any;
   styleUrls: ['./barcode-reader.component.css']
 })
 export class BarcodeReaderComponent implements OnInit {
-
   @ViewChild('barcodeFileInput') barcodeFileInput;
-  codeResult: string;
-  srcURL: string;
+  @ViewChild('picturePreview') picturePreview;
+  selectedBarcode: Barcode;
+  isToDisableSearchButton = true;
 
-  constructor(private _elementRef: ElementRef, private _domSanitizer: DomSanitizer) {
+  constructor(private _router: Router,
+              private _activatedRoute: ActivatedRoute,
+              private _barcodeService: BarcodeService) {
   }
 
   ngOnInit() {
-    console.log(this);
   }
 
-  startDecode(event) {
-    const input = this._elementRef.nativeElement.querySelector('#barcodeFileInput');
-    if (input[0].files && input[0].files.length) {
-      const tmpImgURL = URL.createObjectURL(input[0].files[0]);
-      this.Decode(tmpImgURL);
+  startDecode() {
+    if (this.barcodeFileInput.nativeElement.files && this.barcodeFileInput.nativeElement.files.length) {
+      this.Decode(URL.createObjectURL(this.barcodeFileInput.nativeElement.files[0]))
+        .then((barcodeNumber: string) => this.getBarcode(barcodeNumber))
+        .catch((e: string) =>
+          this._router.navigate(['/barcodenotfound'])
+            .then()
+            .catch()
+        );
     }
+    this.isToDisableSearchButton = true;
   }
 
   Decode(src: string) {
-    console.log(src);
-    console.log(Quagga);
-    Quagga.decodeSingle(
-      {
-        inputStream: {
-          size: 640,
-          singleChannel: false
+    return new Promise((resolve, reject) => {
+      Quagga.decodeSingle(
+        {
+          inputStream: {
+            size: 640,
+            singleChannel: false
+          },
+          locator: {
+            patchSize: 'large',
+            halfSample: false
+          },
+          decoder: {
+            readers: [
+              'upc_reader',
+              'code_128_reader',
+              'code_39_reader',
+              'code_39_vin_reader',
+              'ean_8_reader',
+              'ean_reader',
+              'upc_e_reader',
+              'codabar_reader'
+            ]
+          },
+          locate: true,
+          src: src
         },
-        locator: {
-          patchSize: 'large',
-          halfSample: false
-        },
-        decoder: {
-          readers: [
-            'upc_reader',
-            'code_128_reader',
-            'code_39_reader',
-            'code_39_vin_reader',
-            'ean_8_reader',
-            'ean_reader',
-            'upc_e_reader',
-            'codabar_reader'
-          ]
-        },
-        locate: true,
-        src: src
-      },
-      function (result) {
-        console.log(result);
-        if (result && result.codeResult && result.codeResult.code) {
-          console.log(result.codeResult.code);
-        } else {
-          this.codeResult = 'Unable to read barcode!';
+        result => {
+          if (result && result.codeResult && result.codeResult.code) {
+            resolve(result.codeResult.code);
+          } else {
+            reject('Unable to decode the barcode image!');
+          }
         }
-      }
-    );
+      );
+    });
   }
 
-  OnChange(event): void {
-    this.codeResult = ' ';
+  CaptureBarcodeImage() {
     const reader = new FileReader();
-    const image = this._elementRef.nativeElement.querySelector('#picturePreview');
-    reader.onload = (e) => {
-      // console.log(reader.result);
-      const src = reader.result;
-      image.src = src;
+    reader.onloadend = (e) => {
+      this.picturePreview.nativeElement.src = reader.result;
     };
-    // console.log(reader.result);
-    reader.readAsDataURL(event.target.files[0]);
-    const file = URL.createObjectURL(event.target.files[0]);
-    const fileURL = this._domSanitizer.bypassSecurityTrustUrl(file);
+    reader.readAsDataURL(this.barcodeFileInput.nativeElement.files[0]);
+    this.isToDisableSearchButton = false;
+  }
 
-    // console.log(event.target.files[0]);
-    // this.Decode(image.src);
-    this.Decode(file);
-
-    // const file: File = inputValue.files[0];
-    // try {
-    //   const URL = window.URL;
-    //   this.srcURL = URL.createObjectURL(file);
-    // } catch (e) {
-    //   try {
-    //     const myReader: FileReader = new FileReader();
-    //     myReader.onload = function(e){
-    //       console.log(e);
-    //       // you can perform an action with readed data here
-    //       console.log(myReader.result);
-    //     };
-    //     myReader.readAsDataURL(file);
-    //   } catch (e) {
-    //       this.codeResult = 'Failure! createObjectURL and FileReader are not supported in this browser.';
-    //   }
-    // }
+  getBarcode(barcodeNumber: string): void {
+    this.selectedBarcode = this._barcodeService.getBarcode(barcodeNumber);
+    this._barcodeService.setSelectedBarcode(this.selectedBarcode);
+    this._router.navigate([this.selectedBarcode.barcodeNumber], {relativeTo: this._activatedRoute})
+      .then()
+      .catch();
   }
 }

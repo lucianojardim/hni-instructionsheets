@@ -1,30 +1,21 @@
 <app-header></app-header>
 <div class="container">
-  <p class="text-info">
-    Click on "Choose file" to read a barcode and then "Search" to find instruction sheets.
-  </p>
-  <img width="320" height="240" src="" id="picturePreview" name="picturePreview"
-       style="border:1px solid black"/> <br/>
+  <div class="row">
+    <div class="col-xs-11">
+      <p class="text-info">
+        Click on "Choose file" to read a barcode and then "Search" to find instruction sheets.
+      </p>
+      <img width="160" height="120" src="" id="picturePreview" name="picturePreview" #picturePreview
+           style="border:1px solid black"/> <br/>
 
-  <input (change)="OnChange($event)" id="barcodeFileInput" #barcodeFileInput
-         name="barcodeFileInput" type="file" accept="image/*;capture=camera"/>
-  <br/>
-  <button (click)="startDecode($event)" id="startDecodeButton" name="startDecodeButton" #startDecodeButton
-          class="btn btn-primary">Search
-  </button>
-  <div>{{codeResult}}</div>
+      <input (change)="CaptureBarcodeImage()" id="barcodeFileInput" #barcodeFileInput
+             name="barcodeFileInput" type="file" accept="image/*;capture=camera"/>
+      <br/>
+      <button (click)="startDecode()" id="startDecodeButton" name="startDecodeButton" #startDecodeButton
+              class="btn btn-primary" [disabled]="isToDisableSearchButton">Search
+      </button>
+      <hr>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
-
-
-<!--<div class="container">-->
-<!--<p class="text-info">Click on "Choose file" to read a barcode and then "Search" to find install sheets.</p>-->
-<!--<img width="320" height="240" src="" name="picturePreview" id="picturePreview" style="border:1px solid black"/>-->
-<!--<br/>-->
-<!--<input required (change)="OnBarcodeFileInputChanged($event.target.files[0])" name="barcodeFileInput" id="barcodeFileInput" type="file" accept="image/*;capture=camera" #barcodeFileInput="ngModel"/>-->
-<!--<span class="help-block" *ngIf="!barcodeFileInput.valid && barcodeFileInput.touched">Please choose a file!</span>&ndash;&gt;-->
-<!--<br/>-->
-<!--<pre>{{barcodeFileInput | json}}</pre>-->
-<!--<br/>-->
-<!--<button (click)="onStartDecode(barcodeFileInput)" name="startDecode" id="startDecode" class="btn btn-primary">Search</button>-->
-<!--<div id="codeResult"></div>-->
-<!--</div>-->

@@ -77,7 +77,8 @@ export class BarcodeService {
     {id: 67, barcodeNumber: '0560044700'},
     {id: 68, barcodeNumber: '0560044800'},
     {id: 69, barcodeNumber: '1430011700'},
-    {id: 70, barcodeNumber: '1430016000'}
+    {id: 70, barcodeNumber: '1430016000'},
+    {id: 71, barcodeNumber: '078742074986'} // added to test the barcode reader
   ];
 
   constructor() {

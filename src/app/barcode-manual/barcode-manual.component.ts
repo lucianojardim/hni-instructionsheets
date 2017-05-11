@@ -11,6 +11,7 @@ import {BarcodeService} from '../barcode/barcode.service';
 })
 export class BarcodeManualComponent implements OnInit {
   selectedBarcode: Barcode;
+  IsToDisplayErrorMessage = true;
 
   constructor(private _router: Router,
               private _activatedRoute: ActivatedRoute,
@@ -21,10 +22,22 @@ export class BarcodeManualComponent implements OnInit {
   }
 
   getBarcode(barcodeNumber: string): void {
-    this.selectedBarcode = this._barcodeService.getBarcode(barcodeNumber);
-    this._barcodeService.setSelectedBarcode(this.selectedBarcode);
-    this._router.navigate([this.selectedBarcode.barcodeNumber], {relativeTo: this._activatedRoute})
-      .then()
-      .catch();
+    if (typeof this._barcodeService.getBarcode(barcodeNumber) === 'undefined') {
+      this.IsToDisplayErrorMessage = true;
+      this._router.navigate(['/barcodenotfound'])
+        .then()
+        .catch();
+    } else {
+      this.IsToDisplayErrorMessage = false;
+      this.selectedBarcode = this._barcodeService.getBarcode(barcodeNumber);
+      this._barcodeService.setSelectedBarcode(this.selectedBarcode);
+      this._router.navigate([this.selectedBarcode.barcodeNumber], {relativeTo: this._activatedRoute})
+        .then()
+        .catch();
+    }
+  }
+
+  IsRouteBarcodeNotFound(): boolean {
+    return this._activatedRoute.toString().indexOf('notfound') > 0;
   }
 }
