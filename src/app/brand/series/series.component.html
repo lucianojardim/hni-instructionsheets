@@ -1,5 +1,5 @@
 <div>
-  <p class="list-group-item-heading">Instruction sheets the selected series:</p>
+  <p class="list-group-item-heading">Instruction sheets for the selected series:</p>
   <!--TODO: Create component to display instruction sheets-->
   <ul class="list-group-item-heading" *ngFor="let instructionSheet of instructionSheets; let i = index">
     <li class="list-group-item"><a (click)="addRecentlyDownloadedInstructionSheet(instructionSheet, i)"

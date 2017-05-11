@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 
-import {User} from '../user';
-import {UserService} from '../user.service';
-import {InstructionSheet} from '../../../instruction-sheet/instruction-sheet';
-import {InstructionSheetService} from '../../../instruction-sheet/instruction-sheet.service';
+import {User} from '../shared/user/user';
+import {UserService} from '../shared/user/user.service';
+import {InstructionSheet} from '../shared/instruction-sheet/instruction-sheet';
+import {InstructionSheetService} from '../shared/instruction-sheet/instruction-sheet.service';
 
 @Component({
   selector: 'app-user-attributes',

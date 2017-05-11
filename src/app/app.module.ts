@@ -6,22 +6,22 @@ import { HttpModule } from '@angular/http';
 import {AppRoutingModule} from './app-routing.module';
 
 import {BrandService} from './brand/brand.service';
-import {SeriesService} from './series/series.service';
-import {InstructionSheetService} from './instruction-sheet/instruction-sheet.service';
+import {SeriesService} from './brand/series/series.service';
+import {InstructionSheetService} from './shared/instruction-sheet/instruction-sheet.service';
 import {BarcodeService} from './barcode/barcode.service';
 import {UserService} from './shared/user/user.service';
 
 import { AppComponent } from './app.component';
-import {HeaderComponent} from './header/header.component';
+import {HeaderComponent} from './shared/header/header.component';
 import {BrandComponent} from './brand/brand.component';
-import {OptionsComponent} from './options/options.component';
-import {SeriesComponent} from './series/series.component';
-import {BarcodeComponent} from './barcode/barcode.component';
-import {BarcodeSheetsComponent} from './shared/barcode-sheets/barcode-sheets.component';
-import {BarcodeReaderComponent} from './barcode-reader/barcode-reader.component';
+import {OptionsComponent} from './shared/options/options.component';
+import {SeriesComponent} from './brand/series/series.component';
+import {BarcodeSelectComponent} from './barcode/barcode-select/barcode-select.component';
+import {BarcodeSheetsComponent} from './barcode/shared/barcode-sheets/barcode-sheets.component';
+import {BarcodeReaderComponent} from './barcode/barcode-reader/barcode-reader.component';
 import {UserComponent} from './shared/user/user.component';
-import {UserAttributesComponent} from './shared/user/user-attributes/user-attributes.component';
-import {BarcodeManualComponent} from './barcode-manual/barcode-manual.component';
+import {UserAttributesComponent} from './user-attributes/user-attributes.component';
+import {BarcodeManualComponent} from './barcode/barcode-manual/barcode-manual.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import {BarcodeManualComponent} from './barcode-manual/barcode-manual.component'
     BrandComponent,
     OptionsComponent,
     SeriesComponent,
-    BarcodeComponent,
+    BarcodeSelectComponent,
     BarcodeSheetsComponent,
     BarcodeReaderComponent,
     UserComponent,

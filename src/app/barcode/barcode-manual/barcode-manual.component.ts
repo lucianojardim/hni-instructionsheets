@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
-import {Barcode} from '../barcode/barcode';
-import {BarcodeService} from '../barcode/barcode.service';
+import {Barcode} from '../barcode';
+import {BarcodeService} from '../barcode.service';
 
 @Component({
   selector: 'app-barcode-manual',

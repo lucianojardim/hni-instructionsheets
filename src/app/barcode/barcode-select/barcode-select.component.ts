@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
-import {Barcode} from './barcode';
-import {BarcodeService} from './barcode.service';
+import {Barcode} from '../barcode';
+import {BarcodeService} from '../barcode.service';
 
 @Component({
   selector: 'app-barcode',
-  templateUrl: './barcode.component.html',
-  styleUrls: ['./barcode.component.css']
+  templateUrl: './barcode-select.component.html',
+  styleUrls: ['./barcode-select.component.css']
 })
-export class BarcodeComponent implements OnInit {
+export class BarcodeSelectComponent implements OnInit {
   selectedBarcode: Barcode;
   barcodes: Barcode[] = [];
 

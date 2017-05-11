@@ -1,8 +1,8 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 
-import {Brand} from '../brand/brand';
-import {BrandService} from '../brand/brand.service';
+import {Brand} from '../../brand/brand';
+import {BrandService} from '../../brand/brand.service';
 
 @Component({
   selector: 'app-header',

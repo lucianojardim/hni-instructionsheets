@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {BarcodeComponent} from './barcode.component';
+import {BarcodeSelectComponent} from './barcode-select.component';
 
-describe('BarcodeComponent', () => {
-  let component: BarcodeComponent;
-  let fixture: ComponentFixture<BarcodeComponent>;
+describe('BarcodeSelectComponent', () => {
+  let component: BarcodeSelectComponent;
+  let fixture: ComponentFixture<BarcodeSelectComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [BarcodeComponent]
+      declarations: [BarcodeSelectComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BarcodeComponent);
+    fixture = TestBed.createComponent(BarcodeSelectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

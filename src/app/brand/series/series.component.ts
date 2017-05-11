@@ -3,9 +3,9 @@ import {Subscription} from 'rxjs/Subscription';
 
 import {Series} from './series';
 import {SeriesService} from './series.service';
-import {InstructionSheet} from '../instruction-sheet/instruction-sheet';
-import {InstructionSheetService} from '../instruction-sheet/instruction-sheet.service';
-import {UserService} from '../shared/user/user.service';
+import {InstructionSheet} from '../../shared/instruction-sheet/instruction-sheet';
+import {InstructionSheetService} from '../../shared/instruction-sheet/instruction-sheet.service';
+import {UserService} from '../../shared/user/user.service';
 
 @Component({
   selector: 'app-series',

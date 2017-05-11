@@ -2,8 +2,8 @@ import {Component, ViewChild, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 declare var Quagga: any;
 
-import {Barcode} from '../barcode/barcode';
-import {BarcodeService} from '../barcode/barcode.service';
+import {Barcode} from '../barcode';
+import {BarcodeService} from '../barcode.service';
 
 @Component({
   selector: 'app-barcode-reader',

@@ -1,11 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 
-import {Barcode} from '../../barcode/barcode';
-import {BarcodeService} from '../../barcode/barcode.service';
-import {InstructionSheet} from '../../instruction-sheet/instruction-sheet';
-import {InstructionSheetService} from '../../instruction-sheet/instruction-sheet.service';
-import {UserService} from '../user/user.service';
+import {Barcode} from '../../barcode';
+import {BarcodeService} from '../../barcode.service';
+import {InstructionSheet} from '../../../shared/instruction-sheet/instruction-sheet';
+import {InstructionSheetService} from '../../../shared/instruction-sheet/instruction-sheet.service';
+import {UserService} from '../../../shared/user/user.service';
 
 @Component({
   selector: 'app-barcode-sheets',

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
-import {Series} from '../series/series';
-import {Barcode} from '../barcode/barcode';
+import {Series} from '../../brand/series/series';
+import {Barcode} from '../../barcode/barcode';
 import {InstructionSheet} from './instruction-sheet';
 import {forEach} from "@angular/router/src/utils/collection";
 

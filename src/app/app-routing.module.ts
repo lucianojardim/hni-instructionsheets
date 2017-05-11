@@ -4,15 +4,15 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {OptionsComponent} from './options/options.component';
+import {OptionsComponent} from './shared/options/options.component';
 import {BrandComponent} from './brand/brand.component';
-import {SeriesComponent} from './series/series.component';
-import {BarcodeComponent} from './barcode/barcode.component';
-import {BarcodeManualComponent} from './barcode-manual/barcode-manual.component';
-import {BarcodeReaderComponent} from './barcode-reader/barcode-reader.component';
-import {BarcodeSheetsComponent} from './shared/barcode-sheets/barcode-sheets.component';
+import {SeriesComponent} from './brand/series/series.component';
+import {BarcodeSelectComponent} from './barcode/barcode-select/barcode-select.component';
+import {BarcodeManualComponent} from './barcode/barcode-manual/barcode-manual.component';
+import {BarcodeReaderComponent} from './barcode/barcode-reader/barcode-reader.component';
+import {BarcodeSheetsComponent} from './barcode/shared/barcode-sheets/barcode-sheets.component';
 import {UserComponent} from './shared/user/user.component';
-import {UserAttributesComponent} from './shared/user/user-attributes/user-attributes.component';
+import {UserAttributesComponent} from './user-attributes/user-attributes.component';
 
 const appRoutes: Routes = [
   {
@@ -26,7 +26,7 @@ const appRoutes: Routes = [
   ]
   },
   {
-    path: 'barcodelist', component: BarcodeComponent, children: [
+    path: 'barcodelist', component: BarcodeSelectComponent, children: [
     {
       path: ':barcodeNumber', component: BarcodeSheetsComponent
     },

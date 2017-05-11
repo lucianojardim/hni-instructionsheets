@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
-import {Brand} from '../brand/brand';
-import {BrandService} from '../brand/brand.service';
+import {Brand} from '../../brand/brand';
+import {BrandService} from '../../brand/brand.service';
 
 @Component({
   selector: 'app-options',

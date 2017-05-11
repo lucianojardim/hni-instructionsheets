@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 
-import {Brand} from '../brand/brand';
-import {BrandService} from '../brand/brand.service';
+import {Brand} from '../brand';
+import {BrandService} from '../brand.service';
 import {Series} from './series';
 
 @Injectable()

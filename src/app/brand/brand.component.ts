@@ -4,8 +4,8 @@ import {Subscription} from 'rxjs/Subscription';
 
 import {BrandService} from './brand.service';
 import {Brand} from './brand';
-import {Series} from '../series/series';
-import {SeriesService} from '../series/series.service';
+import {Series} from './series/series';
+import {SeriesService} from './series/series.service';
 
 @Component({
   selector: 'app-brand',
