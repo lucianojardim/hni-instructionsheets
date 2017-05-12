@@ -1,21 +1,19 @@
 <app-header></app-header>
 <div class="container">
   <div class="row">
-    <div class="col-xs-11">
-      <p class="text-info">
-        Click on "Choose file" to read a barcode and then "Search" to find instruction sheets.
-      </p>
-      <img width="160" height="120" src="" id="picturePreview" name="picturePreview" #picturePreview
-           style="border:1px solid black"/> <br/>
+    <p class="text-info">
+      Click on "Choose file" to read a barcode and then "Search" to find instruction sheets.
+    </p>
+    <img width="200" height="150" src="" id="picturePreview" name="picturePreview" #picturePreview
+         style="border:1px solid black"/> <br/>
 
-      <input (change)="CaptureBarcodeImage()" id="barcodeFileInput" #barcodeFileInput
-             name="barcodeFileInput" type="file" accept="image/*;capture=camera"/>
-      <br/>
-      <button (click)="startDecode()" id="startDecodeButton" name="startDecodeButton" #startDecodeButton
-              class="btn btn-primary" [disabled]="isToDisableSearchButton">Search
-      </button>
-      <hr>
-      <router-outlet></router-outlet>
-    </div>
+    <input (change)="CaptureBarcodeImage()" id="barcodeFileInput" #barcodeFileInput
+           name="barcodeFileInput" type="file" accept="image/*;capture=camera"/>
+    <br/>
+    <button (click)="startDecode()" id="startDecodeButton" name="startDecodeButton" #startDecodeButton
+            class="btn btn-primary" [disabled]="isToDisableSearchButton">Search
+    </button>
+    <hr>
+    <router-outlet></router-outlet>
   </div>
 </div>
