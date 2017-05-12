@@ -19,14 +19,14 @@ const appRoutes: Routes = [
     path: 'options', component: OptionsComponent
   },
   {
-    path: 'barcodetext', component: BarcodeManualComponent, children: [
+    path: 'barcodemanual', component: BarcodeManualComponent, children: [
     {
       path: ':barcodeNumber', component: BarcodeSheetsComponent
     },
   ]
   },
   {
-    path: 'barcodelist', component: BarcodeSelectComponent, children: [
+    path: 'barcodeselect', component: BarcodeSelectComponent, children: [
     {
       path: ':barcodeNumber', component: BarcodeSheetsComponent
     },
