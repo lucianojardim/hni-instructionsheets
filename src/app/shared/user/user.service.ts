@@ -3,7 +3,7 @@ import {Subject} from 'rxjs/Subject';
 
 import {User} from './user';
 import {reject} from "q";
-
+// TODO: make data changes persistent
 @Injectable()
 export class UserService {
   currentUserWasModified = new Subject<User>();

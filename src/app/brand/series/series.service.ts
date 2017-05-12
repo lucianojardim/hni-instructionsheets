@@ -4,7 +4,7 @@ import {Subject} from 'rxjs/Subject';
 import {Brand} from '../brand';
 import {BrandService} from '../brand.service';
 import {Series} from './series';
-
+// TODO: make data changes persistent
 @Injectable()
 export class SeriesService {
   selectedSeriesChanged = new Subject<Series>();

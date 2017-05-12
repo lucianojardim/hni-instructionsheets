@@ -3,15 +3,14 @@ import {Injectable} from '@angular/core';
 import {Series} from '../../brand/series/series';
 import {Barcode} from '../../barcode/barcode';
 import {InstructionSheet} from './instruction-sheet';
-import {forEach} from "@angular/router/src/utils/collection";
+// TODO: make data changes persistent
 
 @Injectable()
 export class InstructionSheetService {
-  // TODO Review the links between instruction sheets and series and barcode -- I believe some are not correct
   private _instructionSheets: InstructionSheet[] = [
     {
       id: 1,
-      name: 'Abound (French)',
+      name: '143-0118.pdf',
       fileName: '143-0118.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=10456589f66424a909dc0fb303f039632&authkey=ARz_i_C1QstMy9fKVoca6rY',
       seriesIdArray: [30,
@@ -80,7 +79,7 @@ export class InstructionSheetService {
     },
     {
       id: 2,
-      name: 'Sliding door',
+      name: '143-0133.pdf',
       fileName: '143-0133.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=1f5823bfc82fe4a92a867ac61914a4d92&authkey=AUhOTGW2VGeE0yQ1zNmtZdM',
       seriesIdArray: [46],
@@ -88,7 +87,7 @@ export class InstructionSheetService {
     },
     {
       id: 3,
-      name: 'Frameless glass',
+      name: '143-0160.pdf',
       fileName: '143-0160.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=159cae41b9a444ec8b007549970e2d16a&authkey=ARUZmQ-YhPlFbVVeUTduKrg',
       seriesIdArray: [30],
@@ -96,7 +95,7 @@ export class InstructionSheetService {
     },
     {
       id: 4,
-      name: 'Flexconnect Elet.Sys.',
+      name: '343-0477.pdf',
       fileName: '343-0477.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=1445b7d3917b34096843713dca68ac800&authkey=Ab1HVFepXnxc0n4gHKDrP5A',
       seriesIdArray: [5,
@@ -110,7 +109,7 @@ export class InstructionSheetService {
     },
     {
       id: 5,
-      name: 'Frame and tile panel sys.',
+      name: '343-2270G.pdf',
       fileName: '343-2270G.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=14a3fc5d645944cd696f617ba01904895&authkey=AdPJMM8c2inxaWnu7j_QAIM',
       seriesIdArray: [2,
@@ -151,7 +150,7 @@ export class InstructionSheetService {
     },
     {
       id: 6,
-      name: 'Panel sys.',
+      name: '3430389000.pdf',
       fileName: '3430389000.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=1ebeaec663ec84068a9b0a4980f07c3a5&authkey=AReXBvKYBLSib9Ws15kJK1s',
       seriesIdArray: [1,
@@ -194,7 +193,7 @@ export class InstructionSheetService {
     },
     {
       id: 7,
-      name: 'Initiate Flexconnect',
+      name: '42-2241.pdf',
       fileName: '42-2241.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=1931697695c80464eb463f9a2331e61b4&authkey=Ab3NoC9zH1_2E-pEZRUFkFc',
       seriesIdArray: [49],
@@ -202,7 +201,7 @@ export class InstructionSheetService {
     },
     {
       id: 8,
-      name: 'Worksurface sup.',
+      name: '42-2248.pdf',
       fileName: '42-2248.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=18032d47f9b344ac3a20f6bbbb6e7ccc8&authkey=AajVxQZhPGJs6V_E9EOb3ig',
       seriesIdArray: [30,
@@ -212,7 +211,7 @@ export class InstructionSheetService {
     },
     {
       id: 9,
-      name: 'Initiate raceway retro.',
+      name: '42-2249.pdf',
       fileName: '42-2249.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=1ccd700be97c44c4c87aaef6879bf5842&authkey=AYYsbJ_QRZZGc1JPp2BIaPU',
       seriesIdArray: [46],
@@ -220,7 +219,7 @@ export class InstructionSheetService {
     },
     {
       id: 10,
-      name: 'Worksurface sup.ped.',
+      name: '42-2328.pdf',
       fileName: '42-2328.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=162f7ae3f5d1f4da0b810e0e739b82e6e&authkey=AdYWfjTDNVHlcJWkYIePqKU',
       seriesIdArray: [37],
@@ -228,7 +227,7 @@ export class InstructionSheetService {
     },
     {
       id: 11,
-      name: 'Glide Tower assemb.',
+      name: '42-2333.pdf',
       fileName: '42-2333.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=14d850367ac194502b5b20edefb912f92&authkey=AQTN15iv9Pk3WFXr7L2jqkg',
       seriesIdArray: [37],
@@ -236,7 +235,7 @@ export class InstructionSheetService {
     },
     {
       id: 12,
-      name: 'Hardw. pwr in-feed',
+      name: '43-0179.pdf',
       fileName: '43-0179.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=1fd7b37c3fcbf4cd49cbcabfe0df87702&authkey=AdYlcUrxzoFHpaiA4y6g0gg',
       seriesIdArray: [62,
@@ -245,7 +244,7 @@ export class InstructionSheetService {
     },
     {
       id: 13,
-      name: 'Univ ETA ovrh.shelf',
+      name: '56-0196.pdf',
       fileName: '56-0196.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=1711a34dc55b5405898c6c14c6d287ed0&authkey=AZi4fcqIh3B_9-Oak913WI4',
       seriesIdArray: [46,
@@ -254,7 +253,7 @@ export class InstructionSheetService {
     },
     {
       id: 14,
-      name: 'Abound pnl foot conv',
+      name: '56-0415.pdf',
       fileName: '56-0415.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=192f125bf12d04f6a9636b57a5b1fcd50&authkey=Ab9QFPOgQNJ4dgnttSQBoXE',
       seriesIdArray: [45],

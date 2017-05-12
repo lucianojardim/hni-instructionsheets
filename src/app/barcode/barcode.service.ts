@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 
 import {Barcode} from './barcode';
-
+// TODO: make data changes persistent
 @Injectable()
 export class BarcodeService {
   selectedBarcodeChanged = new Subject<Barcode>();
