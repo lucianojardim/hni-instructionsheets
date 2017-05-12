@@ -13,46 +13,47 @@ import {BarcodeReaderComponent} from './barcode/barcode-reader/barcode-reader.co
 import {BarcodeSheetsComponent} from './barcode/shared/barcode-sheets/barcode-sheets.component';
 import {UserComponent} from './shared/user/user.component';
 import {UserAttributesComponent} from './user-attributes/user-attributes.component';
+import {AuthGuardService} from './auth-guard.service';
 
 const appRoutes: Routes = [
   {
-    path: 'options', component: OptionsComponent
+    path: 'options', canActivate: [AuthGuardService], component: OptionsComponent
   },
   {
-    path: 'barcodemanual', component: BarcodeManualComponent, children: [
+    path: 'barcodemanual', canActivate: [AuthGuardService], component: BarcodeManualComponent, children: [
     {
-      path: ':barcodeNumber', component: BarcodeSheetsComponent
+      path: ':barcodeNumber', canActivate: [AuthGuardService], component: BarcodeSheetsComponent
     },
   ]
   },
   {
-    path: 'barcodeselect', component: BarcodeSelectComponent, children: [
+    path: 'barcodeselect', canActivate: [AuthGuardService], component: BarcodeSelectComponent, children: [
     {
-      path: ':barcodeNumber', component: BarcodeSheetsComponent
+      path: ':barcodeNumber', canActivate: [AuthGuardService], component: BarcodeSheetsComponent
     },
   ]
   },
   {
-    path: 'barcodereader', component: BarcodeReaderComponent, children: [
+    path: 'barcodereader', canActivate: [AuthGuardService], component: BarcodeReaderComponent, children: [
     {
-      path: ':barcodeNumber', component: BarcodeSheetsComponent
+      path: ':barcodeNumber', canActivate: [AuthGuardService], component: BarcodeSheetsComponent
     },
   ]
   },
   {
-    path: 'barcodenotfound', component: BarcodeManualComponent, children: [
+    path: 'barcodenotfound', canActivate: [AuthGuardService], component: BarcodeManualComponent, children: [
     {
-      path: ':barcodeNumber', component: BarcodeSheetsComponent
+      path: ':barcodeNumber', canActivate: [AuthGuardService], component: BarcodeSheetsComponent
     },
   ]
   },
   {
-    path: 'userattributes', component: UserAttributesComponent
+    path: 'userattributes', canActivate: [AuthGuardService], component: UserAttributesComponent
   },
   {
-    path: 'brand/:brandname', component: BrandComponent, children: [
+    path: 'brand/:brandname', canActivate: [AuthGuardService], component: BrandComponent, children: [
     {
-      path: ':seriesName', component: SeriesComponent
+      path: ':seriesName', canActivate: [AuthGuardService], component: SeriesComponent
     },
   ]
   },

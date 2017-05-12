@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 
 import {User} from './user';
+import {reject} from "q";
 
 @Injectable()
 export class UserService {
@@ -20,18 +21,18 @@ export class UserService {
       {
         id: 0,
         emailAddress: 'jardiml@hnicorp.com',
-        savedInstructionSheetsIds: [1, 4, 7],
-        recentlyDownloadedInstructionSheetIds: [1, 4, 7]
+        savedInstructionSheetsIds: [1, 2, 3, 4, 5, 6, 7],
+        recentlyDownloadedInstructionSheetIds: [1, 2, 3, 4, 5, 6, 7]
       },
       {
         id: 1,
-        emailAddress: 'user2@email.com',
+        emailAddress: 'halld@hnicorp.com',
         savedInstructionSheetsIds: [2, 5, 8],
         recentlyDownloadedInstructionSheetIds: [2, 5, 8]
       },
       {
         id: 2,
-        emailAddress: 'user3@email.com',
+        emailAddress: 'reedj@hnicorp.com',
         savedInstructionSheetsIds: [3, 6, 9],
         recentlyDownloadedInstructionSheetIds: [3, 6, 9]
       }
@@ -40,6 +41,14 @@ export class UserService {
 
   getCurrentUser(): User {
     return this._currentUser;
+  }
+
+  isAuthenticated(): Promise<boolean> {
+    return new Promise(
+      (resolve, reject) => {
+        resolve(typeof this.getCurrentUser() !== 'undefined');
+      }
+    );
   }
 
   setCurrentUser(emailAddress: string) {
@@ -92,11 +101,11 @@ export class UserService {
   }
 
   private _addToFixLengthArray(fixedLengthArray: number[], maxLegth: number, element: number): number[] {
-    if (fixedLengthArray.indexOf(element) < 0) { // not existing element -> proceed with insert
+    if (fixedLengthArray.indexOf(element) < 0) { // if not an existing element -> proceed with insert
       if (fixedLengthArray.length < maxLegth) {
         fixedLengthArray.push(element);
       } else {
-        fixedLengthArray.pop();
+        const shifted = fixedLengthArray.shift();
         fixedLengthArray.push(element);
       }
     }

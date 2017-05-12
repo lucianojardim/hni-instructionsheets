@@ -10,6 +10,7 @@ import {SeriesService} from './brand/series/series.service';
 import {InstructionSheetService} from './shared/instruction-sheet/instruction-sheet.service';
 import {BarcodeService} from './barcode/barcode.service';
 import {UserService} from './shared/user/user.service';
+import {AuthGuardService} from './auth-guard.service';
 
 import { AppComponent } from './app.component';
 import {HeaderComponent} from './shared/header/header.component';
@@ -43,7 +44,7 @@ import {BarcodeManualComponent} from './barcode/barcode-manual/barcode-manual.co
     HttpModule,
     AppRoutingModule
   ],
-  providers: [BrandService, SeriesService, InstructionSheetService, BarcodeService, UserService],
+  providers: [BrandService, SeriesService, InstructionSheetService, BarcodeService, UserService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
