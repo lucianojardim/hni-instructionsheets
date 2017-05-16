@@ -9,17 +9,28 @@ import {User} from './user';
 export class UserService {
   currentUserWasModified = new Subject<User>();
   private _currentUser: User;
+  private _userFromDatabase: User;
   private _maxLengthSavedInstructionSheetsIds = 7;
   private _maxLengthRecentlyDownloadedInstructionSheetIds = 7;
   private _users: User[] = [];
 
   constructor(private http: Http) {
-    this._getUsersFromDatabase();
   }
 
   private _storeUsersIntoDatabase() {
     return this.http.put('https://instructionsheets-ad427.firebaseio.com/users.json', this.getUsers());
   }
+
+  private _storeUserIntoDatabase(user: User) {
+    return this.http.put(
+      'https://instructionsheets-ad427.firebaseio.com/users/' + this._removeSpecialCharactersFromEmailAddress(user.emailAddress) + '.json',
+      user
+    );
+  }
+
+  private _removeSpecialCharactersFromEmailAddress(emailAddress: string): string {
+    return emailAddress.replace(/[^a-zA-Z0-9]/g, 'z');
+}
 
   private _getUsersFromDatabase() {
     this.http.get('https://instructionsheets-ad427.firebaseio.com/users.json')
@@ -44,6 +55,38 @@ export class UserService {
       );
   }
 
+  private _getUserFromDatabase(emailAddress: string) {
+    this.http.get(
+      'https://instructionsheets-ad427.firebaseio.com/users/' + this._removeSpecialCharactersFromEmailAddress(emailAddress) + '.json',
+    )
+      .map(
+        (response: Response) => {
+          const user: User = response.json();
+          console.log(response);
+          console.log(user);
+          console.log(user['savedInstructionSheetsIds']);
+          console.log(user['recentlyDownloadedInstructionSheetIds']);
+          if (!user['savedInstructionSheetsIds']) {
+            user['savedInstructionSheetsIds'] = [];
+          }
+          if (!user['recentlyDownloadedInstructionSheetIds']) {
+            user['recentlyDownloadedInstructionSheetIds'] = [];
+          }
+          console.log('user being returned by database function');
+          console.log(user);
+          return user;
+        }
+      )
+      .subscribe(
+        (user: User) => {
+          console.log('user getting back from database');
+          console.log(user);
+          this._userFromDatabase = user;
+          console.log(this._userFromDatabase);
+        }
+      );
+  }
+
   getUsers(): User[] {
     return this._users.slice();
   }
@@ -55,7 +98,6 @@ export class UserService {
   private _seedUsers() {
     this._addUser(
       {
-        id: 1,
         emailAddress: 'jardiml@hnicorp.com',
         savedInstructionSheetsIds: [1, 2, 3, 4, 5, 6, 7],
         recentlyDownloadedInstructionSheetIds: [8, 9, 10, 11, 12, 13, 14]
@@ -64,10 +106,9 @@ export class UserService {
   }
 
   private _addUser(user: User) {
-    const index = this._users.indexOf(user);
-    if (index < 0) {
-      this._users.push(user);
-      this._storeUsersIntoDatabase()
+    this._getUserFromDatabase(user.emailAddress);
+    if (!this._userFromDatabase) {
+      this._storeUserIntoDatabase(user)
         .subscribe(
           (response: Response) => {
           }
@@ -78,11 +119,9 @@ export class UserService {
   }
 
   private _updateUser(user: User) {
-    const index = this._users.indexOf(user);
-    if (index > -1) {
-      this._users[index].savedInstructionSheetsIds = user.savedInstructionSheetsIds;
-      this._users[index].recentlyDownloadedInstructionSheetIds = user.recentlyDownloadedInstructionSheetIds;
-      this._storeUsersIntoDatabase()
+    this._getUserFromDatabase(user.emailAddress);
+    if (this._userFromDatabase) {
+      this._storeUserIntoDatabase(user)
         .subscribe(
           (response: Response) => {
           }
@@ -92,32 +131,11 @@ export class UserService {
     }
   }
 
-  private _deleteUserById(id: number) {
-    this._deleteUser(this.getUserById(id));
-  }
-
-  private _deleteUser(user: User) {
-    const index = this._users.indexOf(user);
-    if (index > -1) {
-      this._users.splice(index, 1);
-      this._storeUsersIntoDatabase()
-        .subscribe(
-          (response: Response) => {
-          }
-        );
-    }
-  }
-
-  getUserById(id: number) {
-    return this._users.find((element: User) => element.id === id);
-  }
-
   getUserByEmailAddress(emailAddress: string): User {
-    return this._users.find((element: User) => element.emailAddress === emailAddress);
-  }
-
-  private _getNextAvailableUserId(): number {
-    return this._users.length;
+    this._getUserFromDatabase(emailAddress);
+    console.log('User from the database');
+    console.log(this._userFromDatabase);
+    return this._userFromDatabase;
   }
 
   isAuthenticated(): Promise<boolean> {
@@ -142,7 +160,6 @@ export class UserService {
     let candidateUser: User = this.getUserByEmailAddress(emailAddress);
     if (!candidateUser) {
       candidateUser = {
-        id: (this._getNextAvailableUserId()),
         emailAddress: emailAddress,
         savedInstructionSheetsIds: [],
         recentlyDownloadedInstructionSheetIds: []
