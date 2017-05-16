@@ -10,6 +10,8 @@ import {SeriesService} from './brand/series/series.service';
 import {InstructionSheetService} from './shared/instruction-sheet/instruction-sheet.service';
 import {BarcodeService} from './barcode/barcode.service';
 import {UserService} from './shared/user/user.service';
+import {BasemodelService} from './basemodel/basemodel.service';
+
 import {AuthGuardService} from './auth-guard.service';
 
 import { AppComponent } from './app.component';
@@ -17,12 +19,13 @@ import {HeaderComponent} from './shared/header/header.component';
 import {BrandComponent} from './brand/brand.component';
 import {OptionsComponent} from './shared/options/options.component';
 import {SeriesComponent} from './brand/series/series.component';
-import {BarcodeSelectComponent} from './barcode/barcode-select/barcode-select.component';
 import {BarcodeSheetsComponent} from './barcode/shared/barcode-sheets/barcode-sheets.component';
 import {BarcodeReaderComponent} from './barcode/barcode-reader/barcode-reader.component';
 import {UserComponent} from './shared/user/user.component';
 import {UserAttributesComponent} from './user-attributes/user-attributes.component';
 import {BarcodeManualComponent} from './barcode/barcode-manual/barcode-manual.component';
+import {BasemodelComponent} from './basemodel/basemodel.component';
+import {BasemodelSheetsComponent} from './basemodel/basemodel-sheets/basemodel-sheets.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +34,13 @@ import {BarcodeManualComponent} from './barcode/barcode-manual/barcode-manual.co
     BrandComponent,
     OptionsComponent,
     SeriesComponent,
-    BarcodeSelectComponent,
     BarcodeSheetsComponent,
     BarcodeReaderComponent,
     UserComponent,
     UserAttributesComponent,
-    BarcodeManualComponent
+    BarcodeManualComponent,
+    BasemodelComponent,
+    BasemodelSheetsComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,7 @@ import {BarcodeManualComponent} from './barcode/barcode-manual/barcode-manual.co
     HttpModule,
     AppRoutingModule
   ],
-  providers: [BrandService, SeriesService, InstructionSheetService, BarcodeService, UserService, AuthGuardService],
+  providers: [BrandService, SeriesService, InstructionSheetService, BarcodeService, UserService, BasemodelService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

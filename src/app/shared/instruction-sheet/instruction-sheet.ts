@@ -6,8 +6,15 @@ export class InstructionSheet {
   url: string;
   seriesIdArray: number[];
   barcodeIdArray: number[];
+  basemodelIdArray: number[];
 
-  constructor(id: number, name: string, fileName: string, url: string, seriesIdArray: number[], barcodeIdArray: number[]) {
+  constructor(id: number,
+              name: string,
+              fileName: string,
+              url: string,
+              seriesIdArray: number[],
+              barcodeIdArray: number[],
+              basemodelIdArray: number[]) {
     this.id = id;
     this.name = name;
     this.fileName = fileName;
@@ -15,5 +22,6 @@ export class InstructionSheet {
     this.url = url;
     this.seriesIdArray = seriesIdArray;
     this.barcodeIdArray = barcodeIdArray;
+    this.basemodelIdArray = basemodelIdArray;
   }
 }

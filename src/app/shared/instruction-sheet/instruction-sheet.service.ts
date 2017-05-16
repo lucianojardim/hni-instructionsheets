@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 
 import {Series} from '../../brand/series/series';
 import {Barcode} from '../../barcode/barcode';
+import {Basemodel} from '../../basemodel/basemodel';
 import {InstructionSheet} from './instruction-sheet';
 // TODO: make data changes persistent
 
@@ -75,7 +76,8 @@ export class InstructionSheetService {
         43,
         44,
         61,
-        69]
+        69],
+      basemodelIdArray: [0]
     },
     {
       id: 2,
@@ -83,7 +85,8 @@ export class InstructionSheetService {
       fileName: '143-0133.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=1f5823bfc82fe4a92a867ac61914a4d92&authkey=AUhOTGW2VGeE0yQ1zNmtZdM',
       seriesIdArray: [46],
-      barcodeIdArray: [17]
+      barcodeIdArray: [17],
+      basemodelIdArray: [0]
     },
     {
       id: 3,
@@ -91,7 +94,8 @@ export class InstructionSheetService {
       fileName: '143-0160.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=159cae41b9a444ec8b007549970e2d16a&authkey=ARUZmQ-YhPlFbVVeUTduKrg',
       seriesIdArray: [30],
-      barcodeIdArray: [70]
+      barcodeIdArray: [70],
+      basemodelIdArray: [0]
     },
     {
       id: 4,
@@ -105,7 +109,8 @@ export class InstructionSheetService {
       barcodeIdArray: [17,
         31,
         32,
-        69]
+        69],
+      basemodelIdArray: [0]
     },
     {
       id: 5,
@@ -146,7 +151,8 @@ export class InstructionSheetService {
         16,
         17,
         61,
-        69]
+        69],
+      basemodelIdArray: []
     },
     {
       id: 6,
@@ -189,7 +195,8 @@ export class InstructionSheetService {
         66,
         67,
         68,
-        69]
+        69],
+      basemodelIdArray: []
     },
     {
       id: 7,
@@ -197,7 +204,8 @@ export class InstructionSheetService {
       fileName: '42-2241.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=1931697695c80464eb463f9a2331e61b4&authkey=Ab3NoC9zH1_2E-pEZRUFkFc',
       seriesIdArray: [49],
-      barcodeIdArray: [1]
+      barcodeIdArray: [1],
+      basemodelIdArray: []
     },
     {
       id: 8,
@@ -207,7 +215,8 @@ export class InstructionSheetService {
       seriesIdArray: [30,
         68,
         69],
-      barcodeIdArray: [2, 3]
+      barcodeIdArray: [2, 3],
+      basemodelIdArray: []
     },
     {
       id: 9,
@@ -215,7 +224,8 @@ export class InstructionSheetService {
       fileName: '42-2249.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=1ccd700be97c44c4c87aaef6879bf5842&authkey=AYYsbJ_QRZZGc1JPp2BIaPU',
       seriesIdArray: [46],
-      barcodeIdArray: [17]
+      barcodeIdArray: [17],
+      basemodelIdArray: []
     },
     {
       id: 10,
@@ -223,7 +233,8 @@ export class InstructionSheetService {
       fileName: '42-2328.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=162f7ae3f5d1f4da0b810e0e739b82e6e&authkey=AdYWfjTDNVHlcJWkYIePqKU',
       seriesIdArray: [37],
-      barcodeIdArray: [4]
+      barcodeIdArray: [4],
+      basemodelIdArray: []
     },
     {
       id: 11,
@@ -231,7 +242,8 @@ export class InstructionSheetService {
       fileName: '42-2333.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=14d850367ac194502b5b20edefb912f92&authkey=AQTN15iv9Pk3WFXr7L2jqkg',
       seriesIdArray: [37],
-      barcodeIdArray: [4]
+      barcodeIdArray: [4],
+      basemodelIdArray: []
     },
     {
       id: 12,
@@ -240,7 +252,8 @@ export class InstructionSheetService {
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=1fd7b37c3fcbf4cd49cbcabfe0df87702&authkey=AdYlcUrxzoFHpaiA4y6g0gg',
       seriesIdArray: [62,
         65],
-      barcodeIdArray: [39, 44]
+      barcodeIdArray: [39, 44],
+      basemodelIdArray: []
     },
     {
       id: 13,
@@ -249,7 +262,8 @@ export class InstructionSheetService {
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=1711a34dc55b5405898c6c14c6d287ed0&authkey=AZi4fcqIh3B_9-Oak913WI4',
       seriesIdArray: [46,
         48],
-      barcodeIdArray: [6]
+      barcodeIdArray: [6],
+      basemodelIdArray: []
     },
     {
       id: 14,
@@ -257,7 +271,8 @@ export class InstructionSheetService {
       fileName: '56-0415.pdf',
       url: 'https://hnicorporation.sharepoint.com/sites/extJardimL/_layouts/15/guestaccess.aspx?docid=192f125bf12d04f6a9636b57a5b1fcd50&authkey=Ab9QFPOgQNJ4dgnttSQBoXE',
       seriesIdArray: [45],
-      barcodeIdArray: [7, 71] // Added 71 to support tests with barcode reader
+      barcodeIdArray: [7, 71], // Added 71 to support tests with barcode reader
+      basemodelIdArray: [1] // Fake basemodel alamala
     }
   ];
 
@@ -293,13 +308,26 @@ export class InstructionSheetService {
   getInstructionSheetsByBarcode(barcode: Barcode): InstructionSheet[] {
     return this.getInstructionSheetsByBarcodeId(barcode.id);
   }
-
   getInstructionSheetsByBarcodeId(barcodeId: number): InstructionSheet[] {
     return this._instructionSheets.filter(
       (instructionSheet: InstructionSheet) =>
         instructionSheet.barcodeIdArray.find(
           (element: number) =>
           element === barcodeId
+        )
+    );
+  }
+
+  getInstructionSheetsByBasemodel(basemodel: Basemodel): InstructionSheet[] {
+    return this.getInstructionSheetsByBasemodelId(basemodel.id);
+  }
+
+  getInstructionSheetsByBasemodelId(basemodelId: number): InstructionSheet[] {
+    return this._instructionSheets.filter(
+      (instructionSheet: InstructionSheet) =>
+        instructionSheet.basemodelIdArray.find(
+          (element: number) =>
+          element === basemodelId
         )
     );
   }
