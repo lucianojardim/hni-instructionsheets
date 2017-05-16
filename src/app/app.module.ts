@@ -14,6 +14,8 @@ import {BasemodelService} from './basemodel/basemodel.service';
 
 import {AuthGuardService} from './auth-guard.service';
 
+// import {DataStorageService} from './shared/persistence/data-storage.service';
+
 import { AppComponent } from './app.component';
 import {HeaderComponent} from './shared/header/header.component';
 import {BrandComponent} from './brand/brand.component';
@@ -48,7 +50,16 @@ import {BasemodelSheetsComponent} from './basemodel/basemodel-sheets/basemodel-s
     HttpModule,
     AppRoutingModule
   ],
-  providers: [BrandService, SeriesService, InstructionSheetService, BarcodeService, UserService, BasemodelService, AuthGuardService],
+  providers: [
+    BrandService,
+    SeriesService,
+    InstructionSheetService,
+    BarcodeService,
+    UserService,
+    BasemodelService,
+    AuthGuardService
+    // DataStorageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

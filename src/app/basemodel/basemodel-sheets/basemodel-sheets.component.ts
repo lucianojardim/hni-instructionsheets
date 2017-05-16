@@ -44,7 +44,6 @@ export class BasemodelSheetsComponent implements OnInit, OnDestroy {
 
   getInstructionSheets(selectedBasemodel: Basemodel) {
     this.instructionSheets = this._instructionSheetService.getInstructionSheetsByBasemodel(selectedBasemodel);
-    console.log(this.instructionSheets);
     this.showAddSavedInstructionSheetMsg = this.instructionSheets.map(show => false);
   }
 
