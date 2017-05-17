@@ -2,7 +2,7 @@ import {Component, ViewChild, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 declare var Quagga: any;
 
-import {Barcode} from '../barcode';
+import {Barcode} from '../barcode.model';
 import {BarcodeService} from '../barcode.service';
 
 @Component({
@@ -85,10 +85,18 @@ export class BarcodeReaderComponent implements OnInit {
   }
 
   getBarcode(barcodeNumber: string): void {
-    this.selectedBarcode = this._barcodeService.getBarcode(barcodeNumber);
-    this._barcodeService.setSelectedBarcode(this.selectedBarcode);
-    this._router.navigate([this.selectedBarcode.barcodeNumber], {relativeTo: this._activatedRoute})
-      .then()
-      .catch();
+    if (typeof this._barcodeService.getBarcode(barcodeNumber) === 'undefined') {
+      // this.IsToDisplayErrorMessage = true;
+      this._router.navigate(['/barcodenotfound'])
+        .then()
+        .catch();
+    } else {
+      // this.IsToDisplayErrorMessage = false;
+      this.selectedBarcode = this._barcodeService.getBarcode(barcodeNumber);
+      this._barcodeService.setSelectedBarcode(this.selectedBarcode);
+      this._router.navigate([this.selectedBarcode.barcodeNumber], {relativeTo: this._activatedRoute})
+        .then()
+        .catch();
+    }
   }
 }

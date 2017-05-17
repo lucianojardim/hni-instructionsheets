@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
-import {Barcode} from '../barcode';
+import {Barcode} from '../barcode.model';
 import {BarcodeService} from '../barcode.service';
 
 @Component({

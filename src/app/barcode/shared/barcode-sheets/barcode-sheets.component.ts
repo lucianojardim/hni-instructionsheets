@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 
-import {Barcode} from '../../barcode';
+import {Barcode} from '../../barcode.model';
 import {BarcodeService} from '../../barcode.service';
-import {InstructionSheet} from '../../../shared/instruction-sheet/instruction-sheet';
+import {InstructionSheet} from '../../../shared/instruction-sheet/instruction-sheet.model';
 import {InstructionSheetService} from '../../../shared/instruction-sheet/instruction-sheet.service';
 import {UserService} from '../../../shared/user/user.service';
 

@@ -3,7 +3,8 @@ import {Subject} from 'rxjs/Subject';
 import {Http, Response} from '@angular/http';
 import 'rxjs/Rx';
 
-import {User} from './user';
+import {User} from './user.model';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {
@@ -17,8 +18,8 @@ export class UserService {
   constructor(private http: Http) {
   }
 
-  private _storeUsersIntoDatabase() {
-    return this.http.put('https://instructionsheets-ad427.firebaseio.com/users.json', this.getUsers());
+  private _removeSpecialCharactersFromEmailAddress(emailAddress: string): string {
+    return emailAddress.replace(/[^a-zA-Z0-9]/g, 'z');
   }
 
   private _storeUserIntoDatabase(user: User) {
@@ -28,74 +29,30 @@ export class UserService {
     );
   }
 
-  private _removeSpecialCharactersFromEmailAddress(emailAddress: string): string {
-    return emailAddress.replace(/[^a-zA-Z0-9]/g, 'z');
-}
-
-  private _getUsersFromDatabase() {
-    this.http.get('https://instructionsheets-ad427.firebaseio.com/users.json')
-      .map(
-        (response: Response) => {
-          const users: User[] = response.json();
-          for (const user of users) {
-            if (!user['savedInstructionSheetsIds']) {
-              user['savedInstructionSheetsIds'] = [];
-            }
-            if (!user['recentlyDownloadedInstructionSheetIds']) {
-              user['recentlyDownloadedInstructionSheetIds'] = [];
-            }
-          }
-          return users;
-        }
-      )
-      .subscribe(
-        (users: User[]) => {
-          this._setUsers(users);
-        }
-      );
-  }
-
   private _getUserFromDatabase(emailAddress: string) {
-    this.http.get(
+    return this.http.get(
       'https://instructionsheets-ad427.firebaseio.com/users/' + this._removeSpecialCharactersFromEmailAddress(emailAddress) + '.json',
     )
       .map(
         (response: Response) => {
           const user: User = response.json();
-          console.log(response);
-          console.log(user);
-          console.log(user['savedInstructionSheetsIds']);
-          console.log(user['recentlyDownloadedInstructionSheetIds']);
           if (!user['savedInstructionSheetsIds']) {
             user['savedInstructionSheetsIds'] = [];
           }
           if (!user['recentlyDownloadedInstructionSheetIds']) {
             user['recentlyDownloadedInstructionSheetIds'] = [];
           }
-          console.log('user being returned by database function');
-          console.log(user);
           return user;
         }
       )
-      .subscribe(
-        (user: User) => {
-          console.log('user getting back from database');
-          console.log(user);
-          this._userFromDatabase = user;
-          console.log(this._userFromDatabase);
+      .catch(
+        (error: Response) => {
+          return Observable.throw('Something went wrong');
         }
       );
   }
 
-  getUsers(): User[] {
-    return this._users.slice();
-  }
-
-  private _setUsers(users: User[]) {
-    this._users = users;
-  }
-
-  private _seedUsers() {
+  private _seedUser() {
     this._addUser(
       {
         emailAddress: 'jardiml@hnicorp.com',
@@ -131,13 +88,6 @@ export class UserService {
     }
   }
 
-  getUserByEmailAddress(emailAddress: string): User {
-    this._getUserFromDatabase(emailAddress);
-    console.log('User from the database');
-    console.log(this._userFromDatabase);
-    return this._userFromDatabase;
-  }
-
   isAuthenticated(): Promise<boolean> {
     return new Promise(
       (resolve, reject) => {
@@ -150,23 +100,32 @@ export class UserService {
     return this._currentUser;
   }
 
-  private _updateCurrentUser(user: User) {
-    this._currentUser = user;
-    this._updateUser(this._currentUser);
-    this.currentUserWasModified.next(this._currentUser);
+  setCurrentUser(emailAddress: string) {
+    this._currentUser = {emailAddress: '', savedInstructionSheetsIds: [], recentlyDownloadedInstructionSheetIds: []};
+    this._getUserFromDatabase(emailAddress)
+      .subscribe(
+        (user: User) => {
+          this._userFromDatabase = user;
+          if (!user) {
+            user = {
+              emailAddress: emailAddress,
+              savedInstructionSheetsIds: [],
+              recentlyDownloadedInstructionSheetIds: []
+            };
+            this._addUser(user);
+          }
+          this._currentUser = user;
+          this.currentUserWasModified.next(this._currentUser);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
-  setCurrentUser(emailAddress: string) {
-    let candidateUser: User = this.getUserByEmailAddress(emailAddress);
-    if (!candidateUser) {
-      candidateUser = {
-        emailAddress: emailAddress,
-        savedInstructionSheetsIds: [],
-        recentlyDownloadedInstructionSheetIds: []
-      };
-      this._addUser(candidateUser);
-    }
-    this._updateCurrentUser(candidateUser);
+  private _updateCurrentUser() {
+    this._updateUser(this._currentUser);
+    this.currentUserWasModified.next(this._currentUser);
   }
 
   addSavedInstructionSheetsId(InstructionSheetsId: number) {
@@ -175,7 +134,7 @@ export class UserService {
       this._maxLengthSavedInstructionSheetsIds,
       InstructionSheetsId
     );
-    this._updateCurrentUser(this._currentUser);
+    this._updateCurrentUser();
   }
 
   deleteSavedInstructionSheetsId(InstructionSheetsId: number) {
@@ -183,7 +142,7 @@ export class UserService {
     if (index > -1) {
       this._currentUser.savedInstructionSheetsIds.splice(index, 1);
     }
-    this._updateCurrentUser(this._currentUser);
+    this._updateCurrentUser();
   }
 
   addRecentlyDownloadedInstructionSheetId(InstructionSheetsId: number) {
@@ -192,7 +151,7 @@ export class UserService {
       this._maxLengthRecentlyDownloadedInstructionSheetIds,
       InstructionSheetsId
     );
-    this._updateCurrentUser(this._currentUser);
+    this._updateCurrentUser();
   }
 
   deleteRecentlyDownloadedInstructionSheetId(InstructionSheetsId: number) {
@@ -200,7 +159,7 @@ export class UserService {
     if (index > -1) {
       this._currentUser.recentlyDownloadedInstructionSheetIds.splice(index, 1);
     }
-    this._updateCurrentUser(this._currentUser);
+    this._updateCurrentUser();
   }
 
   private _addToFixLengthArray(fixedLengthArray: number[], maxLegth: number, element: number): number[] {

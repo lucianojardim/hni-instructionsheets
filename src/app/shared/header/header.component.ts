@@ -1,7 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 
-import {Brand} from '../../brand/brand';
+import {Brand} from '../../brand/brand.model';
 import {BrandService} from '../../brand/brand.service';
 
 @Component({

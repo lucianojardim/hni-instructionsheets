@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 
-import {Basemodel} from '../basemodel';
+import {Basemodel} from '../basemodel.model';
 import {BasemodelService} from '../basemodel.service';
-import {InstructionSheet} from '../../shared/instruction-sheet/instruction-sheet';
+import {InstructionSheet} from '../../shared/instruction-sheet/instruction-sheet.model';
 import {InstructionSheetService} from '../../shared/instruction-sheet/instruction-sheet.service';
 import {UserService} from '../../shared/user/user.service';
 

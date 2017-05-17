@@ -3,8 +3,8 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 
 import {BrandService} from './brand.service';
-import {Brand} from './brand';
-import {Series} from './series/series';
+import {Brand} from './brand.model';
+import {Series} from './series/series.model';
 import {SeriesService} from './series/series.service';
 
 @Component({

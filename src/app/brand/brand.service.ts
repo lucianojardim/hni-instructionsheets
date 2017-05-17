@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 // TODO: make data changes persistent
-import {Brand} from './brand';
+import {Brand} from './brand.model';
 
 @Injectable()
 export class BrandService {

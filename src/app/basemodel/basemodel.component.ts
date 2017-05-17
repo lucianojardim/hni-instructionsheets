@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
-import {Basemodel} from './basemodel';
+import {Basemodel} from './basemodel.model';
 import {BasemodelService} from './basemodel.service';
 
 @Component({
