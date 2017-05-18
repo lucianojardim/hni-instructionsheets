@@ -1,49 +1,49 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 
-import {Barcode} from '../../barcode.model';
-import {BarcodeService} from '../../barcode.service';
+import {SerialNumber} from '../../serial-number.model';
+import {SerialNumberService} from '../../serial-number.service';
 import {InstructionSheet} from '../../../shared/instruction-sheet/instruction-sheet.model';
 import {InstructionSheetService} from '../../../shared/instruction-sheet/instruction-sheet.service';
 import {UserService} from '../../../shared/user/user.service';
 
 @Component({
-  selector: 'app-barcode-sheets',
-  templateUrl: './barcode-sheets.component.html',
-  styleUrls: ['./barcode-sheets.component.css']
+  selector: 'app-serial-number-sheets',
+  templateUrl: './serial-number-sheets.component.html',
+  styleUrls: ['./serial-number-sheets.component.css']
 })
-export class BarcodeSheetsComponent implements OnInit, OnDestroy {
+export class SerialNumberSheetsComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
-  selectedBarcode: Barcode;
+  selectedSerialNumber: SerialNumber;
   instructionSheets: InstructionSheet[] = [];
   showAddSavedInstructionSheetMsg: boolean[] = [];
 
-  constructor(private _barcodeService: BarcodeService,
+  constructor(private _serialNumberService: SerialNumberService,
               private _instructionSheetService: InstructionSheetService,
               private _userService: UserService) {
   }
 
   ngOnInit() {
-    this.getInstructionSheetsOfSelectedBarcode();
+    this.getInstructionSheetsOfSelectedSerialNumber();
   }
 
-  getInstructionSheetsOfSelectedBarcode() {
-    this.selectedBarcode = this._barcodeService.getSelectedBarcode();
-    this.getInstructionSheets(this.selectedBarcode);
+  getInstructionSheetsOfSelectedSerialNumber() {
+    this.selectedSerialNumber = this._serialNumberService.getSelectedSerialNumber();
+    this.getInstructionSheets(this.selectedSerialNumber);
 
-    this.subscription = this._barcodeService.selectedBarcodeChanged
+    this.subscription = this._serialNumberService.selectedSerialNumberChanged
       .subscribe(
-        (barcode: Barcode) => {
-          this.selectedBarcode = barcode;
-          this.getInstructionSheets(this.selectedBarcode);
+        (serialNumber: SerialNumber) => {
+          this.selectedSerialNumber = serialNumber;
+          this.getInstructionSheets(this.selectedSerialNumber);
         }
       );
 
   }
 
-  getInstructionSheets(selectedBarcode: Barcode) {
-    this.instructionSheets = this._instructionSheetService.getInstructionSheetsByBarcode(selectedBarcode);
+  getInstructionSheets(selectedSerialNumber: SerialNumber) {
+    this.instructionSheets = this._instructionSheetService.getInstructionSheetsBySerialNumber(selectedSerialNumber);
     this.showAddSavedInstructionSheetMsg = this.instructionSheets.map(show => false);
   }
 

@@ -7,9 +7,9 @@ import {Routes, RouterModule} from '@angular/router';
 import {OptionsComponent} from './shared/options/options.component';
 import {BrandComponent} from './brand/brand.component';
 import {SeriesComponent} from './brand/series/series.component';
-import {BarcodeManualComponent} from './barcode/barcode-manual/barcode-manual.component';
-import {BarcodeReaderComponent} from './barcode/barcode-reader/barcode-reader.component';
-import {BarcodeSheetsComponent} from './barcode/shared/barcode-sheets/barcode-sheets.component';
+import {SerialNumberManualComponent} from './serial-number/serial-number-manual/serial-number-manual.component';
+import {SerialNumberReaderComponent} from './serial-number/serial-number-reader/serial-number-reader.component';
+import {SerialNumberSheetsComponent} from './serial-number/shared/serial-number-sheets/serial-number-sheets.component';
 import {UserComponent} from './shared/user/user.component';
 import {UserAttributesComponent} from './user-attributes/user-attributes.component';
 import {BasemodelComponent} from './basemodel/basemodel.component';
@@ -22,23 +22,23 @@ const appRoutes: Routes = [
     path: 'options', canActivate: [AuthGuardService], component: OptionsComponent
   },
   {
-    path: 'barcodemanual', canActivate: [AuthGuardService], component: BarcodeManualComponent, children: [
+    path: 'serialNumberManual', canActivate: [AuthGuardService], component: SerialNumberManualComponent, children: [
     {
-      path: ':barcodeNumber', canActivate: [AuthGuardService], component: BarcodeSheetsComponent
+      path: ':serialNumberValue', canActivate: [AuthGuardService], component: SerialNumberSheetsComponent
     },
   ]
   },
   {
-    path: 'barcodereader', canActivate: [AuthGuardService], component: BarcodeReaderComponent, children: [
+    path: 'serialNumberReader', canActivate: [AuthGuardService], component: SerialNumberReaderComponent, children: [
     {
-      path: ':barcodeNumber', canActivate: [AuthGuardService], component: BarcodeSheetsComponent
+      path: ':serialNumberValue', canActivate: [AuthGuardService], component: SerialNumberSheetsComponent
     },
   ]
   },
   {
-    path: 'barcodenotfound', canActivate: [AuthGuardService], component: BarcodeManualComponent, children: [
+    path: 'serialNumberNotFound', canActivate: [AuthGuardService], component: SerialNumberManualComponent, children: [
     {
-      path: ':barcodeNumber', canActivate: [AuthGuardService], component: BarcodeSheetsComponent
+      path: ':serialNumberValue', canActivate: [AuthGuardService], component: SerialNumberSheetsComponent
     },
   ]
   },
@@ -50,17 +50,17 @@ const appRoutes: Routes = [
   ]
   },
   {
-    path: 'basemodelnotfound', canActivate: [AuthGuardService], component: BasemodelComponent, children: [
+    path: 'basemodelNotFound', canActivate: [AuthGuardService], component: BasemodelComponent, children: [
     {
       path: ':basemodelValue', canActivate: [AuthGuardService], component: BasemodelSheetsComponent
     },
   ]
   },
   {
-    path: 'userattributes', canActivate: [AuthGuardService], component: UserAttributesComponent
+    path: 'userAttributes', canActivate: [AuthGuardService], component: UserAttributesComponent
   },
   {
-    path: 'brand/:brandname', canActivate: [AuthGuardService], component: BrandComponent, children: [
+    path: 'brand/:brandName', canActivate: [AuthGuardService], component: BrandComponent, children: [
     {
       path: ':seriesName', canActivate: [AuthGuardService], component: SeriesComponent
     },

@@ -8,7 +8,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {BrandService} from './brand/brand.service';
 import {SeriesService} from './brand/series/series.service';
 import {InstructionSheetService} from './shared/instruction-sheet/instruction-sheet.service';
-import {BarcodeService} from './barcode/barcode.service';
+import {SerialNumberService} from './serial-number/serial-number.service';
 import {UserService} from './shared/user/user.service';
 import {BasemodelService} from './basemodel/basemodel.service';
 
@@ -21,11 +21,11 @@ import {HeaderComponent} from './shared/header/header.component';
 import {BrandComponent} from './brand/brand.component';
 import {OptionsComponent} from './shared/options/options.component';
 import {SeriesComponent} from './brand/series/series.component';
-import {BarcodeSheetsComponent} from './barcode/shared/barcode-sheets/barcode-sheets.component';
-import {BarcodeReaderComponent} from './barcode/barcode-reader/barcode-reader.component';
+import {SerialNumberSheetsComponent} from './serial-number/shared/serial-number-sheets/serial-number-sheets.component';
+import {SerialNumberReaderComponent} from './serial-number/serial-number-reader/serial-number-reader.component';
 import {UserComponent} from './shared/user/user.component';
 import {UserAttributesComponent} from './user-attributes/user-attributes.component';
-import {BarcodeManualComponent} from './barcode/barcode-manual/barcode-manual.component';
+import {SerialNumberManualComponent} from './serial-number/serial-number-manual/serial-number-manual.component';
 import {BasemodelComponent} from './basemodel/basemodel.component';
 import {BasemodelSheetsComponent} from './basemodel/basemodel-sheets/basemodel-sheets.component';
 
@@ -36,11 +36,11 @@ import {BasemodelSheetsComponent} from './basemodel/basemodel-sheets/basemodel-s
     BrandComponent,
     OptionsComponent,
     SeriesComponent,
-    BarcodeSheetsComponent,
-    BarcodeReaderComponent,
+    SerialNumberSheetsComponent,
+    SerialNumberReaderComponent,
     UserComponent,
     UserAttributesComponent,
-    BarcodeManualComponent,
+    SerialNumberManualComponent,
     BasemodelComponent,
     BasemodelSheetsComponent
   ],
@@ -54,7 +54,7 @@ import {BasemodelSheetsComponent} from './basemodel/basemodel-sheets/basemodel-s
     BrandService,
     SeriesService,
     InstructionSheetService,
-    BarcodeService,
+    SerialNumberService,
     UserService,
     BasemodelService,
     AuthGuardService

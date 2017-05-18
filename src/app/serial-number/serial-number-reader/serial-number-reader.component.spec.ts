@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {BarcodeSheetsComponent} from './barcode-sheets.component';
+import {SerialNumberReaderComponent} from './serial-number-reader.component';
 
-describe('BarcodeSheetsComponent', () => {
-  let component: BarcodeSheetsComponent;
-  let fixture: ComponentFixture<BarcodeSheetsComponent>;
+describe('SerialNumberReaderComponent', () => {
+  let component: SerialNumberReaderComponent;
+  let fixture: ComponentFixture<SerialNumberReaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [BarcodeSheetsComponent]
+      declarations: [SerialNumberReaderComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BarcodeSheetsComponent);
+    fixture = TestBed.createComponent(SerialNumberReaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

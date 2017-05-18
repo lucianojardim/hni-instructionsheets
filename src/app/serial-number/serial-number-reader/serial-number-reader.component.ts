@@ -2,34 +2,34 @@ import {Component, ViewChild, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 declare var Quagga: any;
 
-import {Barcode} from '../barcode.model';
-import {BarcodeService} from '../barcode.service';
+import {SerialNumber} from '../serial-number.model';
+import {SerialNumberService} from '../serial-number.service';
 
 @Component({
-  selector: 'app-barcode-reader',
-  templateUrl: './barcode-reader.component.html',
-  styleUrls: ['./barcode-reader.component.css']
+  selector: 'app-serial-number-reader',
+  templateUrl: './serial-number-reader.component.html',
+  styleUrls: ['./serial-number-reader.component.css']
 })
-export class BarcodeReaderComponent implements OnInit {
-  @ViewChild('barcodeFileInput') barcodeFileInput;
+export class SerialNumberReaderComponent implements OnInit {
+  @ViewChild('serialNumberFileInput') serialNumberFileInput;
   @ViewChild('picturePreview') picturePreview;
-  selectedBarcode: Barcode;
+  selectedSerialNumber: SerialNumber;
   isToDisableSearchButton = true;
 
   constructor(private _router: Router,
               private _activatedRoute: ActivatedRoute,
-              private _barcodeService: BarcodeService) {
+              private _serialNumberService: SerialNumberService) {
   }
 
   ngOnInit() {
   }
 
   startDecode() {
-    if (this.barcodeFileInput.nativeElement.files && this.barcodeFileInput.nativeElement.files.length) {
-      this.Decode(URL.createObjectURL(this.barcodeFileInput.nativeElement.files[0]))
-        .then((barcodeNumber: string) => this.getBarcode(barcodeNumber))
+    if (this.serialNumberFileInput.nativeElement.files && this.serialNumberFileInput.nativeElement.files.length) {
+      this.Decode(URL.createObjectURL(this.serialNumberFileInput.nativeElement.files[0]))
+        .then((serialNumberValue: string) => this.getSerialNumber(serialNumberValue))
         .catch((e: string) =>
-          this._router.navigate(['/barcodenotfound'])
+          this._router.navigate(['/serialNumberNotFound'])
             .then()
             .catch()
         );
@@ -68,33 +68,33 @@ export class BarcodeReaderComponent implements OnInit {
           if (result && result.codeResult && result.codeResult.code) {
             resolve(result.codeResult.code);
           } else {
-            reject('Unable to decode the barcode image!');
+            reject('Unable to decode the serial-number image!');
           }
         }
       );
     });
   }
 
-  CaptureBarcodeImage() {
+  CaptureSerialNumberImage() {
     const reader = new FileReader();
     reader.onloadend = (e) => {
       this.picturePreview.nativeElement.src = reader.result;
     };
-    reader.readAsDataURL(this.barcodeFileInput.nativeElement.files[0]);
+    reader.readAsDataURL(this.serialNumberFileInput.nativeElement.files[0]);
     this.isToDisableSearchButton = false;
   }
 
-  getBarcode(barcodeNumber: string): void {
-    if (typeof this._barcodeService.getBarcode(barcodeNumber) === 'undefined') {
+  getSerialNumber(serialNumberValue: string): void {
+    if (typeof this._serialNumberService.getSerialNumber(serialNumberValue) === 'undefined') {
       // this.IsToDisplayErrorMessage = true;
-      this._router.navigate(['/barcodenotfound'])
+      this._router.navigate(['/serialNumberNotFound'])
         .then()
         .catch();
     } else {
       // this.IsToDisplayErrorMessage = false;
-      this.selectedBarcode = this._barcodeService.getBarcode(barcodeNumber);
-      this._barcodeService.setSelectedBarcode(this.selectedBarcode);
-      this._router.navigate([this.selectedBarcode.barcodeNumber], {relativeTo: this._activatedRoute})
+      this.selectedSerialNumber = this._serialNumberService.getSerialNumber(serialNumberValue);
+      this._serialNumberService.setSelectedSerialNumber(this.selectedSerialNumber);
+      this._router.navigate([this.selectedSerialNumber.serialNumberValue], {relativeTo: this._activatedRoute})
         .then()
         .catch();
     }

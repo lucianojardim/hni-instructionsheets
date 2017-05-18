@@ -2,13 +2,13 @@
 <div class="container">
   <div class="row">
     <p class="text-info">
-      Click on "Choose file" to read a barcode and then "Search" to find instruction sheets.
+      Click on "Choose file" to read a serialNumber and then "Search" to find instruction sheets.
     </p>
     <img width="200" height="150" src="" id="picturePreview" name="picturePreview" #picturePreview
          style="border:1px solid black"/> <br/>
 
-    <input (change)="CaptureBarcodeImage()" id="barcodeFileInput" #barcodeFileInput
-           name="barcodeFileInput" type="file" accept="image/*;capture=camera"/>
+    <input (change)="CaptureSerialNumberImage()" id="serialNumberFileInput" #serialNumberFileInput
+           name="serialNumberFileInput" type="file" accept="image/*;capture=camera"/>
     <br/>
     <button (click)="startDecode()" id="startDecodeButton" name="startDecodeButton" #startDecodeButton
             class="btn btn-primary" [disabled]="isToDisableSearchButton">Search

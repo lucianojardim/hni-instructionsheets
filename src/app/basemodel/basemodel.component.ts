@@ -25,7 +25,7 @@ export class BasemodelComponent implements OnInit {
     this.selectedBasemodel = this._basemodelService.getBasemodel(value);
     if (typeof this.selectedBasemodel === 'undefined') {
       this.IsToDisplayErrorMessage = true;
-      this._router.navigate(['/basemodelnotfound'])
+      this._router.navigate(['/basemodelNotFound'])
         .then()
         .catch();
     } else {
@@ -38,7 +38,7 @@ export class BasemodelComponent implements OnInit {
   }
 
   IsRouteBasemodelNotFound(): boolean {
-    return this._activatedRoute.toString().indexOf('notfound') > 0;
+    return this._activatedRoute.toString().indexOf('NotFound') > 0;
   }
 
 }
