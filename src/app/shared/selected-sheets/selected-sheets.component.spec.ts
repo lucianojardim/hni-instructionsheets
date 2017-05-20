@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {BasemodelSheetsComponent} from './basemodel-sheets.component';
+import {SelectedSheetsComponent} from './selected-sheets.component';
 
-describe('BasemodelSheetsComponent', () => {
-  let component: BasemodelSheetsComponent;
-  let fixture: ComponentFixture<BasemodelSheetsComponent>;
+describe('SelectedSheetsComponent', () => {
+  let component: SelectedSheetsComponent;
+  let fixture: ComponentFixture<SelectedSheetsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [BasemodelSheetsComponent]
+      declarations: [SelectedSheetsComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BasemodelSheetsComponent);
+    fixture = TestBed.createComponent(SelectedSheetsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

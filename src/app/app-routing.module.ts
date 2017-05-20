@@ -6,14 +6,12 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {OptionsComponent} from './shared/options/options.component';
 import {BrandComponent} from './brand/brand.component';
-import {SeriesComponent} from './brand/series/series.component';
 import {SerialNumberManualComponent} from './serial-number/serial-number-manual/serial-number-manual.component';
 import {SerialNumberReaderComponent} from './serial-number/serial-number-reader/serial-number-reader.component';
-import {SerialNumberSheetsComponent} from './serial-number/shared/serial-number-sheets/serial-number-sheets.component';
 import {UserComponent} from './shared/user/user.component';
 import {UserAttributesComponent} from './user-attributes/user-attributes.component';
 import {BasemodelComponent} from './basemodel/basemodel.component';
-import {BasemodelSheetsComponent} from './basemodel/basemodel-sheets/basemodel-sheets.component';
+import {SelectedSheetsComponent} from './shared/selected-sheets/selected-sheets.component';
 
 import {AuthGuardService} from './auth-guard.service';
 
@@ -24,35 +22,35 @@ const appRoutes: Routes = [
   {
     path: 'serialNumberManual', canActivate: [AuthGuardService], component: SerialNumberManualComponent, children: [
     {
-      path: ':serialNumberValue', canActivate: [AuthGuardService], component: SerialNumberSheetsComponent
+      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedSheetsComponent
     },
   ]
   },
   {
     path: 'serialNumberReader', canActivate: [AuthGuardService], component: SerialNumberReaderComponent, children: [
     {
-      path: ':serialNumberValue', canActivate: [AuthGuardService], component: SerialNumberSheetsComponent
+      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedSheetsComponent
     },
   ]
   },
   {
     path: 'serialNumberNotFound', canActivate: [AuthGuardService], component: SerialNumberManualComponent, children: [
     {
-      path: ':serialNumberValue', canActivate: [AuthGuardService], component: SerialNumberSheetsComponent
+      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedSheetsComponent
     },
   ]
   },
   {
     path: 'basemodel', canActivate: [AuthGuardService], component: BasemodelComponent, children: [
     {
-      path: ':basemodelValue', canActivate: [AuthGuardService], component: BasemodelSheetsComponent
+      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedSheetsComponent
     },
   ]
   },
   {
     path: 'basemodelNotFound', canActivate: [AuthGuardService], component: BasemodelComponent, children: [
     {
-      path: ':basemodelValue', canActivate: [AuthGuardService], component: BasemodelSheetsComponent
+      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedSheetsComponent
     },
   ]
   },
@@ -62,7 +60,7 @@ const appRoutes: Routes = [
   {
     path: 'brand/:brandName', canActivate: [AuthGuardService], component: BrandComponent, children: [
     {
-      path: ':seriesName', canActivate: [AuthGuardService], component: SeriesComponent
+      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedSheetsComponent
     },
   ]
   },

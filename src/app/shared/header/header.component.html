@@ -1,7 +1,5 @@
-<div class="page-header" [ngSwitch]="selectedBrand.name.toLowerCase()">
+<div class="page-header">
   <h2 (click)="onGoingHome()" routerLink="/options">
-    <a *ngSwitchCase="'hon'"><img src="/assets/hon/images/logo.svg" alt="HON Office Furniture"/></a>
-    <a *ngSwitchCase="'allsteel'"><img src="/assets/allsteel/images/logo.png" alt="Allsteel"/></a>
-    <a *ngSwitchDefault><img src="/assets/hni/images/logo.svg" alt="HNI"/></a>
+    <a><img src={{srcHeader}} alt={{altHeader}}/></a>
     Digital Install</h2>
 </div>

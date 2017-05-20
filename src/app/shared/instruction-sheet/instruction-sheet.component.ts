@@ -9,7 +9,7 @@ import {UserService} from '../user/user.service';
   styleUrls: ['./instruction-sheet.component.css']
 })
 export class InstructionSheetComponent implements OnInit {
-
+  @Input() instructionSheetsHeader: string;
   @Input() instructionSheets: InstructionSheet[] = [];
   showAddSavedInstructionSheetMsg: boolean[] = this.instructionSheets.map(show => false);
 
