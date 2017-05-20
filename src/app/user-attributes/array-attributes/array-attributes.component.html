@@ -1,0 +1,10 @@
+<p class="list-group-item-heading">{{instructionSheetsHeader}} ({{instructionSheets.length}} items):</p>
+<ul class="list-group-item-heading"
+    *ngFor="let instructionSheet of instructionSheets; let i = index">
+  <li *ngIf="showInstructionSheets[i]" class="list-unstyled"><a
+      href={{instructionSheet.url}} target="_blank">{{instructionSheet.name}}</a>
+    <button class="btn btn-xs btn-danger pull-right"
+            (click)="deleteInstructionSheet(instructionSheet, i)">Delete
+    </button>
+  </li>
+</ul>

@@ -14,10 +14,10 @@ import {InstructionSheetService} from '../shared/instruction-sheet/instruction-s
 export class UserAttributesComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   currentUser: User;
+  savedInstructionSheetsHeader: string;
   savedInstructionSheets: InstructionSheet[] = [];
-  showSavedInstructionSheets: boolean[] = []; // Only to control if an item is displayed or not
+  recentlyDownloadedInstructionSheetsHeader: string;
   recentlyDownloadedInstructionSheets: InstructionSheet[] = [];
-  showRecentlyDownloadedInstructionSheets: boolean[] = []; // Only to control if an item is displayed or not
 
   constructor(private _userService: UserService,
               private _instructionSheetService: InstructionSheetService) {
@@ -41,21 +41,10 @@ export class UserAttributesComponent implements OnInit, OnDestroy {
   }
 
   getInstructionSheets(currentUser: User) {
+    this.savedInstructionSheetsHeader = 'Saved instructions sheets';
     this.savedInstructionSheets = this._instructionSheetService.getInstructionSheetsByIds(currentUser.savedInstructionSheetsIds);
-    this.showSavedInstructionSheets = this.savedInstructionSheets.map(show => true);
-
+    this.recentlyDownloadedInstructionSheetsHeader = 'Recently downloaded';
     this.recentlyDownloadedInstructionSheets = this._instructionSheetService.getInstructionSheetsByIds(currentUser.recentlyDownloadedInstructionSheetIds);
-    this.showRecentlyDownloadedInstructionSheets = this.recentlyDownloadedInstructionSheets.map(show => true);
-  }
-
-  deleteSavedInstructionSheet(instructionSheet: InstructionSheet, i) {
-    this.showSavedInstructionSheets[i] = false;
-    this._userService.deleteSavedInstructionSheetsId(instructionSheet.id);
-  }
-
-  deleteRecentlyDownloadedInstructionSheet(instructionSheet, i) {
-    this.showRecentlyDownloadedInstructionSheets[i] = false;
-    this._userService.deleteRecentlyDownloadedInstructionSheetId(instructionSheet.id);
   }
 
   ngOnDestroy() {
