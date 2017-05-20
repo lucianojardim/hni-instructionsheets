@@ -5,7 +5,6 @@ import {SerialNumber} from '../../serial-number.model';
 import {SerialNumberService} from '../../serial-number.service';
 import {InstructionSheet} from '../../../shared/instruction-sheet/instruction-sheet.model';
 import {InstructionSheetService} from '../../../shared/instruction-sheet/instruction-sheet.service';
-import {UserService} from '../../../shared/user/user.service';
 
 @Component({
   selector: 'app-serial-number-sheets',
@@ -17,11 +16,10 @@ export class SerialNumberSheetsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   selectedSerialNumber: SerialNumber;
   instructionSheets: InstructionSheet[] = [];
-  showAddSavedInstructionSheetMsg: boolean[] = [];
 
   constructor(private _serialNumberService: SerialNumberService,
-              private _instructionSheetService: InstructionSheetService,
-              private _userService: UserService) {
+              private _instructionSheetService: InstructionSheetService
+              ) {
   }
 
   ngOnInit() {
@@ -44,16 +42,6 @@ export class SerialNumberSheetsComponent implements OnInit, OnDestroy {
 
   getInstructionSheets(selectedSerialNumber: SerialNumber) {
     this.instructionSheets = this._instructionSheetService.getInstructionSheetsBySerialNumber(selectedSerialNumber);
-    this.showAddSavedInstructionSheetMsg = this.instructionSheets.map(show => false);
-  }
-
-  addSavedInstructionSheet(instructionSheet: InstructionSheet, i) {
-    this._userService.addSavedInstructionSheetsId(instructionSheet.id);
-    this.showAddSavedInstructionSheetMsg[i] = true;
-  }
-
-  addRecentlyDownloadedInstructionSheet(instructionSheet, i) {
-    this._userService.addRecentlyDownloadedInstructionSheetId(instructionSheet.id);
   }
 
   ngOnDestroy() {

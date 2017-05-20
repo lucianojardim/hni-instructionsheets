@@ -28,6 +28,7 @@ import {UserAttributesComponent} from './user-attributes/user-attributes.compone
 import {SerialNumberManualComponent} from './serial-number/serial-number-manual/serial-number-manual.component';
 import {BasemodelComponent} from './basemodel/basemodel.component';
 import {BasemodelSheetsComponent} from './basemodel/basemodel-sheets/basemodel-sheets.component';
+import { InstructionSheetComponent } from './shared/instruction-sheet/instruction-sheet.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {BasemodelSheetsComponent} from './basemodel/basemodel-sheets/basemodel-s
     UserAttributesComponent,
     SerialNumberManualComponent,
     BasemodelComponent,
-    BasemodelSheetsComponent
+    BasemodelSheetsComponent,
+    InstructionSheetComponent
   ],
   imports: [
     BrowserModule,

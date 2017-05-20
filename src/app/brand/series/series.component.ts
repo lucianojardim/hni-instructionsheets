@@ -5,7 +5,6 @@ import {Series} from './series.model';
 import {SeriesService} from './series.service';
 import {InstructionSheet} from '../../shared/instruction-sheet/instruction-sheet.model';
 import {InstructionSheetService} from '../../shared/instruction-sheet/instruction-sheet.service';
-import {UserService} from '../../shared/user/user.service';
 
 @Component({
   selector: 'app-series',
@@ -16,11 +15,9 @@ export class SeriesComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   selectedSeries: Series;
   instructionSheets: InstructionSheet[] = [];
-  showAddSavedInstructionSheetMsg: boolean[] = [];
 
   constructor(private _seriesService: SeriesService,
-              private _instructionSheetService: InstructionSheetService,
-              private _userService: UserService) {
+              private _instructionSheetService: InstructionSheetService) {
   }
 
   ngOnInit() {
@@ -43,16 +40,6 @@ export class SeriesComponent implements OnInit, OnDestroy {
 
   getInstructionSheets(selectedSeries: Series) {
     this.instructionSheets = this._instructionSheetService.getInstructionSheetsBySeries(selectedSeries);
-    this.showAddSavedInstructionSheetMsg = this.instructionSheets.map(show => false);
-  }
-
-  addSavedInstructionSheet(instructionSheet: InstructionSheet, i) {
-    this._userService.addSavedInstructionSheetsId(instructionSheet.id);
-    this.showAddSavedInstructionSheetMsg[i] = true;
-  }
-
-  addRecentlyDownloadedInstructionSheet(instructionSheet, i) {
-    this._userService.addRecentlyDownloadedInstructionSheetId(instructionSheet.id);
   }
 
   ngOnDestroy() {

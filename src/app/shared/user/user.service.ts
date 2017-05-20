@@ -22,10 +22,14 @@ export class UserService {
     return emailAddress.replace(/[^a-zA-Z0-9]/g, 'z');
   }
 
-  private _storeUserIntoDatabase(user: User) {
+  private _putUserIntoDatabase(user: User) {
     return this.http.put(
       'https://instructionsheets-ad427.firebaseio.com/users/' + this._removeSpecialCharactersFromEmailAddress(user.emailAddress) + '.json',
       user
+    ).catch(
+      (error: Response) => {
+        return Observable.throw({msg: 'Failure saving user attributes', error: error});
+      }
     );
   }
 
@@ -36,18 +40,21 @@ export class UserService {
       .map(
         (response: Response) => {
           const user: User = response.json();
-          if (!user['savedInstructionSheetsIds']) {
-            user['savedInstructionSheetsIds'] = [];
+          if (user) {
+            if (!user['savedInstructionSheetsIds']) {
+              user['savedInstructionSheetsIds'] = [];
+            }
+            if (!user['recentlyDownloadedInstructionSheetIds']) {
+              user['recentlyDownloadedInstructionSheetIds'] = [];
+            }
           }
-          if (!user['recentlyDownloadedInstructionSheetIds']) {
-            user['recentlyDownloadedInstructionSheetIds'] = [];
-          }
+          this._userFromDatabase = user;
           return user;
         }
       )
       .catch(
         (error: Response) => {
-          return Observable.throw('Something went wrong');
+          return Observable.throw({msg: 'Failure reading user attributes', error: error});
         }
       );
   }
@@ -63,29 +70,35 @@ export class UserService {
   }
 
   private _addUser(user: User) {
-    this._getUserFromDatabase(user.emailAddress);
-    if (!this._userFromDatabase) {
-      this._storeUserIntoDatabase(user)
+    // this._getUserFromDatabase(user.emailAddress);
+    // if (!this._userFromDatabase) {
+      this._putUserIntoDatabase(user)
         .subscribe(
           (response: Response) => {
           }
-        );
-    } else {
-      this._updateUser(user);
-    }
+        ,
+        (error) => {
+          console.log(error);
+        });
+    // } else {
+    //   this._updateUser(user);
+    // }
   }
 
   private _updateUser(user: User) {
-    this._getUserFromDatabase(user.emailAddress);
-    if (this._userFromDatabase) {
-      this._storeUserIntoDatabase(user)
+    // this._getUserFromDatabase(user.emailAddress);
+    // if (this._userFromDatabase) {
+      this._putUserIntoDatabase(user)
         .subscribe(
           (response: Response) => {
           }
-        );
-    } else {
-      this._addUser(user);
-    }
+          ,
+          (error) => {
+            console.log(error);
+          });
+    // } else {
+    //   this._addUser(user);
+    // }
   }
 
   isAuthenticated(): Promise<boolean> {
@@ -101,7 +114,11 @@ export class UserService {
   }
 
   setCurrentUser(emailAddress: string) {
-    this._currentUser = {emailAddress: '', savedInstructionSheetsIds: [], recentlyDownloadedInstructionSheetIds: []};
+    this._currentUser = {
+      emailAddress: emailAddress,
+      savedInstructionSheetsIds: [],
+      recentlyDownloadedInstructionSheetIds: []
+    };
     this._getUserFromDatabase(emailAddress)
       .subscribe(
         (user: User) => {
