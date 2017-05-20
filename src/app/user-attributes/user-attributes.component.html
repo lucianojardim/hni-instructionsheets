@@ -2,13 +2,15 @@
 <h3>User attributes</h3>
 <hr>
 <div>
-  <app-array-attributes [instructionSheetsHeader]="savedInstructionSheetsHeader"
-                        [instructionSheets]="savedInstructionSheets"
-                        [instructionSheetType]="'SavedInstructionSheets'"></app-array-attributes>
+  <app-instruction-sheet [instructionSheetsHeader]="savedInstructionSheetsHeader"
+                         [instructionSheets]="savedInstructionSheets"
+                         [instructionSheetType]="'SavedInstructionSheets'"
+                         [operationType]="'delete'"></app-instruction-sheet>
 </div>
 <hr>
 <div>
-  <app-array-attributes [instructionSheetsHeader]="recentlyDownloadedInstructionSheetsHeader"
-                        [instructionSheets]="recentlyDownloadedInstructionSheets"
-                        [instructionSheetType]="'RecentlyDownloadedInstructionSheets'"></app-array-attributes>
+  <app-instruction-sheet [instructionSheetsHeader]="recentlyDownloadedInstructionSheetsHeader"
+                         [instructionSheets]="recentlyDownloadedInstructionSheets"
+                         [instructionSheetType]="'RecentlyDownloadedInstructionSheets'"
+                         [operationType]="'delete'"></app-instruction-sheet>
 </div>

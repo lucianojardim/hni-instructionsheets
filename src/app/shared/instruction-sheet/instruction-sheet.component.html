@@ -1,8 +1,14 @@
-<p class="list-group-item-heading">{{instructionSheetsHeader}}</p>
+<p class="list-group-item-heading">{{instructionSheetsHeader}} ({{instructionSheets.length}} {{itemsLabel}}):</p>
 <ul class="list-group-item-heading" *ngFor="let instructionSheet of instructionSheets; let i = index">
-  <li class="list-unstyled"><a (click)="addRecentlyDownloadedInstructionSheet(instructionSheet, i)"
-                               href={{instructionSheet.url}} target="_blank">{{instructionSheet.name}}</a>
+  <li *ngIf="operationType==='save'" class="list-unstyled"><a
+      (click)="addRecentlyDownloadedInstructionSheet(instructionSheet)"
+      href={{instructionSheet.url}} target="_blank">{{instructionSheet.name}}</a>
     <button class="btn btn-xs btn-info pull-right" (click)="addSavedInstructionSheet(instructionSheet, i)">Save
+    </button>
+  </li>
+  <li *ngIf="operationType==='delete' && showInstructionSheets[i]" class="list-unstyled"><a
+      href={{instructionSheet.url}} target="_blank">{{instructionSheet.name}}</a>
+    <button class="btn btn-xs btn-danger pull-right" (click)="deleteInstructionSheet(instructionSheet, i)">Delete
     </button>
   </li>
   <li *ngIf="showAddSavedInstructionSheetMsg[i]" class="list-group-item alert-info"><p>Saved successfully.</p></li>

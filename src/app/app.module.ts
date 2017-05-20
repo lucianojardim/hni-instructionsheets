@@ -17,15 +17,14 @@ import {AuthGuardService} from './auth-guard.service';
 import { AppComponent } from './app.component';
 import {HeaderComponent} from './shared/header/header.component';
 import {BrandComponent} from './brand/brand.component';
-import {OptionsComponent} from './shared/options/options.component';
+import {OptionsComponent} from './options/options.component';
 import {SerialNumberReaderComponent} from './serial-number/serial-number-reader/serial-number-reader.component';
-import {UserComponent} from './shared/user/user.component';
+import {LoginComponent} from './login/login.component';
 import {UserAttributesComponent} from './user-attributes/user-attributes.component';
 import {SerialNumberManualComponent} from './serial-number/serial-number-manual/serial-number-manual.component';
 import {BasemodelComponent} from './basemodel/basemodel.component';
 import { InstructionSheetComponent } from './shared/instruction-sheet/instruction-sheet.component';
 import {SelectedSheetsComponent} from './shared/selected-sheets/selected-sheets.component';
-import {ArrayAttributesComponent} from './user-attributes/array-attributes/array-attributes.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +33,12 @@ import {ArrayAttributesComponent} from './user-attributes/array-attributes/array
     BrandComponent,
     OptionsComponent,
     SerialNumberReaderComponent,
-    UserComponent,
+    LoginComponent,
     UserAttributesComponent,
     SerialNumberManualComponent,
     BasemodelComponent,
     InstructionSheetComponent,
-    SelectedSheetsComponent,
-    ArrayAttributesComponent
+    SelectedSheetsComponent
   ],
   imports: [
     BrowserModule,

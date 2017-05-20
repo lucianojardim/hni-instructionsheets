@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
-import {UserService} from './user.service';
+import {UserService} from '../shared/user/user.service';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class UserComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   constructor(private _userService: UserService, private _router: Router) {
   }

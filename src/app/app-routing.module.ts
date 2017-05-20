@@ -4,11 +4,11 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {OptionsComponent} from './shared/options/options.component';
+import {OptionsComponent} from './options/options.component';
 import {BrandComponent} from './brand/brand.component';
 import {SerialNumberManualComponent} from './serial-number/serial-number-manual/serial-number-manual.component';
 import {SerialNumberReaderComponent} from './serial-number/serial-number-reader/serial-number-reader.component';
-import {UserComponent} from './shared/user/user.component';
+import {LoginComponent} from './login/login.component';
 import {UserAttributesComponent} from './user-attributes/user-attributes.component';
 import {BasemodelComponent} from './basemodel/basemodel.component';
 import {SelectedSheetsComponent} from './shared/selected-sheets/selected-sheets.component';
@@ -68,13 +68,13 @@ const appRoutes: Routes = [
     path: '', redirectTo: '/', pathMatch: 'full'
   },
   {
-    path: '', component: UserComponent, pathMatch: 'full'
+    path: '', component: LoginComponent, pathMatch: 'full'
   },
   {
-    path: 'login', component: UserComponent
+    path: 'login', component: LoginComponent
   },
   {
-    path: '**', component: UserComponent
+    path: '**', component: LoginComponent
   }
 ];
 

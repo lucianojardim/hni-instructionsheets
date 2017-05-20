@@ -51,7 +51,7 @@ export class SelectedSheetsComponent implements OnInit, OnDestroy {
   }
 
   getInstructionSheetsOfSelectedBasemodel() {
-    this.instructionSheetsHeader = 'Instruction sheets for this base model:';
+    this.instructionSheetsHeader = 'Instruction sheets';
     this.selectedBasemodel = this._basemodelService.getSelectedBasemodel();
     this.getInstructionSheetsbyBasemodel(this.selectedBasemodel);
 
@@ -65,7 +65,7 @@ export class SelectedSheetsComponent implements OnInit, OnDestroy {
   }
 
   getInstructionSheetsOfSelectedSerialNumber() {
-    this.instructionSheetsHeader = 'Instruction sheets for this serial number:';
+    this.instructionSheetsHeader = 'Instruction sheets';
     this.selectedSerialNumber = this._serialNumberService.getSelectedSerialNumber();
     this.getInstructionSheetsBySerialNumber(this.selectedSerialNumber);
 
@@ -79,7 +79,7 @@ export class SelectedSheetsComponent implements OnInit, OnDestroy {
   }
 
   getInstructionSheetsOfSelectedSeries() {
-    this.instructionSheetsHeader = 'Instruction sheets for this base model:';
+    this.instructionSheetsHeader = 'Instruction sheets';
     this.selectedSeries = this._seriesService.getSelectedSeries();
     this.getInstructionSheetsBySeries(this.selectedSeries);
 
