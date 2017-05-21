@@ -5,7 +5,9 @@
 <p class="text-info">Enter a serial number:</p>
 <input class="form-control" required type="text" name="inputSerialNumber" pattern="^[0-9]+$" ngModel
        #inputSerialNumber="ngModel">
-<div class="help-block" *ngIf="!inputSerialNumber.valid && inputSerialNumber.touched">Please enter numbers only!</div>
+<div class="help-block bg-danger" *ngIf="!inputSerialNumber.valid && inputSerialNumber.touched">Please enter numbers
+  only!
+</div>
 <button (click)="getSerialNumber(inputSerialNumber.value)" class="btn btn-default"
         [disabled]="!inputSerialNumber.valid">Get
   instruction sheets

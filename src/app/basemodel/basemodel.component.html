@@ -4,7 +4,8 @@
 <p class="text-info">Enter a base model:</p>
 <input class="form-control" required type="text" name="inputBasemodel" pattern="^[0-z]+$" ngModel
        #inputBasemodel="ngModel">
-<div class="help-block" *ngIf="!inputBasemodel.valid && inputBasemodel.touched">Please enter a combination of numbers
+<div class="help-block bg-danger" *ngIf="!inputBasemodel.valid && inputBasemodel.touched">Please enter a combination of
+  numbers
   and letters!
 </div>
 <button (click)="getBasemodel(inputBasemodel.value)" class="btn btn-default" [disabled]="!inputBasemodel.valid">Get
