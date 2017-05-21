@@ -13,9 +13,10 @@
         <li class="dropdown open"> <!-- returned open -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
              aria-expanded="false">Brands <span class="caret"></span></a>
-          <ul class="dropdown-menu" routerLinkActive="active" *ngFor="let brand of brands">
-            <li><a (click)="onSelectedBrand(brand.name)" routerLinkActive="active"
-                   [routerLink]="['/brand',brand.name]">{{brand.name}}</a></li>
+          <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
+            <li routerLinkActive="active" *ngFor="let brand of brands">
+              <a (click)="onSelectedBrand(brand.name)" [routerLink]="['/brand',brand.name]">{{brand.name}}</a>
+            </li>
           </ul>
         </li>
       </ul>
