@@ -11,7 +11,7 @@ import {SerialNumberReaderComponent} from './serial-number/serial-number-reader/
 import {LoginComponent} from './login/login.component';
 import {UserAttributesComponent} from './user-attributes/user-attributes.component';
 import {BasemodelComponent} from './basemodel/basemodel.component';
-import {SelectedSheetsComponent} from './shared/selected-sheets/selected-sheets.component';
+import {SelectedComponent} from './shared/selected/selected.component';
 
 import {AuthGuardService} from './auth-guard.service';
 
@@ -22,35 +22,35 @@ const appRoutes: Routes = [
   {
     path: 'serialNumberManual', canActivate: [AuthGuardService], component: SerialNumberManualComponent, children: [
     {
-      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedSheetsComponent
+      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedComponent
     },
   ]
   },
   {
     path: 'serialNumberReader', canActivate: [AuthGuardService], component: SerialNumberReaderComponent, children: [
     {
-      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedSheetsComponent
+      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedComponent
     },
   ]
   },
   {
     path: 'serialNumberNotFound', canActivate: [AuthGuardService], component: SerialNumberManualComponent, children: [
     {
-      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedSheetsComponent
+      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedComponent
     },
   ]
   },
   {
     path: 'basemodel', canActivate: [AuthGuardService], component: BasemodelComponent, children: [
     {
-      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedSheetsComponent
+      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedComponent
     },
   ]
   },
   {
     path: 'basemodelNotFound', canActivate: [AuthGuardService], component: BasemodelComponent, children: [
     {
-      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedSheetsComponent
+      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedComponent
     },
   ]
   },
@@ -60,7 +60,7 @@ const appRoutes: Routes = [
   {
     path: 'brand/:brandName', canActivate: [AuthGuardService], component: BrandComponent, children: [
     {
-      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedSheetsComponent
+      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedComponent
     },
   ]
   },

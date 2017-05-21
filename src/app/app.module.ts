@@ -11,6 +11,7 @@ import {InstructionSheetService} from './shared/instruction-sheet/instruction-sh
 import {SerialNumberService} from './serial-number/serial-number.service';
 import {UserService} from './shared/user/user.service';
 import {BasemodelService} from './basemodel/basemodel.service';
+import {SelectedService} from './shared/selected/selected.service';
 
 import {AuthGuardService} from './auth-guard.service';
 
@@ -24,7 +25,7 @@ import {UserAttributesComponent} from './user-attributes/user-attributes.compone
 import {SerialNumberManualComponent} from './serial-number/serial-number-manual/serial-number-manual.component';
 import {BasemodelComponent} from './basemodel/basemodel.component';
 import { InstructionSheetComponent } from './shared/instruction-sheet/instruction-sheet.component';
-import {SelectedSheetsComponent} from './shared/selected-sheets/selected-sheets.component';
+import {SelectedComponent} from './shared/selected/selected.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import {SelectedSheetsComponent} from './shared/selected-sheets/selected-sheets.
     SerialNumberManualComponent,
     BasemodelComponent,
     InstructionSheetComponent,
-    SelectedSheetsComponent
+    SelectedComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +54,8 @@ import {SelectedSheetsComponent} from './shared/selected-sheets/selected-sheets.
     SerialNumberService,
     UserService,
     BasemodelService,
-    AuthGuardService
+    AuthGuardService,
+    SelectedService
   ],
   bootstrap: [AppComponent]
 })
