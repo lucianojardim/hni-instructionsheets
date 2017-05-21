@@ -1,15 +1,17 @@
 <p class="list-group-item-heading">{{instructionSheetsHeader}} ({{instructionSheets.length}} {{itemsLabel}}):</p>
-<ul class="list-group-item-heading" *ngFor="let instructionSheet of instructionSheets; let i = index">
-  <li *ngIf="operationType==='save'" class="list-unstyled"><a
-      (click)="addRecentlyDownloadedInstructionSheet(instructionSheet)"
-      href={{instructionSheet.url}} target="_blank">{{instructionSheet.name}}</a>
-    <button class="btn btn-xs btn-info pull-right" (click)="addSavedInstructionSheet(instructionSheet, i)">Save
-    </button>
+<ul class="list-group-item-heading">
+  <li *ngFor="let instructionSheet of instructionSheets; let i = index" class="list-unstyled">
+    <div *ngIf="operationType==='save'" class="row">
+      <a (click)="addRecentlyDownloadedInstructionSheet(instructionSheet)" href={{instructionSheet.url}}
+         target="_blank">{{instructionSheet.name}}</a>
+      <button class="btn btn-xs btn-info pull-right" (click)="addSavedInstructionSheet(instructionSheet, i)">Save
+      </button>
+      <p *ngIf="showAddSavedInstructionSheetMsg[i]" class="list-group-item alert-info">Saved successfully.</p>
+    </div>
+    <div *ngIf="operationType==='delete' && showInstructionSheets[i]" class="row">
+      <a href={{instructionSheet.url}} target="_blank">{{instructionSheet.name}}</a>
+      <button class="btn btn-xs btn-danger pull-right" (click)="deleteInstructionSheet(instructionSheet, i)">Delete
+      </button>
+    </div>
   </li>
-  <li *ngIf="operationType==='delete' && showInstructionSheets[i]" class="list-unstyled"><a
-      href={{instructionSheet.url}} target="_blank">{{instructionSheet.name}}</a>
-    <button class="btn btn-xs btn-danger pull-right" (click)="deleteInstructionSheet(instructionSheet, i)">Delete
-    </button>
-  </li>
-  <li *ngIf="showAddSavedInstructionSheetMsg[i]" class="list-group-item alert-info"><p>Saved successfully.</p></li>
 </ul>
