@@ -1,15 +1,14 @@
 <app-header></app-header>
 <p *ngIf="IsRouteBasemodelNotFound() && IsToDisplayErrorMessage" class="text-danger bg-danger">The base model was not
-  found. Please, enter a base model.</p>
-<p class="text-info">Enter a base model:</p>
+  found. Please, enter a different base model.</p>
+<p class="text-info">Enter a Base Model:</p>
 <input class="form-control" required type="text" name="inputBasemodel" pattern="^[0-z]+$" ngModel
        #inputBasemodel="ngModel">
 <div class="help-block bg-danger" *ngIf="!inputBasemodel.valid && inputBasemodel.touched">Please enter a combination of
-  numbers
-  and letters!
+  numbers and letters!
 </div>
 <button (click)="getBasemodel(inputBasemodel.value)" class="btn btn-default" [disabled]="!inputBasemodel.valid">Get
-  instruction sheets
+  Instruction Sheets
 </button>
 <hr>
 <router-outlet></router-outlet>

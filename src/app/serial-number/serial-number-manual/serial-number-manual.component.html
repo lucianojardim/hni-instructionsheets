@@ -1,16 +1,16 @@
 <app-header></app-header>
 <p *ngIf="IsRouteSerialNumberNotFound() && IsToDisplayErrorMessage" class="text-danger bg-danger">The serial number was
-  not
-  found. Please, enter a serial number.</p>
-<p class="text-info">Enter a serial number:</p>
-<input class="form-control" required type="text" name="inputSerialNumber" pattern="^[0-9]+$" ngModel
+  not found. Please, enter a different serial number.</p>
+<p class="text-info">Enter a Serial Number:</p>
+<input class="form-control" required type="text" name="inputSerialNumber" pattern="^[0-z]+$" ngModel
        #inputSerialNumber="ngModel">
-<div class="help-block bg-danger" *ngIf="!inputSerialNumber.valid && inputSerialNumber.touched">Please enter numbers
-  only!
+<div class="help-block bg-danger" *ngIf="!inputSerialNumber.valid && inputSerialNumber.touched">Please enter a
+  combination of
+  numbers and letters!
 </div>
 <button (click)="getSerialNumber(inputSerialNumber.value)" class="btn btn-default"
         [disabled]="!inputSerialNumber.valid">Get
-  instruction sheets
+  Instruction Sheets
 </button>
 <hr>
 <router-outlet></router-outlet>

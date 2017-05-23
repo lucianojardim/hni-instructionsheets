@@ -17,7 +17,7 @@ export class SerialNumberService {
   }
 
   getSerialNumber(serialNumberValue: String): SerialNumber {
-    return this._serialNumbers.find((serialNumber: SerialNumber) => serialNumber.serialNumberValue === serialNumberValue);
+    return this._serialNumbers.find((serialNumber: SerialNumber) => serialNumber.serialNumberValue.toLowerCase() === serialNumberValue.toLowerCase());
   }
 
   getId(serialNumberValue: String): number {
