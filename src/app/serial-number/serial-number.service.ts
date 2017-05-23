@@ -8,16 +8,9 @@ export class SerialNumberService {
   selectedSerialNumberChanged = new Subject<SerialNumber>();
   private _selectedSerialNumber: SerialNumber;
   private _serialNumbers: SerialNumber[] = [
-    {id: 1, serialNumberValue: '1'},
-    {id: 2, serialNumberValue: '2'},
-    {id: 3, serialNumberValue: '3'},
-    {id: 4, serialNumberValue: '4'},
-    {id: 5, serialNumberValue: '5'},
-    {id: 6, serialNumberValue: '6'},
-    {id: 7, serialNumberValue: '7'},
-    {id: 8, serialNumberValue: '8'},
-    {id: 9, serialNumberValue: '9'},
-    {id: 10, serialNumberValue: '078742074986'} // added to test the serial-number reader
+    {id: 1, serialNumberValue: '078742074986'},
+    {id: 2, serialNumberValue: 'CLLNLL'},
+    {id: 3, serialNumberValue: 'MFUZW6'},
   ];
 
   constructor() {

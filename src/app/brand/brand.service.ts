@@ -9,7 +9,8 @@ export class BrandService {
   selectedBrandChanged = new Subject<Brand>();
   private _brands: Brand[] = [
     {id: 1, name: 'Allsteel'},
-    {id: 2, name: 'HON'}
+    {id: 2, name: 'HON'},
+    {id: 3, name: 'Maxon'},
   ];
   private _selectedBrand: Brand;
 
