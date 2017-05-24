@@ -3,7 +3,7 @@
   found. Please, enter a different base model.</p>
 <p class="text-info">Enter a Base Model:</p>
 <input class="form-control" required type="text" name="inputBasemodel" pattern="^[0-z]+$" ngModel
-       #inputBasemodel="ngModel" (keyup.enter)="getBasemodel(inputBasemodel.value)">
+       #inputBasemodel="ngModel" (keyup.enter)="getBasemodel(inputBasemodel.value)" title="inputBasemodel">
 <div class="help-block bg-danger" *ngIf="!inputBasemodel.valid && inputBasemodel.touched">Please enter a combination of
   numbers and letters!
 </div>

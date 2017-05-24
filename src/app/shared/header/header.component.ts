@@ -40,12 +40,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   setHeader() {
     switch (this.selectedBrand.name.toLowerCase()) {
       case  'allsteel':
-        this.srcHeader = '/assets/allsteel/images/logo.png';
+        this.srcHeader = '/assets/allsteel/images/logo3.png';
         this.altHeader = 'Allsteel';
         break;
       case'hon':
         this.srcHeader = '/assets/hon/images/logo.svg';
         this.altHeader = 'HON Office Furniture';
+        break;
+      case'maxon':
+        this.srcHeader = '/assets/maxon/images/logo.gif';
+        this.altHeader = 'Maxon';
         break;
       default:
         this.srcHeader = '/assets/hni/images/logo.svg';

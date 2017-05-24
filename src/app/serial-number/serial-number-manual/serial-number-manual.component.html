@@ -1,17 +1,20 @@
 <app-header></app-header>
-<p *ngIf="IsRouteSerialNumberNotFound() && IsToDisplayErrorMessage" class="text-danger bg-danger">The serial number was
-  not found. Please, enter a different serial number.</p>
-<p class="text-info">Enter a Serial Number:</p>
-<input class="form-control" required type="text" name="inputSerialNumber"
-       (keyup.enter)="getSerialNumber(inputSerialNumber.value)" pattern="^[0-z]+$" ngModel
-       #inputSerialNumber="ngModel">
-<div class="help-block bg-danger" *ngIf="!inputSerialNumber.valid && inputSerialNumber.touched">Please enter a
-  combination of
-  numbers and letters!
+<div class="container-fluid">
+  <p *ngIf="IsRouteSerialNumberNotFound() && IsToDisplayErrorMessage" class="text-danger bg-danger">The serial number
+    was
+    not found. Please, enter a different serial number.</p>
+  <p class="text-info">Enter a Serial Number:</p>
+  <input class="form-control" required type="text" name="inputSerialNumber"
+         (keyup.enter)="getSerialNumber(inputSerialNumber.value)" pattern="^[0-z]+$" ngModel
+         #inputSerialNumber="ngModel" title="inputSerialNumber">
+  <div class="help-block bg-danger" *ngIf="!inputSerialNumber.valid && inputSerialNumber.touched">Please enter a
+    combination of
+    numbers and letters!
+  </div>
+  <button (click)="getSerialNumber(inputSerialNumber.value)" class="btn btn-default"
+          [disabled]="!inputSerialNumber.valid">Get
+    Instruction Sheets
+  </button>
+  <hr>
+  <router-outlet></router-outlet>
 </div>
-<button (click)="getSerialNumber(inputSerialNumber.value)" class="btn btn-default"
-        [disabled]="!inputSerialNumber.valid">Get
-  Instruction Sheets
-</button>
-<hr>
-<router-outlet></router-outlet>

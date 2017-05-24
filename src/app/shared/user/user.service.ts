@@ -13,7 +13,6 @@ export class UserService {
   private _userFromDatabase: User;
   private _maxLengthSavedInstructionSheetsIds = 7;
   private _maxLengthRecentlyDownloadedInstructionSheetIds = 7;
-  private _users: User[] = [];
 
   constructor(private http: Http) {
   }
@@ -57,16 +56,6 @@ export class UserService {
           return Observable.throw({msg: 'Failure reading user attributes', error: error});
         }
       );
-  }
-
-  private _seedUser() {
-    this._addUser(
-      {
-        emailAddress: 'jardiml@hnicorp.com',
-        savedInstructionSheetsIds: [1, 2, 3, 4, 5, 6, 7],
-        recentlyDownloadedInstructionSheetIds: [8, 9, 10, 11, 12, 13, 14]
-      }
-    );
   }
 
   private _addUser(user: User) {

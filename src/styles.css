@@ -1,9 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-html {
-    position: relative;
-    min-height: 100%;
-}
-
 .page-header img {
     max-width: 132px;
     left: 30px;
@@ -18,11 +13,6 @@ html {
 
         width: 25.76157%;
     }
-}
-
-body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
 }
 
 .btn-circle {
@@ -41,11 +31,11 @@ body {
 }
 
 .glyphicon-home {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .hni-list-group-item {
-    margin-left: -25px;
+    margin-left: -30px;
     padding: 5px 5px;
 }
 
@@ -54,7 +44,10 @@ body {
 }
 
 .footer {
+    /*bottom: 0;*/
+    padding-top: 10px;
     width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
     background-color: #f5f5f5;
-    padding: 3%;
 }

@@ -11,7 +11,7 @@ import {UserService} from '../user/user.service';
 export class InstructionSheetComponent implements OnInit {
   @Input() instructionSheetsHeader: string;
   @Input() instructionSheets: InstructionSheet[] = [];
-  @Input() instructionSheetType: string;
+  @Input() instructionSheetType = 'InstructionSheets';
   @Input() operationType = 'save';
   showAddSavedInstructionSheetMsg: boolean[];
   showInstructionSheets: boolean[];

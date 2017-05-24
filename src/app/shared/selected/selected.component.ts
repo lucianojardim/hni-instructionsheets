@@ -14,7 +14,7 @@ export class SelectedComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
   selected: any;
-  instructionSheetsHeader = 'Instruction sheets';
+  instructionSheetsHeader = 'Instruction Sheets';
   instructionSheets: InstructionSheet[] = [];
 
   constructor(private _selectedService: SelectedService,

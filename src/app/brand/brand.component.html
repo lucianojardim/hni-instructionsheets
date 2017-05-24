@@ -1,17 +1,18 @@
 <app-header></app-header>
-<div class="row">
-  <div class="col-xs-11">
-    <form class="form-group" #f="ngForm" novalidate>
-      <label>Series</label>
-      <select title="Select a series" class="selectpicker form-control" (change)="onSelectedSeries()"
-              name="selectForSeries"
-              [(ngModel)]="selectedSeries">
-        <option>Select a Series</option>
-        <option *ngFor="let series of serieses" [ngValue]="series">{{series.name}}</option>
-      </select>
-    </form>
-    <hr>
-    <router-outlet></router-outlet>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-md-12">
+      <form class="form-group" #f="ngForm" novalidate>
+        <label>Series</label>
+        <select title="Select a series" class="selectpicker form-control" (change)="onSelectedSeries()"
+                name="selectForSeries"
+                [(ngModel)]="selectedSeries">
+          <option>Select a Series</option>
+          <option *ngFor="let series of serieses" [ngValue]="series">{{series.name}}</option>
+        </select>
+      </form>
+      <hr>
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
-
