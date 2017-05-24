@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   setHeader() {
     switch (this.selectedBrand.name.toLowerCase()) {
       case  'allsteel':
-        this.srcHeader = '/assets/allsteel/images/logo3.png';
+        this.srcHeader = '/assets/allsteel/images/logo.png';
         this.altHeader = 'Allsteel';
         break;
       case'hon':

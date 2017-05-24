@@ -26,7 +26,7 @@ export class SelectedComponent implements OnInit, OnDestroy {
   }
 
   getInstructionSheetsOfSelected() {
-    this.selected = this._selectedService.getSelected(this._activatedRoute);
+    this.selected = this._selectedService.setSelected(this._activatedRoute);
     this.instructionSheets = this._selectedService.getInstructionSheets(this.selected);
     this.subscription = this._selectedService.selectedChanged
       .subscribe(

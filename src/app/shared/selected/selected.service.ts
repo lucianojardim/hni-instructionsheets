@@ -26,7 +26,7 @@ export class SelectedService {
               private _seriesService: SeriesService) {
   }
 
-  getSelected(activatedRoute: ActivatedRoute): any {
+  setSelected(activatedRoute: ActivatedRoute): any {
     if (this._subscription) {
       this._subscription.unsubscribe();
     }

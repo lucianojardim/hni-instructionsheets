@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
 
 import {InstructionSheet} from './instruction-sheet.model';
 import {UserService} from '../user/user.service';
@@ -8,7 +8,7 @@ import {UserService} from '../user/user.service';
   templateUrl: './instruction-sheet.component.html',
   styleUrls: ['./instruction-sheet.component.css']
 })
-export class InstructionSheetComponent implements OnInit {
+export class InstructionSheetComponent implements OnInit, OnChanges {
   @Input() instructionSheetsHeader: string;
   @Input() instructionSheets: InstructionSheet[] = [];
   @Input() instructionSheetType = 'InstructionSheets';
@@ -20,6 +20,9 @@ export class InstructionSheetComponent implements OnInit {
   constructor(private _userService: UserService) { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
     this.prepareToDisplayInstructionSheet();
   }
 
