@@ -3,6 +3,8 @@
   <p *ngIf="IsRouteSerialNumberNotFound() && IsToDisplayErrorMessage" class="text-danger bg-danger">The serial number
     was
     not found. Please, enter a different serial number.</p>
+  <p *ngIf="IsRouteSerialNumberNotDecoded() && IsToDisplayErrorMessage" class="text-danger bg-danger">The serial number
+    was not understood by the barcode reader. Please, enter a serial number.</p>
   <p class="text-info">Enter a Serial Number:</p>
   <input class="form-control" required type="text" name="inputSerialNumber"
          (keyup.enter)="getSerialNumber(inputSerialNumber.value)" pattern="^[0-z]+$" ngModel

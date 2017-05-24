@@ -31,7 +31,7 @@ export class BasemodelComponent implements OnInit {
     } else {
       this.IsToDisplayErrorMessage = false;
       this._basemodelService.setSelectedBasemodel(this.selectedBasemodel);
-      this._router.navigate([this.selectedBasemodel.value], {relativeTo: this._activatedRoute})
+      this._router.navigate([encodeURIComponent(this.selectedBasemodel.value)], {relativeTo: this._activatedRoute})
         .then()
         .catch();
     }

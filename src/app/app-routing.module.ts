@@ -41,6 +41,13 @@ const appRoutes: Routes = [
   ]
   },
   {
+    path: 'serialNumberNotDecoded', canActivate: [AuthGuardService], component: SerialNumberManualComponent, children: [
+    {
+      path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedComponent
+    },
+  ]
+  },
+  {
     path: 'basemodel', canActivate: [AuthGuardService], component: BasemodelComponent, children: [
     {
       path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedComponent

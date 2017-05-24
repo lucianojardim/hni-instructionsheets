@@ -31,7 +31,7 @@ export class SerialNumberManualComponent implements OnInit {
       this.IsToDisplayErrorMessage = false;
       this.selectedSerialNumber = this._serialNumberService.getSerialNumber(serialNumberValue);
       this._serialNumberService.setSelectedSerialNumber(this.selectedSerialNumber);
-      this._router.navigate([this.selectedSerialNumber.serialNumberValue], {relativeTo: this._activatedRoute})
+      this._router.navigate([encodeURIComponent(this.selectedSerialNumber.serialNumberValue)], {relativeTo: this._activatedRoute})
         .then()
         .catch();
     }
@@ -39,5 +39,9 @@ export class SerialNumberManualComponent implements OnInit {
 
   IsRouteSerialNumberNotFound(): boolean {
     return this._activatedRoute.toString().indexOf('NotFound') > 0;
+  }
+
+  IsRouteSerialNumberNotDecoded(): boolean {
+    return this._activatedRoute.toString().indexOf('NotDecoded') > 0;
   }
 }
