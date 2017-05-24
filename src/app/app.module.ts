@@ -26,6 +26,7 @@ import {SerialNumberManualComponent} from './serial-number/serial-number-manual/
 import {BasemodelComponent} from './basemodel/basemodel.component';
 import { InstructionSheetComponent } from './shared/instruction-sheet/instruction-sheet.component';
 import {SelectedComponent} from './shared/selected/selected.component';
+import {FooterComponent} from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {SelectedComponent} from './shared/selected/selected.component';
     SerialNumberManualComponent,
     BasemodelComponent,
     InstructionSheetComponent,
-    SelectedComponent
+    SelectedComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

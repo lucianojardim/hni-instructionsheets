@@ -40,6 +40,10 @@ body {
     font-size: 10px;
 }
 
+.glyphicon-home {
+    font-size: 20px;
+}
+
 .hni-list-group-item {
     margin-left: -25px;
     padding: 5px 5px;
@@ -50,11 +54,7 @@ body {
 }
 
 .footer {
-    /*position: absolute;*/
-    bottom: 0;
     width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 60px;
     background-color: #f5f5f5;
     padding: 3%;
 }
