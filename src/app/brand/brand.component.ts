@@ -41,6 +41,10 @@ export class BrandComponent implements OnInit, OnDestroy {
       this._router.navigate([encodeURIComponent(this.selectedSeries.name)], {relativeTo: this._activatedRoute})
         .then()
         .catch();
+    } else {
+      this._router.navigate(['.'], {relativeTo: this._activatedRoute})
+        .then()
+        .catch();
     }
   }
 
