@@ -17,6 +17,7 @@ export class BrandComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   selectedSeries: Series;
   serieses: Series[] = [];
+  selectFirstOption = 'Select a Series';
 
   constructor(private _router: Router,
               private _activatedRoute: ActivatedRoute,
@@ -30,15 +31,17 @@ export class BrandComponent implements OnInit, OnDestroy {
   }
 
   onSelectedSeries(): void {
-    this._seriesService.setSelectedSeries(
-      this._seriesService.getSeriesByNameAndBrand(
-        this.selectedSeries.name,
-        this._brandService.getSelectedBrand()
-      )
-    );
-    this._router.navigate([encodeURIComponent(this.selectedSeries.name)], {relativeTo: this._activatedRoute})
-      .then()
-      .catch();
+    if (typeof this.selectedSeries === 'object') {
+      this._seriesService.setSelectedSeries(
+        this._seriesService.getSeriesByNameAndBrand(
+          this.selectedSeries.name,
+          this._brandService.getSelectedBrand()
+        )
+      );
+      this._router.navigate([encodeURIComponent(this.selectedSeries.name)], {relativeTo: this._activatedRoute})
+        .then()
+        .catch();
+    }
   }
 
   getSelectedBrand() {

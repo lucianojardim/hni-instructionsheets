@@ -7,7 +7,7 @@
         <select title="Select a series" class="selectpicker form-control" (change)="onSelectedSeries()"
                 name="selectForSeries"
                 [(ngModel)]="selectedSeries">
-          <option>Select a Series</option>
+          <option>{{selectFirstOption}}</option>
           <option *ngFor="let series of serieses" [ngValue]="series">{{series.name}}</option>
         </select>
       </form>
