@@ -2,7 +2,8 @@
 <p *ngIf="IsRouteSerialNumberNotFound() && IsToDisplayErrorMessage" class="text-danger bg-danger">The serial number was
   not found. Please, enter a different serial number.</p>
 <p class="text-info">Enter a Serial Number:</p>
-<input class="form-control" required type="text" name="inputSerialNumber" pattern="^[0-z]+$" ngModel
+<input class="form-control" required type="text" name="inputSerialNumber"
+       (keyup.enter)="getSerialNumber(inputSerialNumber.value)" pattern="^[0-z]+$" ngModel
        #inputSerialNumber="ngModel">
 <div class="help-block bg-danger" *ngIf="!inputSerialNumber.valid && inputSerialNumber.touched">Please enter a
   combination of
