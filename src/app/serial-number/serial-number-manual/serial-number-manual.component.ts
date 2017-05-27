@@ -24,7 +24,7 @@ export class SerialNumberManualComponent implements OnInit {
   getSerialNumber(serialNumberValue: string): void {
     if (typeof this._serialNumberService.getSerialNumber(serialNumberValue) === 'undefined') {
       this.IsToDisplayErrorMessage = true;
-      this._router.navigate(['/serialNumberNotFound'])
+      this._router.navigate(['/serialNumber/NotFound'])
         .then()
         .catch();
     } else {

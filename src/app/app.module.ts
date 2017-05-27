@@ -1,9 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 
 import {AppRoutingModule} from './app-routing.module';
+
+import {SharedModule} from './shared/shared.module';
+import {SerialNumberModule} from './serial-number/serial-number.module';
+import {BasemodelModule} from './basemodel/basemodel.module';
+import {BrandModule} from './brand/brand.module';
+import {OptionsModule} from './options/options.module';
+import {UserAttributesModule} from './user-attributes/user-attributes.module';
 
 import {BrandService} from './brand/brand.service';
 import {SeriesService} from './brand/series/series.service';
@@ -15,39 +22,25 @@ import {SelectedService} from './shared/selected/selected.service';
 
 import {AuthGuardService} from './auth-guard.service';
 
-import { AppComponent } from './app.component';
-import {HeaderComponent} from './shared/header/header.component';
-import {BrandComponent} from './brand/brand.component';
-import {OptionsComponent} from './options/options.component';
-import {SerialNumberReaderComponent} from './serial-number/serial-number-reader/serial-number-reader.component';
+import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
-import {UserAttributesComponent} from './user-attributes/user-attributes.component';
-import {SerialNumberManualComponent} from './serial-number/serial-number-manual/serial-number-manual.component';
-import {BasemodelComponent} from './basemodel/basemodel.component';
-import { InstructionSheetComponent } from './shared/instruction-sheet/instruction-sheet.component';
-import {SelectedComponent} from './shared/selected/selected.component';
-import {FooterComponent} from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    BrandComponent,
-    OptionsComponent,
-    SerialNumberReaderComponent,
-    LoginComponent,
-    UserAttributesComponent,
-    SerialNumberManualComponent,
-    BasemodelComponent,
-    InstructionSheetComponent,
-    SelectedComponent,
-    FooterComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    SerialNumberModule,
+    BasemodelModule,
+    BrandModule,
+    OptionsModule,
+    UserAttributesModule
   ],
   providers: [
     BrandService,
