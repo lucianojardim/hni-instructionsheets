@@ -7,13 +7,15 @@ import {FooterComponent} from './footer/footer.component';
 import {HeaderComponent} from './header/header.component';
 import {InstructionSheetComponent} from './instruction-sheet/instruction-sheet.component';
 import {SelectedComponent} from './selected/selected.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     FooterComponent,
     HeaderComponent,
     InstructionSheetComponent,
-    SelectedComponent
+    SelectedComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import {SelectedComponent} from './selected/selected.component';
     FooterComponent,
     HeaderComponent,
     InstructionSheetComponent,
-    SelectedComponent
+    SelectedComponent,
+    PageNotFoundComponent
   ]
 })
 export class SharedModule {

@@ -11,6 +11,7 @@ import {BasemodelModule} from './basemodel/basemodel.module';
 import {BrandModule} from './brand/brand.module';
 import {OptionsModule} from './options/options.module';
 import {UserAttributesModule} from './user-attributes/user-attributes.module';
+import {LoginModule} from './login/login.module';
 
 import {BrandService} from './brand/brand.service';
 import {SeriesService} from './brand/series/series.service';
@@ -23,12 +24,10 @@ import {SelectedService} from './shared/selected/selected.service';
 import {AuthGuardService} from './auth-guard.service';
 
 import {AppComponent} from './app.component';
-import {LoginComponent} from './login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +39,8 @@ import {LoginComponent} from './login/login.component';
     BasemodelModule,
     BrandModule,
     OptionsModule,
-    UserAttributesModule
+    UserAttributesModule,
+    LoginModule
   ],
   providers: [
     BrandService,

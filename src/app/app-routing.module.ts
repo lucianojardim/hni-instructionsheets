@@ -4,20 +4,15 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {LoginComponent} from './login/login.component';
-
-import {AuthGuardService} from './auth-guard.service';
+// import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
-  {
-    path: '', redirectTo: '/', pathMatch: 'full'
-  },
-  {
-    path: '', component: LoginComponent, pathMatch: 'full'
-  },
-  {
-    path: 'login', component: LoginComponent
-  },
+  // {
+  //   path: '', redirectTo: '/login', pathMatch: 'full'
+  // },
+  // {
+  //   path: 'login', component: LoginComponent
+  // },
   // {
   //   path: 'options', loadChildren: './options/options.module#OptionsModule'
   // },
@@ -34,7 +29,7 @@ const appRoutes: Routes = [
   //   path: 'userAttributes', loadChildren: './user-attributes/user-attributes.module#UserAttributesModule'
   // }
   // {
-  //   path: '**', component: LoginComponent
+  //   path: '**', component: PageNotFoundComponent
   // }
 ];
 
