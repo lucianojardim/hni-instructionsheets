@@ -24,10 +24,12 @@ import {SelectedService} from './shared/selected/selected.service';
 import {AuthGuardService} from './auth-guard.service';
 
 import {AppComponent} from './app.component';
+import {FooterComponent} from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
