@@ -22,14 +22,14 @@ export class BasemodelComponent implements OnInit {
   }
 
   getBasemodel(value: string): void {
-    this.selectedBasemodel = this._basemodelService.getBasemodel(value);
-    if (typeof this.selectedBasemodel === 'undefined') {
+    if (typeof this._basemodelService.getBasemodel(value) === 'undefined') {
       this.IsToDisplayErrorMessage = true;
       this._router.navigate(['/basemodel/NotFound'])
         .then()
         .catch();
     } else {
       this.IsToDisplayErrorMessage = false;
+      this.selectedBasemodel = this._basemodelService.getBasemodel(value);
       this._basemodelService.setSelectedBasemodel(this.selectedBasemodel);
       this._router.navigate([encodeURIComponent(this.selectedBasemodel.value)], {relativeTo: this._activatedRoute})
         .then()

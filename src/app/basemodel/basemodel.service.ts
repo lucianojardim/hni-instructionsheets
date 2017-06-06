@@ -11258,7 +11258,6 @@ export class BasemodelService {
   }
 
   getId(value: String): number {
-    value = value.toLowerCase();
     return this.getBasemodel(value).id;
   }
 

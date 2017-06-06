@@ -11,7 +11,7 @@ import {AuthGuardService} from '../auth-guard.service';
 
 const basemodelRoutes: Routes = [
   {
-    path: 'basemodel', canActivate: [AuthGuardService], component: BasemodelComponent, children: [
+    path: 'basemodel/Manual', canActivate: [AuthGuardService], component: BasemodelComponent, children: [
     {
       path: ':selectedValue', canActivate: [AuthGuardService], component: SelectedComponent
     },

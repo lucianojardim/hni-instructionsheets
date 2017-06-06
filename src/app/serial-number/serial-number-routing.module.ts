@@ -7,7 +7,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {SerialNumberManualComponent} from './serial-number-manual/serial-number-manual.component';
 import {SerialNumberReaderComponent} from './serial-number-reader/serial-number-reader.component';
-import {SelectedComponent} from '../shared/selected/selected.component'
+import {SelectedComponent} from '../shared/selected/selected.component';
 
 import {AuthGuardService} from '../auth-guard.service';
 
