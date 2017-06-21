@@ -8,9 +8,8 @@ export class SerialNumberService {
   selectedSerialNumberChanged = new Subject<SerialNumber>();
   private _selectedSerialNumber: SerialNumber;
   private _serialNumbers: SerialNumber[] = [
-    {id: 1, serialNumberValue: '078742074986'},
-    {id: 2, serialNumberValue: 'CLLNLL'},
-    {id: 3, serialNumberValue: 'MFUZW6'},
+    {id: 1, serialNumberValue: 'CLLNLL'},
+    {id: 2, serialNumberValue: 'MFUZW6'},
   ];
 
   constructor() {
