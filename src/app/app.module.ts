@@ -20,6 +20,7 @@ import {SerialNumberService} from './serial-number/serial-number.service';
 import {UserService} from './shared/user/user.service';
 import {BasemodelService} from './basemodel/basemodel.service';
 import {SelectedService} from './shared/selected/selected.service';
+import {DataService} from './shared/data/data.service';
 
 import {AuthGuardService} from './auth-guard.service';
 
@@ -45,12 +46,13 @@ import {FooterComponent} from './shared/footer/footer.component';
     LoginModule
   ],
   providers: [
+    DataService,
     BrandService,
     SeriesService,
-    InstructionSheetService,
     SerialNumberService,
     UserService,
     BasemodelService,
+    InstructionSheetService,
     AuthGuardService,
     SelectedService
   ],

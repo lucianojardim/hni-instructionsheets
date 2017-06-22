@@ -2,17 +2,16 @@ import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 
 import {SerialNumber} from './serial-number.model';
-// TODO: make data changes persistent
+import {DataService} from '../shared/data/data.service';
+
 @Injectable()
 export class SerialNumberService {
   selectedSerialNumberChanged = new Subject<SerialNumber>();
   private _selectedSerialNumber: SerialNumber;
-  private _serialNumbers: SerialNumber[] = [
-    {id: 1, serialNumberValue: 'CLLNLL'},
-    {id: 2, serialNumberValue: 'MFUZW6'},
-  ];
+  private _serialNumbers: SerialNumber[] = [];
 
-  constructor() {
+  constructor(private _dataService: DataService) {
+    this._getInitialData();
   }
 
   getSerialNumber(serialNumberValue: String): SerialNumber {
@@ -34,5 +33,13 @@ export class SerialNumberService {
   setSelectedSerialNumber(serialNumber: SerialNumber) {
     this._selectedSerialNumber = serialNumber;
     this.selectedSerialNumberChanged.next(this._selectedSerialNumber);
+  }
+
+  private _getInitialData() {
+    this._dataService.getSerialNumbers()
+      .subscribe(
+        data => this._serialNumbers = data,
+        err => console.log('Could not read Serial Numbers', err)
+      );
   }
 }

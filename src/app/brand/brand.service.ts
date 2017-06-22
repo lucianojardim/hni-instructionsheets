@@ -1,21 +1,19 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
-// TODO: make data changes persistent
+
 import {Brand} from './brand.model';
+import {DataService} from '../shared/data/data.service';
 
 @Injectable()
 export class BrandService {
 
   selectedBrandChanged = new Subject<Brand>();
-  private _brands: Brand[] = [
-    {id: 1, name: 'Allsteel'},
-    {id: 2, name: 'HON'},
-    {id: 3, name: 'Maxon'},
-  ];
+  private _brands: Brand[] = [];
   private _selectedBrand: Brand;
 
-  constructor() {
+  constructor(private _dataService: DataService) {
     this.seedSelectedBrand();
+    this._getInitialData();
   }
 
   getBrandByName(name: String): Brand {
@@ -47,4 +45,16 @@ export class BrandService {
     this._selectedBrand = {id: 0, name: 'HNI'};
     this.selectedBrandChanged.next(this._selectedBrand);
   }
+
+  private _getInitialData() {
+    this._dataService.getBrands()
+      .subscribe(
+        data => {
+          this._brands = data;
+          console.log('from brand.service _getInitialData');
+        },
+        err => console.log('Could not read Brands', err)
+      );
+  }
+
 }
