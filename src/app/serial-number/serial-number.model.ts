@@ -1,9 +1,9 @@
 export class SerialNumber {
   id: number;
-  serialNumberValue: string;
+  value: string;
 
-  constructor(id: number, serialNumberValue: string) {
+  constructor(id: number, value: string) {
     this.id = id;
-    this.serialNumberValue = serialNumberValue;
+    this.value = value;
   }
 }

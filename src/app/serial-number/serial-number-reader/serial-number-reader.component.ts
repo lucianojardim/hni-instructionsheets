@@ -27,7 +27,7 @@ export class SerialNumberReaderComponent implements OnInit {
   startDecode() {
     if (this.serialNumberFileInput.nativeElement.files && this.serialNumberFileInput.nativeElement.files.length) {
       this.Decode(URL.createObjectURL(this.serialNumberFileInput.nativeElement.files[0]))
-        .then((serialNumberValue: string) => this.getSerialNumber(serialNumberValue))
+        .then((value: string) => this.getSerialNumber(value))
         .catch((e: string) => {
           this._router.navigate(['/serialNumber/NotDecoded'])
               .then()
@@ -85,15 +85,15 @@ export class SerialNumberReaderComponent implements OnInit {
     this.isToDisableSearchButton = false;
   }
 
-  getSerialNumber(serialNumberValue: string): void {
-    if (typeof this._serialNumberService.getSerialNumber(serialNumberValue) === 'undefined') {
+  getSerialNumber(value: string): void {
+    if (typeof this._serialNumberService.getSerialNumber(value) === 'undefined') {
       this._router.navigate(['/serialNumber/NotDecoded'])
         .then()
         .catch();
     } else {
-      this.selectedSerialNumber = this._serialNumberService.getSerialNumber(serialNumberValue);
+      this.selectedSerialNumber = this._serialNumberService.getSerialNumber(value);
       this._serialNumberService.setSelectedSerialNumber(this.selectedSerialNumber);
-      this._router.navigate([encodeURIComponent(this.selectedSerialNumber.serialNumberValue)], {relativeTo: this._activatedRoute})
+      this._router.navigate([encodeURIComponent(this.selectedSerialNumber.value)], {relativeTo: this._activatedRoute})
         .then()
         .catch();
     }

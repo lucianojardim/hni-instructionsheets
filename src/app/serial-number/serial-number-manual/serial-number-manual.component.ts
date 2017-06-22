@@ -21,17 +21,17 @@ export class SerialNumberManualComponent implements OnInit {
   ngOnInit() {
   }
 
-  getSerialNumber(serialNumberValue: string): void {
-    if (typeof this._serialNumberService.getSerialNumber(serialNumberValue) === 'undefined') {
+  getSerialNumber(value: string): void {
+    if (typeof this._serialNumberService.getSerialNumber(value) === 'undefined') {
       this.IsToDisplayErrorMessage = true;
       this._router.navigate(['/serialNumber/NotFound'])
         .then()
         .catch();
     } else {
       this.IsToDisplayErrorMessage = false;
-      this.selectedSerialNumber = this._serialNumberService.getSerialNumber(serialNumberValue);
+      this.selectedSerialNumber = this._serialNumberService.getSerialNumber(value);
       this._serialNumberService.setSelectedSerialNumber(this.selectedSerialNumber);
-      this._router.navigate([encodeURIComponent(this.selectedSerialNumber.serialNumberValue)], {relativeTo: this._activatedRoute})
+      this._router.navigate([encodeURIComponent(this.selectedSerialNumber.value)], {relativeTo: this._activatedRoute})
         .then()
         .catch();
     }

@@ -14,12 +14,12 @@ export class SerialNumberService {
     this._getInitialData();
   }
 
-  getSerialNumber(serialNumberValue: String): SerialNumber {
-    return this._serialNumbers.find((serialNumber: SerialNumber) => serialNumber.serialNumberValue.toLowerCase() === serialNumberValue.toLowerCase());
+  getSerialNumber(value: String): SerialNumber {
+    return this._serialNumbers.find((serialNumber: SerialNumber) => serialNumber.value.toLowerCase() === value.toLowerCase());
   }
 
-  getId(serialNumberValue: String): number {
-    return this.getSerialNumber(serialNumberValue).id;
+  getId(value: String): number {
+    return this.getSerialNumber(value).id;
   }
 
   getSerialNumbers(): SerialNumber[] {
@@ -38,7 +38,10 @@ export class SerialNumberService {
   private _getInitialData() {
     this._dataService.getSerialNumbers()
       .subscribe(
-        data => this._serialNumbers = data,
+        data => {
+          this._serialNumbers = data;
+          console.log('from serial-number.service _getInitialData');
+        },
         err => console.log('Could not read Serial Numbers', err)
       );
   }
