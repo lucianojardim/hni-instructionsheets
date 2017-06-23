@@ -74,7 +74,6 @@ export class InstructionSheetService {
       .subscribe(
         data => {
           this._instructionSheets = data;
-          console.log('from instruction-sheets.service _getInitialData');
         },
         err => console.log('Could not read Instruction Sheets', err)
       );
