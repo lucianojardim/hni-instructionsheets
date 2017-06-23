@@ -33,7 +33,7 @@ export class BasemodelComponent implements OnInit {
       this._basemodelService.setSelectedBasemodel(this.selectedBasemodel);
       this._router.navigate([encodeURIComponent(this.selectedBasemodel.value)], {relativeTo: this._activatedRoute})
         .then()
-        .catch();
+        .catch(err => console.log(err));
     }
   }
 

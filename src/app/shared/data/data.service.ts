@@ -42,4 +42,5 @@ export class DataService {
   getSeries() {
     return this._readJsonFile('/assets/json/series.json');
   }
+
 }

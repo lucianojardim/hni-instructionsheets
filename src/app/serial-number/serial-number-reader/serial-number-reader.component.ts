@@ -29,9 +29,10 @@ export class SerialNumberReaderComponent implements OnInit {
       this.Decode(URL.createObjectURL(this.serialNumberFileInput.nativeElement.files[0]))
         .then((value: string) => this.getSerialNumber(value))
         .catch((e: string) => {
+          console.log(e);
           this._router.navigate(['/serialNumber/NotDecoded'])
-              .then()
-              .catch();
+            .then()
+            .catch(err => console.log(err));
           }
         );
     }
@@ -89,13 +90,13 @@ export class SerialNumberReaderComponent implements OnInit {
     if (typeof this._serialNumberService.getSerialNumber(value) === 'undefined') {
       this._router.navigate(['/serialNumber/NotDecoded'])
         .then()
-        .catch();
+        .catch(err => console.log(err));
     } else {
       this.selectedSerialNumber = this._serialNumberService.getSerialNumber(value);
       this._serialNumberService.setSelectedSerialNumber(this.selectedSerialNumber);
       this._router.navigate([encodeURIComponent(this.selectedSerialNumber.value)], {relativeTo: this._activatedRoute})
         .then()
-        .catch();
+        .catch(err => console.log(err));
     }
   }
 }

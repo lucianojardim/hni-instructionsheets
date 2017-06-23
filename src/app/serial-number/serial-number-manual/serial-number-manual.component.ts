@@ -33,7 +33,7 @@ export class SerialNumberManualComponent implements OnInit {
       this._serialNumberService.setSelectedSerialNumber(this.selectedSerialNumber);
       this._router.navigate([encodeURIComponent(this.selectedSerialNumber.value)], {relativeTo: this._activatedRoute})
         .then()
-        .catch();
+        .catch(err => console.log(err));
     }
   }
 

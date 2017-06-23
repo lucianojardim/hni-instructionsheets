@@ -14,7 +14,7 @@ export class UserService {
   private _maxLengthSavedInstructionSheetsIds = 7;
   private _maxLengthRecentlyDownloadedInstructionSheetIds = 7;
 
-  constructor(private http: Http) {
+  constructor(private _http: Http) {
   }
 
   private _removeSpecialCharactersFromEmailAddress(emailAddress: string): string {
@@ -22,7 +22,7 @@ export class UserService {
   }
 
   private _putUserIntoDatabase(user: User) {
-    return this.http.put(
+    return this._http.put(
       'https://instructionsheets-ad427.firebaseio.com/users/' + this._removeSpecialCharactersFromEmailAddress(user.emailAddress) + '.json',
       user
     ).catch(
@@ -33,7 +33,7 @@ export class UserService {
   }
 
   private _getUserFromDatabase(emailAddress: string) {
-    return this.http.get(
+    return this._http.get(
       'https://instructionsheets-ad427.firebaseio.com/users/' + this._removeSpecialCharactersFromEmailAddress(emailAddress) + '.json',
     )
       .map(
@@ -59,35 +59,26 @@ export class UserService {
   }
 
   private _addUser(user: User) {
-    // this._getUserFromDatabase(user.emailAddress);
-    // if (!this._userFromDatabase) {
-      this._putUserIntoDatabase(user)
-        .subscribe(
-          (response: Response) => {
-          }
+    this._putUserIntoDatabase(user)
+      .subscribe(
+        (response: Response) => {
+        }
         ,
         (error) => {
           console.log(error);
         });
-    // } else {
-    //   this._updateUser(user);
-    // }
+
   }
 
   private _updateUser(user: User) {
-    // this._getUserFromDatabase(user.emailAddress);
-    // if (this._userFromDatabase) {
-      this._putUserIntoDatabase(user)
-        .subscribe(
-          (response: Response) => {
-          }
-          ,
-          (error) => {
-            console.log(error);
-          });
-    // } else {
-    //   this._addUser(user);
-    // }
+    this._putUserIntoDatabase(user)
+      .subscribe(
+        (response: Response) => {
+        }
+        ,
+        (error) => {
+          console.log(error);
+        });
   }
 
   isAuthenticated(): Promise<boolean> {
@@ -180,5 +171,3 @@ export class UserService {
     return fixedLengthArray;
   }
 }
-
-

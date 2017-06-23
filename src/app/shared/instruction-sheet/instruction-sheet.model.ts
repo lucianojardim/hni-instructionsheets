@@ -2,7 +2,6 @@ export class InstructionSheet {
   id: number;
   name: string;
   fileName: string;
-  // serial-number: string;
   url: string;
   seriesIdArray: number[];
   serialNumberIdArray: number[];
@@ -18,7 +17,6 @@ export class InstructionSheet {
     this.id = id;
     this.name = name;
     this.fileName = fileName;
-    // this.serial-number = serial-number;
     this.url = url;
     this.seriesIdArray = seriesIdArray;
     this.serialNumberIdArray = serialNumberIdArray;
