@@ -52,7 +52,6 @@ export class SeriesService {
       .subscribe(
         data => {
           this._serieses = data;
-          console.log('from series.service _getInitialData');
         },
         err => console.log('Could not read Series', err)
       );

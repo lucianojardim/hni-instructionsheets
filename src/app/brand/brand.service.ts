@@ -51,7 +51,6 @@ export class BrandService {
       .subscribe(
         data => {
           this._brands = data;
-          console.log('from brand.service _getInitialData');
         },
         err => console.log('Could not read Brands', err)
       );

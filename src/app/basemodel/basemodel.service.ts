@@ -40,7 +40,6 @@ export class BasemodelService {
       .subscribe(
         data => {
           this._basemodels = data;
-          console.log('from basemode.service _getInitialData');
         },
         err => console.log('Could not read Basemodels', err)
       );

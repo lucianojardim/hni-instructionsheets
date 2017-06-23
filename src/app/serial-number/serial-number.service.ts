@@ -40,7 +40,6 @@ export class SerialNumberService {
       .subscribe(
         data => {
           this._serialNumbers = data;
-          console.log('from serial-number.service _getInitialData');
         },
         err => console.log('Could not read Serial Numbers', err)
       );
