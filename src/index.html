@@ -21,6 +21,22 @@
           a.appendChild(r);
       })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
   </script>
+  <script>
+      window.ga = window.ga || function () {
+              (ga.q = ga.q || []).push(arguments);
+          };
+      ga.l = +new Date;
+      ga('create', 'UA-71111118-4', 'auto');
+      // Replace the following lines with the plugins you want to use.
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+
+      ga('send', 'pageview');
+  </script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"></script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js.map"></script>
 </head>
 <body>
   <app-root>Loading...</app-root>

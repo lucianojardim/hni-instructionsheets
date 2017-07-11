@@ -18,29 +18,29 @@ export class DataService {
       )
       .catch(
         (err: Response) => {
-          return Observable.throw({msg: 'Failed to read json file', error: err});
+          return Observable.throw({msg: 'Failed to read data file', error: err});
         }
       );
   }
 
   getBasemodels() {
-    return this._readJsonFile('/assets/json/basemodel.json');
+    return this._readJsonFile('/assets/data/basemodel.json');
   }
 
   getBrands() {
-    return this._readJsonFile('/assets/json/brand.json');
+    return this._readJsonFile('/assets/data/brand.json');
   }
 
   getInstructionSheets() {
-    return this._readJsonFile('/assets/json/instruction-sheet.json');
+    return this._readJsonFile('/assets/data/instruction-sheet.json');
   }
 
   getSerialNumbers() {
-    return this._readJsonFile('/assets/json/serial-number.json');
+    return this._readJsonFile('/assets/data/serial-number.json');
   }
 
   getSeries() {
-    return this._readJsonFile('/assets/json/series.json');
+    return this._readJsonFile('/assets/data/series.json');
   }
 
 }

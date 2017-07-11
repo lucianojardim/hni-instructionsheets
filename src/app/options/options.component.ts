@@ -16,7 +16,7 @@ export class OptionsComponent implements OnInit {
   brands: Brand[] = [];
 
   constructor(private _brandService: BrandService,
-              // Preloading json files for Instruction Sheet, Series, Basemodel, and Serial Number
+              // Preloading data files for Instruction Sheet, Series, Basemodel, and Serial Number
               private _instructionSheetService: InstructionSheetService,
               private _seriesService: SeriesService,
               private _basemodelService: BasemodelService,
