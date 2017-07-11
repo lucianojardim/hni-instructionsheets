@@ -28,15 +28,21 @@
       ga.l = +new Date;
       ga('create', 'UA-71111118-4', 'auto');
       // Replace the following lines with the plugins you want to use.
-      ga('require', 'eventTracker');
+      // --cleanUrlTracker: tracks queries in the URL. Not necessary.
+      ga('require', 'eventTracker'); // custom: category, action, label, and value or standard: https://developer.mozilla.org/en-US/docs/Web/Events.
+      // --impressionTracker: tracks what is visible in the viewport. Not necessary.
+      // --maxScrollTracker: tracks how far down the page a user scrolls. Not necessary.
+      // --mediaQueryTracker: tracks media queries. Not necessary
+      // --outboundFormTracker: tracks form submits to external domains. Not necessary.
       ga('require', 'outboundLinkTracker');
-      ga('require', 'urlChangeTracker');
+      // --pageVisibilityTracker: tracks how long pages are in the visible state. Not necessary
+      // --socialWidgetTracker: tracks interaction with Facebook and Twitter. Not necessary
+      ga('require', 'urlChangeTracker'); // tracks Single Page Applications URL changes
 
       ga('send', 'pageview');
   </script>
   <script async src="https://www.google-analytics.com/analytics.js"></script>
   <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"></script>
-  <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js.map"></script>
 </head>
 <body>
   <app-root>Loading...</app-root>
