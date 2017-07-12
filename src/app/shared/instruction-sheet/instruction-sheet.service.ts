@@ -42,17 +42,8 @@ export class InstructionSheetService {
   }
 
   getInstructionSheetsBySerialNumber(serialNumber: SerialNumber): InstructionSheet[] {
-    return this.getInstructionSheetsBySerialNumberId(serialNumber.id);
-  }
-
-  getInstructionSheetsBySerialNumberId(serialNumberId: number): InstructionSheet[] {
-    return this._instructionSheets.filter(
-      (instructionSheet: InstructionSheet) =>
-        instructionSheet.serialNumberIdArray.find(
-          (element: number) =>
-          element === serialNumberId
-        )
-    );
+    // use basemodel associated to serial number to find instruction sheets
+    return this.getInstructionSheetsByBasemodelId(serialNumber.basemodelId);
   }
 
   getInstructionSheetsByBasemodel(basemodel: Basemodel): InstructionSheet[] {
