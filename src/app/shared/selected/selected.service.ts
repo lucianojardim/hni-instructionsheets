@@ -32,7 +32,7 @@ export class SelectedService {
     }
     const activatedRouteParent = <string>(activatedRoute.parent.toString().toLowerCase());
     if (activatedRouteParent.indexOf('basemodel') > 0) {
-      this._selectedType = Basemodel.name;
+      this._selectedType = 'basemodel';
       this._subscription = this._basemodelService.selectedBasemodelChanged
         .subscribe(
           (basemodel: Basemodel) => {
@@ -42,7 +42,7 @@ export class SelectedService {
       return <Basemodel>this._basemodelService.getSelectedBasemodel();
     } else {
       if (activatedRouteParent.indexOf('serialnumber') > 0) {
-        this._selectedType = SerialNumber.name;
+        this._selectedType = 'serialnumber';
         this._subscription = this._serialNumberService.selectedSerialNumberChanged
           .subscribe(
             (serialNumber: SerialNumber) => {
@@ -52,7 +52,7 @@ export class SelectedService {
         return <SerialNumber>this._serialNumberService.getSelectedSerialNumber();
       } else {
         if (activatedRouteParent.indexOf('brand') > 0) {
-          this._selectedType = Series.name;
+          this._selectedType = 'series';
           this._subscription = this._seriesService.selectedSeriesChanged
             .subscribe(
               (series: Series) => {
@@ -69,13 +69,13 @@ export class SelectedService {
   }
 
   getInstructionSheets(selected: any): InstructionSheet[] {
-    if (this._selectedType === Basemodel.name) {
+    if (this._selectedType === 'basemodel') {
       return this._instructionSheetService.getInstructionSheetsByBasemodel(<Basemodel>selected);
     } else {
-      if (this._selectedType === SerialNumber.name) {
+      if (this._selectedType === 'serialnumber') {
         return this._instructionSheetService.getInstructionSheetsBySerialNumber(<SerialNumber>selected);
       } else {
-        if (this._selectedType === Series.name) {
+        if (this._selectedType === 'series') {
           return this._instructionSheetService.getInstructionSheetsBySeries(<Series>selected);
         } else {
           console.log('Selected service unable to retrieve instructions sheets. Selected object has an unexptected type.');
