@@ -1,8 +1,8 @@
 <app-header></app-header>
 <div class="container-fluid">
-  <p *ngIf="IsRouteBasemodelNotFound() && IsToDisplayErrorMessage" class="text-danger bg-danger">The base model was not
-    found. Please, enter a different base model.</p>
-  <p class="text-info">Enter a Base Model:</p>
+  <p *ngIf="IsRouteBasemodelNotFound() && IsToDisplayErrorMessage" class="text-danger bg-danger">The model was not
+    found. Please, enter a different model.</p>
+  <p class="text-info">Enter a Model:</p>
   <input class="form-control" required type="text" name="inputBasemodel" pattern="^[0-z]+$" ngModel
          #inputBasemodel="ngModel" (keyup.enter)="getBasemodel(inputBasemodel.value)" title="inputBasemodel">
   <div class="help-block bg-danger" *ngIf="!inputBasemodel.valid && inputBasemodel.touched">Please enter a combination
