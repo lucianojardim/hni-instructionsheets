@@ -7,7 +7,7 @@
       </button>
       <a class="hni-list-group-item-anchor" (click)="addRecentlyDownloadedInstructionSheet(instructionSheet)"
          href={{instructionSheet.url}}
-         target="_blank">{{instructionSheet.name}}</a>
+         target="_blank" rel="noopener">{{instructionSheet.name}}</a>
       <p *ngIf="showAddSavedInstructionSheetMsg[i]" class="list-group-item alert-info">Saved successfully.</p>
     </div>
     <div *ngIf="operationType==='delete' && showInstructionSheets[i]" class="row">
@@ -15,7 +15,7 @@
       <button class="btn btn-xs btn-circle btn-danger pull-left" (click)="deleteInstructionSheet(instructionSheet, i)">
         <span class="glyphicon glyphicon-minus"></span>
       </button>
-      <a class="hni-list-group-item-anchor" href={{instructionSheet.url}} target="_blank">{{instructionSheet.name}}</a>
+      <a class="hni-list-group-item-anchor" href={{instructionSheet.url}} target="_blank" rel="noopener">{{instructionSheet.name}}</a>
     </div>
   </li>
 </ul>
