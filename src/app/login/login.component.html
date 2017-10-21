@@ -1,11 +1,11 @@
 <app-header></app-header>
-<div class="container-fluid">
+<div class="container-fluid im">
   <p class="text-info">Enter your email address:</p>
-  <input class="form-control" required type="email" name="userInput" pattern="[^ @]*@[^ @]*" ngModel
-         #userInput="ngModel" title="userInput"/>
-  <div class="help-block bg-danger" *ngIf="!userInput.valid && userInput.touched">Please enter a valid email address!
+  <input class="form-control" required type="email" name="inputEmailAddress" pattern="[^ @]*@[^ @]*" [(ngModel)]="emailAddress"
+         #inputEmailAddress="ngModel" title="inputEmailAddress"/>
+  <div class="help-block bg-danger" *ngIf="!inputEmailAddress.valid && inputEmailAddress.touched">Please enter a valid email address!
   </div>
-  <button (click)="getInstructionSheetByEmail(userInput.value)" class="btn btn-default" [disabled]="!userInput.valid">
+  <button (click)="getInstructionSheetByEmail(inputEmailAddress.value)" class="btn btn-default" [disabled]="!inputEmailAddress.valid">
     Login
   </button>
 </div>
