@@ -1,12 +1,17 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Instruction Sheets</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">
-  <link rel="icon" type="image/x-icon" href="assets/hni/images/HNI.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1976d2">
 
   <!-- iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -21,10 +26,6 @@
   <link rel="apple-touch-startup-image" href="assets/hni/images/HNI-512x512.png">
   <link rel="apple-touch-startup-image" href="assets/hni/images/HNI-1334x750.png">
   <link rel="apple-touch-startup-image" href="assets/hni/images/HNI-750x1334.png">
-
-  <!-- Android -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <link rel="manifest" href="manifest.json">
 
   <!--&lt;!&ndash; Hotjar Tracking Code for http://testgtm.hnicorp.com &ndash;&gt;-->
   <!--<script>-->
@@ -43,33 +44,34 @@
 
   <!-- Google Analytics set up -->
   <script>
-      window.ga = window.ga || function () {
-              (ga.q = ga.q || []).push(arguments);
-          };
-      ga.l = +new Date;
-      ga('create', 'UA-71111118-4', 'auto');
-      // Replace the following lines with the plugins you want to use.
-      // --cleanUrlTracker: tracks queries in the URL. Not necessary.
-      ga('require', 'eventTracker'); // custom: category, action, label, and value or standard: https://developer.mozilla.org/en-US/docs/Web/Events.
-      // --impressionTracker: tracks what is visible in the viewport. Not necessary.
-      // --maxScrollTracker: tracks how far down the page a user scrolls. Not necessary.
-      // --mediaQueryTracker: tracks media queries. Not necessary
-      // --outboundFormTracker: tracks form submits to external domains. Not necessary.
-      ga('require', 'outboundLinkTracker');
-      // --pageVisibilityTracker: tracks how long pages are in the visible state. Not necessary
-      // --socialWidgetTracker: tracks interaction with Facebook and Twitter. Not necessary
-      ga('require', 'urlChangeTracker'); // tracks Single Page Applications URL changes
+    window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments);
+        };
+    ga.l = +new Date;
+    ga('create', 'UA-71111118-4', 'auto');
+    // Replace the following lines with the plugins you want to use.
+    // --cleanUrlTracker: tracks queries in the URL. Not necessary.
+    ga('require', 'eventTracker'); // custom: category, action, label, and value or standard: https://developer.mozilla.org/en-US/docs/Web/Events.
+    // --impressionTracker: tracks what is visible in the viewport. Not necessary.
+    // --maxScrollTracker: tracks how far down the page a user scrolls. Not necessary.
+    // --mediaQueryTracker: tracks media queries. Not necessary
+    // --outboundFormTracker: tracks form submits to external domains. Not necessary.
+    ga('require', 'outboundLinkTracker');
+    // --pageVisibilityTracker: tracks how long pages are in the visible state. Not necessary
+    // --socialWidgetTracker: tracks interaction with Facebook and Twitter. Not necessary
+    ga('require', 'urlChangeTracker'); // tracks Single Page Applications URL changes
 
-      ga('send', 'pageview');
+    ga('send', 'pageview');
   </script>
   <script async src="https://www.google-analytics.com/analytics.js"></script>
   <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"></script>
+
 </head>
 <body>
-<app-root>
-  <div class="page-header"><h3>&nbsp; HNI Instruction Sheets</h3></div>
-  <br><br><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Loading application...
-  <br><img class="img-responsive" style="display: block; padding-top: 100px; margin: 0 auto" src="assets/img/loading.svg" alt="loading" width="40px" height="40px">
-</app-root>
+  <app-root>
+    <div class="page-header"><h3>&nbsp; HNI Instruction Sheets</h3></div>
+    <br><br><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Loading application...
+    <br><img class="img-responsive" style="display: block; padding-top: 100px; margin: 0 auto" src="assets/img/loading.svg" alt="loading" width="40px" height="40px">
+  </app-root>
 </body>
 </html>

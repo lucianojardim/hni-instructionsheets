@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs/Subject';
-import {Http, Response} from '@angular/http';
-import 'rxjs/Rx';
-
+import {HttpClient, HttpResponse, HttpErrorResponse} from '@angular/common/http';
+import {catchError, map} from 'rxjs/operators';
+import {Observable, Subject, pipe, throwError} from 'rxjs';
 import {User} from './user.model';
-import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {
@@ -14,7 +12,7 @@ export class UserService {
   private _maxLengthSavedInstructionSheetsIds = 7;
   private _maxLengthRecentlyDownloadedInstructionSheetIds = 7;
 
-  constructor(private _http: Http) {
+  constructor(private _http: HttpClient) {
   }
 
   private _removeSpecialCharactersFromEmailAddress(emailAddress: string): string {
@@ -22,23 +20,22 @@ export class UserService {
   }
 
   private _putUserIntoDatabase(user: User) {
-    return this._http.put(
+    return this._http.put<User>(
       'https://instructionsheets-ad427.firebaseio.com/users/' + this._removeSpecialCharactersFromEmailAddress(user.emailAddress) + '.json',
       user
-    ).catch(
-      (error: Response) => {
-        return Observable.throw({msg: 'Failure saving user attributes', error: error});
+    ).pipe(catchError(
+      (error: HttpErrorResponse) => {
+        return throwError('Failure saving user attributes');
       }
-    );
+    ));
   }
 
   private _getUserFromDatabase(emailAddress: string) {
-    return this._http.get(
+    return this._http.get<User>(
       'https://instructionsheets-ad427.firebaseio.com/users/' + this._removeSpecialCharactersFromEmailAddress(emailAddress) + '.json',
-    )
-      .map(
-        (response: Response) => {
-          const user: User = response.json();
+    ).pipe(
+      map(
+        (user => {
           if (user) {
             if (!user['savedInstructionSheetsIds']) {
               user['savedInstructionSheetsIds'] = [];
@@ -50,19 +47,18 @@ export class UserService {
           this._userFromDatabase = user;
           return user;
         }
-      )
-      .catch(
-        (error: Response) => {
-          return Observable.throw({msg: 'Failure reading user attributes', error: error});
+      ),
+      catchError(
+        (error: HttpErrorResponse) => {
+          return throwError('Failure reading user attributes');
         }
-      );
+      )));
   }
 
   private _addUser(user: User) {
     this._putUserIntoDatabase(user)
       .subscribe(
-        (response: Response) => {
-        }
+        () => {}
         ,
         (error) => {
           console.log(error);
@@ -73,8 +69,7 @@ export class UserService {
   private _updateUser(user: User) {
     this._putUserIntoDatabase(user)
       .subscribe(
-        (response: Response) => {
-        }
+        () => {}
         ,
         (error) => {
           console.log(error);

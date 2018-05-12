@@ -4,7 +4,7 @@ import {
   Router,
   RouterStateSnapshot
 } from '@angular/router';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 
 import {UserService} from './shared/user/user.service';

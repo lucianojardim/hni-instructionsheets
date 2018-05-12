@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Subscription} from 'rxjs/Subscription';
-import {Subject} from 'rxjs/Subject';
+import {Subscription} from 'rxjs';
+import {Subject} from 'rxjs';
 
 import {Basemodel} from '../../basemodel/basemodel.model';
 import {BasemodelService} from '../../basemodel/basemodel.service';
